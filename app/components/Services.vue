@@ -1,43 +1,8 @@
 <script setup>
 const { app: { baseURL } } = useRuntimeConfig()
-const services = [
-  {
-    id: '01',
-    title: 'Check-Up 360',
-    description: "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-    image: '/img/bilans.jpg'
-  },
-  {
-    id: '02',
-    title: 'Coaching personnalisé',
-    description: 'Accompagnement sur mesure en mouvement et préparation physique.',
-    image: '/img/prepa.jpg'
-  },
-  {
-    id: '03',
-    title: 'Fitness',
-    description: 'Abonnements flexibles pour un entraînement guidé dans un espace dédié.',
-    image: '/img/fitness.jpg'
-  },
-  {
-    id: '04',
-    title: 'Photobiomodulation',
-    description: 'Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.',
-    image: '/img/redlight.jpg'
-  },
-  {
-    id: '05',
-    title: 'Entreprises & Institutions',
-    description: 'Programmes santé et performance adaptés à votre organisation.',
-    image: '/img/neurotracker.jpg'
-  },
-  {
-    id: '06',
-    title: 'Prévention active',
-    description: "Agir avant que la douleur ne s'installe — protéger et avancer.",
-    image: '/img/cerveau.jpg'
-  }
-]
+const { data: services } = await useAsyncData('services', () => 
+  queryCollection('services').order('order', 'ASC').all()
+)
 </script>
 
 <template>
@@ -53,8 +18,8 @@ const services = [
         </p>
       </div>
 
-      <div class="services-grid">
-        <div v-for="service in services" :key="service.id" class="service-card">
+      <div class="services-grid" v-if="services">
+        <div v-for="service in services" :key="service.path" class="service-card">
           <div class="card-image">
             <img :src="`${baseURL}${service.image.startsWith('/') ? service.image.substring(1) : service.image}`" :alt="service.title" />
             <div class="card-id">{{ service.id }}</div>
@@ -62,7 +27,7 @@ const services = [
           <div class="card-content">
             <h3>{{ service.title }}</h3>
             <p>{{ service.description }}</p>
-            <a href="#" class="card-link">En savoir plus →</a>
+            <NuxtLink to="#services" class="card-link">En savoir plus →</NuxtLink>
           </div>
         </div>
       </div>
@@ -71,15 +36,24 @@ const services = [
 </template>
 
 <style lang="scss" scoped>
-/* (Style reste inchangé) */
 .services {
   background-color: var(--dark);
-  padding-top: 10rem;
+  padding: 10rem 0;
 }
 
 .services-header {
   margin-bottom: 5rem;
   max-width: 800px;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--white);
+  margin-bottom: 2rem;
+
+  .accent-citron {
+    color: var(--citron);
+  }
 }
 
 .section-desc {
@@ -89,7 +63,7 @@ const services = [
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
 }
 
@@ -154,6 +128,7 @@ const services = [
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--white);
+    font-family: var(--font-heading);
   }
 
   p {

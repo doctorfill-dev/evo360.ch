@@ -1,8 +1,12 @@
+<script setup>
+const { app: { baseURL } } = useRuntimeConfig()
+</script>
+
 <template>
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="/img/logo.svg" alt="evo360 logo" class="footer-logo" />
+        <img :src="`${baseURL}img/logo.svg`" alt="evo360 logo" class="footer-logo" />
         <p class="footer-desc">
           Un accompagnement personnalisé avec les meilleurs experts en mouvement, préparation physique et santé à Neuchâtel.
         </p>

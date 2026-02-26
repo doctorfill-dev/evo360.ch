@@ -1,27 +1,7 @@
 <script setup>
-const testimonials = [
-  {
-    name: 'Gaétan',
-    age: '35 ans',
-    initial: 'G',
-    text: "« Je cherchais de l'énergie au quotidien, pas de la performance. Ici, j'ai appris à bouger sans avoir peur. »",
-    color: 'var(--indigo)'
-  },
-  {
-    name: 'Didier',
-    age: '65 ans',
-    initial: 'D',
-    text: "« Je voulais agir préventivement, avant que la douleur ne s'installe. J'ai trouvé une approche qui me protège et me fait avancer. »",
-    color: 'var(--citron)'
-  },
-  {
-    name: 'Sophie',
-    age: '52 ans',
-    initial: 'S',
-    text: "« Je suis venue pour arrêter d'avoir mal, pas pour devenir sportive. On m'a comprise et j'ai repris confiance petit à petit. »",
-    color: 'var(--gray-400)'
-  }
-]
+const { data: testimonials } = await useAsyncData('testimonials', () => 
+  queryCollection('testimonials').order('order', 'ASC').all()
+)
 </script>
 
 <template>
@@ -31,8 +11,8 @@ const testimonials = [
         <h2 class="section-title">Ils nous font <span class="text-indigo">confiance</span></h2>
       </div>
 
-      <div class="testimonials-grid">
-        <div v-for="(item, index) in testimonials" :key="item.name"
+      <div class="testimonials-grid" v-if="testimonials">
+        <div v-for="(item, index) in testimonials" :key="item.path"
              class="testimonial-card"
              :style="{ transform: `rotate(${index % 2 === 0 ? -1 : 1}deg)` }">
           <div class="stars">★★★★★</div>
