@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/content', '@nuxthq/studio'],
+  modules: ['@nuxt/content'],
   srcDir: 'app/',
   css: ['~/assets/css/main.scss'],
   ssr: true,
