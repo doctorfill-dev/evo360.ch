@@ -1,6 +1,6 @@
 <script setup>
 const { data: contact } = await useAsyncData('contact', () => 
-  queryCollection('sections').path('/sections/contact').first()
+  queryCollection('sections').where('stem', '=', 'sections/contact').first()
 )
 </script>
 

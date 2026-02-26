@@ -4,7 +4,7 @@ export default defineContentConfig({
   collections: {
     services: defineCollection({
       source: 'services/*.md',
-      type: 'page',
+      type: 'data',
       schema: z.object({
         id: z.string(),
         title: z.string(),
@@ -15,7 +15,7 @@ export default defineContentConfig({
     }),
     testimonials: defineCollection({
       source: 'testimonials/*.md',
-      type: 'page',
+      type: 'data',
       schema: z.object({
         name: z.string(),
         age: z.string(),
@@ -27,7 +27,7 @@ export default defineContentConfig({
     }),
     sections: defineCollection({
       source: 'sections/*.md',
-      type: 'page',
+      type: 'data',
       schema: z.object({
         badge: z.string().optional(),
         title: z.string(),
@@ -36,6 +36,7 @@ export default defineContentConfig({
         img2: z.string().optional(),
         img3: z.string().optional(),
         lead: z.string().optional(),
+        body_text: z.string().optional(),
         quote: z.string().optional(),
         image: z.string().optional(),
         address: z.string().optional(),

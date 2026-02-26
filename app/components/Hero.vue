@@ -1,7 +1,7 @@
 <script setup>
 const { app: { baseURL } } = useRuntimeConfig()
 const { data: hero } = await useAsyncData('hero', () => 
-  queryCollection('sections').path('/sections/hero').first()
+  queryCollection('sections').where('stem', '=', 'sections/hero').first()
 )
 </script>
 

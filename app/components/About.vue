@@ -1,7 +1,7 @@
 <script setup>
 const { app: { baseURL } } = useRuntimeConfig()
 const { data: about } = await useAsyncData('about', () => 
-  queryCollection('sections').path('/sections/about').first()
+  queryCollection('sections').where('stem', '=', 'sections/about').first()
 )
 </script>
 
@@ -23,7 +23,7 @@ const { data: about } = await useAsyncData('about', () =>
         <p class="lead">{{ about.lead }}</p>
         
         <div class="about-description">
-          <ContentRenderer :value="about" />
+          <p>{{ about.body_text }}</p>
         </div>
 
         <div class="quote-card">
