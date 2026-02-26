@@ -1,12 +1,18 @@
+<script setup>
+const { data: cta } = await useAsyncData('cta', () => 
+  queryCollection('sections').path('/sections/cta').first()
+)
+</script>
+
 <template>
-  <section class="cta">
+  <section class="cta" v-if="cta">
     <div class="container">
       <div class="cta-card">
         <div class="cta-content">
-          <h2 class="cta-title">Prêt à reprendre le <span class="text-white">contrôle</span> de votre santé ?</h2>
-          <p class="cta-text">Prenez rendez-vous pour un premier échange et découvrez comment evo360 peut vous accompagner.</p>
+          <h2 class="cta-title" v-html="cta.cta_title"></h2>
+          <p class="cta-text">{{ cta.cta_text }}</p>
           <div class="cta-actions">
-            <a href="#" class="btn btn-primary">Prendre rendez-vous →</a>
+            <a :href="cta.cta_link" class="btn btn-primary">{{ cta.cta_btn }}</a>
             <a href="tel:0765070360" class="btn btn-outline-white">076 507 03 60</a>
           </div>
         </div>
@@ -44,7 +50,7 @@
   color: var(--dark);
   margin-bottom: 1.5rem;
 
-  .text-white {
+  :deep(.text-white) {
     color: var(--white);
     text-shadow: 2px 2px 0 var(--indigo);
   }

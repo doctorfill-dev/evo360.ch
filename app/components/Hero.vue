@@ -1,18 +1,17 @@
 <script setup>
 const { app: { baseURL } } = useRuntimeConfig()
+const { data: hero } = await useAsyncData('hero', () => 
+  queryCollection('sections').path('/sections/hero').first()
+)
 </script>
 
 <template>
-  <section class="hero">
+  <section class="hero" v-if="hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <div class="badge">Centre de performance & bien-être</div>
-        <h1 class="hero-title">
-          Votre santé mérite une <span class="text-indigo">approche à 360°</span>
-        </h1>
-        <p class="hero-description">
-          Plus d'énergie. Plus d'équilibre. Un accompagnement personnalisé avec les meilleurs experts en mouvement, préparation physique et santé à Neuchâtel.
-        </p>
+        <div class="badge">{{ hero.badge }}</div>
+        <h1 class="hero-title" v-html="hero.title"></h1>
+        <p class="hero-description">{{ hero.description }}</p>
         <div class="hero-actions">
           <a href="#" class="btn btn-primary">Découvrir evo360</a>
           <a href="#" class="btn btn-outline">Prendre rendez-vous</a>
@@ -37,13 +36,13 @@ const { app: { baseURL } } = useRuntimeConfig()
       <div class="hero-visual">
         <div class="image-stack">
           <div class="img-wrapper img-1">
-            <img :src="`${baseURL}img/hero.jpg`" alt="Fitness" />
+            <img :src="`${baseURL}${hero.img1.startsWith('/') ? hero.img1.substring(1) : hero.img1}`" alt="Visual 1" />
           </div>
           <div class="img-wrapper img-2">
-            <img :src="`${baseURL}img/fitness.jpg`" alt="Performance" />
+            <img :src="`${baseURL}${hero.img2.startsWith('/') ? hero.img2.substring(1) : hero.img2}`" alt="Visual 2" />
           </div>
           <div class="img-wrapper img-3">
-            <img :src="`${baseURL}img/redlight.jpg`" alt="Recovery" />
+            <img :src="`${baseURL}${hero.img3.startsWith('/') ? hero.img3.substring(1) : hero.img3}`" alt="Visual 3" />
           </div>
         </div>
       </div>
@@ -84,9 +83,10 @@ const { app: { baseURL } } = useRuntimeConfig()
   line-height: 1;
   margin-bottom: 1.5rem;
 
-  .text-indigo {
+  :deep(.text-indigo) {
     color: var(--indigo);
     position: relative;
+    display: inline-block;
 
     &::after {
       content: '';
@@ -137,7 +137,6 @@ const { app: { baseURL } } = useRuntimeConfig()
   letter-spacing: 0.05em;
 }
 
-/* Image Stack - Anti-Flat */
 .hero-visual {
   position: relative;
   height: 500px;
@@ -201,27 +200,10 @@ const { app: { baseURL } } = useRuntimeConfig()
     grid-template-columns: 1fr;
     text-align: center;
   }
-
-  .hero-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .hero-stats {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    height: 400px;
-    margin-top: 4rem;
-  }
-
-  .img-3 {
-    display: none;
-  }
+  .hero-description { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-visual { height: 400px; margin-top: 4rem; }
+  .img-3 { display: none; }
 }
 </style>

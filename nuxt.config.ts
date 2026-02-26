@@ -2,11 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  modules: ['@nuxt/content'],
+  srcDir: 'app/', // On indique explicitement à Nuxt de regarder dans le dossier app/
   css: ['~/assets/css/main.scss'],
   ssr: true,
   app: {
-    // Par défaut '/' pour la prod (evo360.ch)
-    // On injectera /evo360.ch/ via le CI pour le test
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
       title: 'evo360 — Centre de performance & bien-être',
