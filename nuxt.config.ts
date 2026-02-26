@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/content'],
-  srcDir: 'app/', // On indique explicitement à Nuxt de regarder dans le dossier app/
+  modules: ['@nuxt/content', '@nuxthq/studio'],
+  srcDir: 'app/',
   css: ['~/assets/css/main.scss'],
   ssr: true,
   app: {
