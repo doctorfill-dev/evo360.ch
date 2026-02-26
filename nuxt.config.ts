@@ -2,12 +2,12 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', 'nuxt-studio'],
   srcDir: 'app/',
   css: ['~/assets/css/main.scss'],
   ssr: true,
   app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    baseURL: '/',
     head: {
       title: 'evo360 — Centre de performance & bien-être',
       meta: [
@@ -23,7 +23,12 @@ export default defineNuxtConfig({
       ]
     }
   },
-  nitro: {
-    preset: 'github-pages'
+  studio: {
+    repository: {
+      provider: 'github',
+      owner: 'doctorfill-dev',
+      repo: 'evo360.ch',
+      branch: 'main'
+    }
   }
 })
