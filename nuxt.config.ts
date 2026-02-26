@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   app: {
     // Si perso, laissez '/'
     // Si c'est GH Pages (cutiips.github.io/repo), mettez '/evo360.ch/'
-    baseURL: process.env.NODE_ENV === 'production' ? '/' : '/', 
+    baseURL: process.env.NODE_ENV === 'production' ? '/' : '/evo360.ch/',
     head: {
       title: 'evo360 — Centre de performance & bien-être',
       meta: [
