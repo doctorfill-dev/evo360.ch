@@ -1,9 +1,13 @@
+<script setup>
+const { app: { baseURL } } = useRuntimeConfig()
+</script>
+
 <template>
   <section id="about" class="about">
     <div class="container about-grid">
       <div class="about-image">
         <div class="main-img-wrap">
-          <img src="/img/mission.jpg" alt="Notre équipe" class="main-img" />
+          <img :src="`${baseURL}img/mission.jpg`" alt="Notre équipe" class="main-img" />
           <div class="experience-badge">
             <span class="number">10+</span>
             <span class="text">Années d'expertise</span>

@@ -28,6 +28,8 @@ jobs:
 
       - name: Generate Static Site
         run: npm run generate
+        env:
+          NUXT_APP_BASE_URL: /evo360.ch/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

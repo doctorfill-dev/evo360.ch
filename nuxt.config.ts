@@ -5,9 +5,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.scss'],
   ssr: true,
   app: {
-    // Si perso, laissez '/'
-    // Si c'est GH Pages (cutiips.github.io/repo), mettez '/evo360.ch/'
-    baseURL: process.env.NODE_ENV === 'production' ? '/' : '/evo360.ch/',
+    // Par défaut '/' pour la prod (evo360.ch)
+    // On injectera /evo360.ch/ via le CI pour le test
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
       title: 'evo360 — Centre de performance & bien-être',
       meta: [

@@ -1,4 +1,5 @@
 <script setup>
+const { app: { baseURL } } = useRuntimeConfig()
 const services = [
   {
     id: '01',
@@ -55,7 +56,7 @@ const services = [
       <div class="services-grid">
         <div v-for="service in services" :key="service.id" class="service-card">
           <div class="card-image">
-            <img :src="service.image" :alt="service.title" />
+            <img :src="`${baseURL}${service.image.startsWith('/') ? service.image.substring(1) : service.image}`" :alt="service.title" />
             <div class="card-id">{{ service.id }}</div>
           </div>
           <div class="card-content">
@@ -70,6 +71,7 @@ const services = [
 </template>
 
 <style lang="scss" scoped>
+/* (Style reste inchangé) */
 .services {
   background-color: var(--dark);
   padding-top: 10rem;

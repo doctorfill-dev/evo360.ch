@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const isScrolled = ref(false)
+const { app: { baseURL } } = useRuntimeConfig()
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
@@ -20,7 +21,7 @@ onUnmounted(() => {
   <header :class="['header', { 'is-scrolled': isScrolled }]">
     <div class="container header-inner">
       <NuxtLink to="/" class="logo">
-        <img src="/img/logo.svg" alt="evo360 logo" class="logo-img" />
+        <img :src="`${baseURL}img/logo.svg`" alt="evo360 logo" class="logo-img" />
       </NuxtLink>
 
       <nav class="nav">

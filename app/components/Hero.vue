@@ -1,3 +1,7 @@
+<script setup>
+const { app: { baseURL } } = useRuntimeConfig()
+</script>
+
 <template>
   <section class="hero">
     <div class="container hero-grid">
@@ -33,13 +37,13 @@
       <div class="hero-visual">
         <div class="image-stack">
           <div class="img-wrapper img-1">
-            <img src="/img/hero.jpg" alt="Fitness" />
+            <img :src="`${baseURL}img/hero.jpg`" alt="Fitness" />
           </div>
           <div class="img-wrapper img-2">
-            <img src="/img/fitness.jpg" alt="Performance" />
+            <img :src="`${baseURL}img/fitness.jpg`" alt="Performance" />
           </div>
           <div class="img-wrapper img-3">
-            <img src="/img/redlight.jpg" alt="Recovery" />
+            <img :src="`${baseURL}img/redlight.jpg`" alt="Recovery" />
           </div>
         </div>
       </div>
