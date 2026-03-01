@@ -1,0 +1,23 @@
+{#
+  cta.njk — Section cream avec carte citron.
+  home.cta.title contient du HTML → filtre `safe`.
+  btn-primary = fond indigo, btn-outline-white = transparent + border blanc.
+#}
+<section class="cta">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-content">
+        <h2 class="cta-title">{{ home.cta.title | safe }}</h2>
+        <p class="cta-text">{{ home.cta.text }}</p>
+        <div class="cta-actions">
+          <a href="{{ home.cta.btn_url }}" class="btn btn-primary">{{ home.cta.btn_label }}</a>
+          <a href="tel:{{ home.cta.phone | replace(' ', '') }}" class="btn btn-outline-white">{{ home.cta.phone }}</a>
+        </div>
+      </div>
+      <div class="cta-visual" aria-hidden="true">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+{# header.njk — Logo SVG + nav. Transparent → frosted glass (.is-scrolled via JS). #}
+<header class="header" id="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo" aria-label="{{ home.site.name }}">
+      <img src="/assets/img/logo.svg" alt="{{ home.site.name }}" class="logo-img">
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="nav-list">
+        {% for link in home.nav.links %}
+          <li><a href="{{ link.url }}" class="nav-link">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="{{ home.nav.cta.url }}" class="btn btn-primary btn-sm">
+        {{ home.nav.cta.label }}
+      </a>
+    </div>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <div class="container">
+      <ul class="mobile-nav-list">
+        {% for link in home.nav.links %}
+          <li><a href="{{ link.url }}" class="mobile-nav-link">{{ link.label }}</a></li>
+        {% endfor %}
+        <li style="padding-top:.5rem;">
+          <a href="{{ home.nav.cta.url }}" class="btn btn-primary" style="width:100%;justify-content:center;">
+            {{ home.nav.cta.label }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,30 @@
+{#
+  testimonials.njk — Section témoignages, fond --dark (continuité avec Services).
+  .testimonials ajoute juste padding-bottom, le fond vient de .section-dark.
+  Cartes rotées ±1deg via style inline, redressées au hover.
+#}
+<section class="testimonials section-dark" id="testimonials">
+  <div class="container">
+
+    <div class="testimonials-header">
+      <h2 class="section-title">Ils nous font <span class="text-indigo">confiance</span></h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {% for item in home.testimonials.items %}
+        <div class="testimonial-card" style="transform: rotate({{ item.rotate }}deg);">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">{{ item.text }}</p>
+          <div class="t-author">
+            <div class="t-avatar" style="background-color: {{ item.color }};" aria-hidden="true">{{ item.initial }}</div>
+            <div>
+              <div class="t-name">{{ item.name }}</div>
+              <div class="t-meta">{{ item.age }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

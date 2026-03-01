@@ -1,0 +1,44 @@
+{#
+  footer.njk — Logo SVG, 3 colonnes (brand | navigation | suivez-nous), barre légale.
+  Correspond à AppFooter.vue du repo design.
+#}
+<footer class="footer">
+  <div class="container footer-grid">
+
+    <div class="footer-brand">
+      <img src="/assets/img/logo.svg" alt="{{ home.site.name }}" class="footer-logo">
+      <p class="footer-desc">{{ home.footer.description }}</p>
+    </div>
+
+    <div class="footer-links">
+      <h3 class="footer-title">Navigation</h3>
+      <ul>
+        {% for link in home.nav.links %}
+          <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h3 class="footer-title">Suivez-nous</h3>
+      <ul>
+        {% for social in home.footer.social %}
+          <li><a href="{{ social.url }}" target="_blank" rel="noopener">{{ social.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="bottom-inner">
+        <p>© {{ "" | currentYear }} {{ home.site.name }}. Tous droits réservés.</p>
+        <div class="legal">
+          <a href="/mentions-legales">Mentions légales</a>
+          <a href="/confidentialite">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

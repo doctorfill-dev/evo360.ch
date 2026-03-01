@@ -1,24 +1,38 @@
 {
-  "name": "evo360-ch",
-  "type": "module",
-  "private": true,
+  "name": "evo360.ch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "dev": "eleventy --serve",
+    "dev:admin": "vite",
+    "build": "eleventy && vite build",
+    "build:site": "eleventy",
+    "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doctorfill-dev/evo360.ch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/doctorfill-dev/evo360.ch/issues"
+  },
+  "homepage": "https://github.com/doctorfill-dev/evo360.ch#readme",
   "dependencies": {
-    "@nuxt/content": "^3.11.2",
-    "better-sqlite3": "^12.6.2",
-    "lucide-vue-next": "^0.575.0",
-    "nuxt": "^4.3.1",
-    "nuxt-studio": "^1.3.3",
-    "vue": "^3.5.28",
-    "vue-router": "^4.6.4"
+    "@11ty/eleventy": "^3.1.2",
+    "@keystatic/core": "^0.5.40",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "sass": "^1.97.3"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0"
   }
 }

@@ -1,0 +1,59 @@
+{#
+  base.njk — Layout de base.
+  Variables depuis le front matter : title, description.
+  content → injecté par Eleventy (le HTML de la page enfant).
+#}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} — {{ home.site.name }}</title>
+  <meta name="description" content="{{ description }}">
+
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  {# Google Fonts : Inter (body) + Outfit (headings) #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  {% include "partials/header.njk" %}
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  {% include "partials/footer.njk" %}
+
+  <script>
+    // Header : frosted glass au scroll
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // Burger menu mobile
+    const burger = document.getElementById('nav-burger');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (burger && mobileNav) {
+      burger.addEventListener('click', () => {
+        const isOpen = !mobileNav.hidden;
+        mobileNav.hidden = isOpen;
+        burger.setAttribute('aria-expanded', String(!isOpen));
+      });
+      // Fermer le menu en cliquant sur un lien
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.hidden = true;
+          burger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

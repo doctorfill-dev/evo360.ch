@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: Accueil
+description: Evo360 — Centre de santé intégrative à Genève. Accompagnement complet, personnalisé et durable pour votre bien-être.
+---
+
+{#
+  index.njk — Page d'accueil.
+
+  Ce fichier "hérite" du layout base.njk (déclaré dans le front matter).
+  Son contenu sera injecté dans {{ content | safe }} du layout.
+
+  Chaque section est un partial indépendant → maintenable et réutilisable.
+#}
+
+{% include "partials/hero.njk" %}
+{% include "partials/about.njk" %}
+{% include "partials/services.njk" %}
+{% include "partials/testimonials.njk" %}
+{% include "partials/cta.njk" %}
+{% include "partials/contact.njk" %}

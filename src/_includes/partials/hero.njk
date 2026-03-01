@@ -1,0 +1,42 @@
+{#
+  hero.njk — Section héro.
+  Badge pill (classe hero-badge), titre avec .text-indigo, image stack 3 photos.
+  home.hero.title contient du HTML → filtre `safe`.
+#}
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div class="hero-content">
+      <div class="hero-badge">{{ home.hero.badge }}</div>
+      <h1 class="hero-title">{{ home.hero.title | safe }}</h1>
+      <p class="hero-description">{{ home.hero.description }}</p>
+      <div class="hero-actions">
+        <a href="{{ home.hero.cta_primary.url }}" class="btn btn-primary">{{ home.hero.cta_primary.label }}</a>
+        <a href="{{ home.hero.cta_secondary.url }}" class="btn btn-outline">{{ home.hero.cta_secondary.label }}</a>
+      </div>
+      <div class="hero-stats">
+        {% for stat in home.hero.stats %}
+          <div class="stat-item">
+            <span class="stat-num">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="image-stack">
+        <div class="img-wrapper img-1">
+          <img src="{{ home.hero.img1 }}" alt="">
+        </div>
+        <div class="img-wrapper img-2">
+          <img src="{{ home.hero.img2 }}" alt="">
+        </div>
+        <div class="img-wrapper img-3">
+          <img src="{{ home.hero.img3 }}" alt="">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

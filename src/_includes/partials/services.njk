@@ -1,0 +1,33 @@
+{#
+  services.njk — Section sombre (fond --dark). Titre aligné à gauche.
+  Pas de `eyebrow` — le design Vue n'en a pas. Titre direct avec .accent-citron.
+#}
+<section class="services section-dark" id="services">
+  <div class="container">
+
+    <div class="services-header">
+      <h2 class="section-title">
+        Avec vous. Pour vous.<br>
+        <span class="accent-citron">À chaque étape.</span>
+      </h2>
+      <p class="services-desc">Chaque parcours est pensé pour vous, selon votre histoire, vos besoins et vos envies. Une expertise variée pour une approche globale.</p>
+    </div>
+
+    <div class="services-grid">
+      {% for service in home.services.items %}
+        <article class="service-card">
+          <div class="card-image">
+            <img src="{{ service.image }}" alt="{{ service.title }}" loading="lazy">
+            <div class="card-id" aria-hidden="true">{{ service.id }}</div>
+          </div>
+          <div class="card-content">
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+            <a href="#contact" class="card-link">En savoir plus →</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
