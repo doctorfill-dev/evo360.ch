@@ -1,6 +1,4 @@
-# Cloudflare Pages — règles de redirection
-#
-# Les Cloudflare Pages Functions (/api/keystatic/*) ont la priorité sur ce fichier.
-# Cette règle assure que le SPA Keystatic (React Router) gère ses propres routes.
-
-/keystatic/*  /keystatic/index.html  200
+# Cloudflare Workers — règles de redirection
+# Le SPA fallback pour /keystatic/* est géré par wrangler.toml
+# (not_found_handling = "single-page-application")
+# → aucune règle nécessaire ici.

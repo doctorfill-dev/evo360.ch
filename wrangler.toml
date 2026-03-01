@@ -4,3 +4,8 @@ compatibility_date = "2025-01-01"
 # Dossier des fichiers statiques construits par Eleventy + Vite
 [assets]
 directory = "./_site"
+
+# SPA fallback : si une route n'existe pas en tant que fichier statique,
+# Cloudflare sert le index.html le plus proche (ex: /keystatic/index.html
+# pour toutes les sous-routes de /keystatic/*).
+not_found_handling = "single-page-application"
