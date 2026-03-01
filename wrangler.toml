@@ -1,0 +1,6 @@
+name = "evo360-ch"
+compatibility_date = "2025-01-01"
+
+# Dossier des fichiers statiques construits par Eleventy + Vite
+[assets]
+directory = "./_site"
