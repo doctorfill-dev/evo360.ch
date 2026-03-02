@@ -74,7 +74,13 @@ export default {
           clientSecret: env.KEYSTATIC_GITHUB_CLIENT_SECRET,
           secret:       env.KEYSTATIC_SECRET,
         })
-        return await handler(request)
+        // makeGenericAPIRouteHandler retourne un KeystaticResponse (objet plain),
+        // pas un Response standard — conversion obligatoire pour Cloudflare Workers.
+        const ksRes = await handler(request)
+        return new Response(ksRes.body ?? null, {
+          status:  ksRes.status,
+          headers: ksRes.headers as HeadersInit,
+        })
       } catch (err: unknown) {
         const message = err instanceof Error
           ? `${err.name}: ${err.message}\n${err.stack ?? ''}`
