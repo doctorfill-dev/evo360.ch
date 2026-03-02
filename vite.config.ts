@@ -11,6 +11,10 @@ export default defineConfig({
   // Dossier source de l'admin UI
   root: 'keystatic-admin',
 
+  // IMPORTANT : les assets générés seront référencés depuis /keystatic/
+  // sans ça, Vite génère /assets/... au lieu de /keystatic/assets/...
+  base: '/keystatic/',
+
   plugins: [react()],
 
   build: {
