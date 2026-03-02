@@ -5,9 +5,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Keystatic } from '@keystatic/core/ui'
+import config from '../keystatic.config'
 
 ReactDOM.createRoot(document.getElementById('keystatic-root')!).render(
   <React.StrictMode>
-    <Keystatic />
+    <Keystatic config={config} />
   </React.StrictMode>
 )
