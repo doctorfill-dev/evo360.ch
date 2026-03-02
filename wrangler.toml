@@ -1,6 +1,9 @@
 name = "evo360"
 compatibility_date = "2025-01-01"
 
+# Script Worker principal : gère /api/keystatic/* + délègue le reste aux assets
+main = "worker.ts"
+
 # Dossier des fichiers statiques construits par Eleventy + Vite
 [assets]
 directory = "./_site"
