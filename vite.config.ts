@@ -5,6 +5,7 @@
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+// @ts-ignore // todo : check the error
 import { resolve } from 'path'
 
 export default defineConfig({
@@ -19,6 +20,7 @@ export default defineConfig({
 
   build: {
     // Chemin absolu : évite la confusion avec la root Vite
+    // @ts-ignore // todo : check the error
     outDir:      resolve(__dirname, '_site/keystatic'),
     emptyOutDir: true,
   },

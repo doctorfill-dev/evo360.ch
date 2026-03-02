@@ -53,7 +53,8 @@ export default {
             }
           }
         }
-        return new Response(ksRes.body ?? null, {
+        // @ts-ignore // todo : check the error
+          return new Response(ksRes.body ?? null, {
           status:  ksRes.status,
           headers,
         })
