@@ -32,6 +32,16 @@ export default config({
 
       schema: {
 
+        // ── Barre promotionnelle ──────────────────────────────────────────
+        promo: fields.object(
+          {
+            enabled: fields.checkbox({ label: 'Afficher la barre promotionnelle', defaultValue: false }),
+            text:    fields.text({ label: 'Texte de la promotion' }),
+            link:    fields.text({ label: 'Lien (optionnel)' }),
+          },
+          { label: 'Barre promotionnelle' }
+        ),
+
         // ── Coordonnées ─────────────────────────────────────────────────
         site: fields.object(
           {
@@ -52,6 +62,13 @@ export default config({
                 {
                   label: fields.text({ label: 'Libellé' }),
                   url:   fields.text({ label: 'Ancre / URL' }),
+                  children: fields.array(
+                    fields.object({
+                      label: fields.text({ label: 'Libellé' }),
+                      url:   fields.text({ label: 'URL' }),
+                    }),
+                    { label: 'Sous-liens (dropdown)', itemLabel: (props) => props.fields.label.value || 'Sous-lien' }
+                  ),
                 },
                 { label: 'Lien' }
               ),
@@ -114,11 +131,12 @@ export default config({
         // ── Section Notre approche ───────────────────────────────────────
         about: fields.object(
           {
-            title:     fields.text({ label: 'Titre — HTML autorisé (<span class="accent">…</span>)' }),
-            lead:      fields.text({ label: 'Accroche (gras)', multiline: true }),
-            body_text: fields.text({ label: 'Corps du texte', multiline: true }),
-            quote:     fields.text({ label: 'Citation (encadrée)', multiline: true }),
-            image:     fields.text({ label: 'Image (chemin)' }),
+            title:        fields.text({ label: 'Titre — HTML autorisé (<span class="accent">…</span>)' }),
+            lead:         fields.text({ label: 'Accroche (gras)', multiline: true }),
+            body_text:    fields.text({ label: 'Corps du texte', multiline: true }),
+            quote:        fields.text({ label: 'Citation (encadrée)', multiline: true }),
+            quote_author: fields.text({ label: 'Auteur de la citation' }),
+            image:        fields.text({ label: 'Image (chemin)' }),
           },
           { label: "Section Notre approche" }
         ),
@@ -189,7 +207,8 @@ export default config({
             items: fields.array(
               fields.object(
                 {
-                  name:    fields.text({ label: 'Prénom' }),
+                  name:    fields.text({ label: 'Nom complet' }),
+                  job:     fields.text({ label: 'Métier / Profession' }),
                   age:     fields.text({ label: 'Âge (ex: 35 ans)' }),
                   initial: fields.text({ label: 'Initiale (1 lettre)' }),
                   color:   fields.text({ label: 'Couleur avatar (hex, ex: #4622CC)' }),
@@ -205,6 +224,29 @@ export default config({
             ),
           },
           { label: 'Section Témoignages' }
+        ),
+
+        // ── Section Équipe ──────────────────────────────────────────────
+        team: fields.object(
+          {
+            title:       fields.text({ label: 'Titre — HTML autorisé' }),
+            description: fields.text({ label: 'Description', multiline: true }),
+            members: fields.array(
+              fields.object({
+                name:        fields.text({ label: 'Nom complet' }),
+                role:        fields.text({ label: 'Rôle / Poste' }),
+                image:       fields.text({ label: 'Photo (chemin)' }),
+                description: fields.text({ label: 'Description courte', multiline: true }),
+              }),
+              {
+                label: 'Membres de l\'équipe',
+                itemLabel: (props) => props.fields.name.value || 'Membre',
+              }
+            ),
+            sportmed_note: fields.text({ label: 'Note SportMed (texte)' }),
+            sportmed_link: fields.text({ label: 'Lien vers sportmed360.ch' }),
+          },
+          { label: 'Section Équipe' }
         ),
 
         // ── Section CTA ──────────────────────────────────────────────────
@@ -269,7 +311,7 @@ export default config({
           directory: 'src/assets/img/services',
           publicPath: '/assets/img/services/'
         }),
-        icon:        fields.text({ label: 'Icône (emoji ou classe CSS)' }),
+        icon:        fields.text({ label: 'Nom d\'icône Material Symbols (ex: search, fitness_center)' }),
         content:     fields.document({
           label: 'Contenu détaillé',
           formatting: true,

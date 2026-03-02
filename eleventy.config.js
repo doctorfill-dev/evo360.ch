@@ -31,6 +31,18 @@ export default function (eleventyConfig) {
     return new Date().getFullYear();
   });
 
+  // Filtre isoDate : {{ date | isoDate }} -> "2024-01-15"
+  eleventyConfig.addFilter("isoDate", (dateObj) => {
+    return new Date(dateObj).toISOString().split('T')[0];
+  });
+
+  // Filtre findServiceIndex : retourne l'index du service courant dans la collection triée
+  // Usage : {% set currentIndex = allServices | findServiceIndex(page.url) %}
+  eleventyConfig.addFilter("findServiceIndex", (allServices, currentUrl) => {
+    if (!allServices || !currentUrl) return -1;
+    return allServices.findIndex(s => s.url === currentUrl);
+  });
+
   // --- Configuration des dossiers ---
   return {
     // Moteur de template par défaut pour les fichiers .html et .md
