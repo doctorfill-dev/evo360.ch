@@ -77,9 +77,15 @@ export default {
         // makeGenericAPIRouteHandler retourne un KeystaticResponse (objet plain),
         // pas un Response standard — conversion obligatoire pour Cloudflare Workers.
         const ksRes = await handler(request)
+        const headers = new Headers()
+        if (Array.isArray(ksRes.headers)) {
+          for (const [k, v] of ksRes.headers as [string, string][]) {
+            headers.append(k, v)
+          }
+        }
         return new Response(ksRes.body ?? null, {
           status:  ksRes.status,
-          headers: ksRes.headers as HeadersInit,
+          headers,
         })
       } catch (err: unknown) {
         const message = err instanceof Error

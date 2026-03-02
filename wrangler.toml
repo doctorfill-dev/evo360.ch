@@ -1,10 +1,6 @@
 name = "evo360"
 compatibility_date = "2025-01-01"
 
-# Indique explicitement à esbuild que NODE_ENV = production dans le bundle Worker
-[define]
-"process.env.NODE_ENV" = '"production"'
-
 # Script Worker principal : gère /api/keystatic/* + délègue le reste aux assets
 main = "worker.ts"
 

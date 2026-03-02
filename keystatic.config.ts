@@ -5,25 +5,16 @@
 
 import { config, fields, singleton } from '@keystatic/core'
 
-// En production (Worker Cloudflare), esbuild remplace process.env.NODE_ENV
-// par "production" via [define] dans wrangler.toml.
-// Le try/catch protège au cas où process serait absent dans un autre contexte.
-const isProd = (() => {
-  try { return process.env.NODE_ENV === 'production' } catch { return true }
-})()
-
 export default config({
-  // En production (Cloudflare Pages) : lecture/écriture via GitHub API
-  // En développement local : lecture/écriture sur le filesystem
-  storage: isProd
-    ? {
-        kind: 'github',
-        repo: {
-          owner: 'doctorfill-dev',
-          name:  'evo360.ch',
-        },
-      }
-    : { kind: 'local' },
+  // Toujours GitHub — le storage 'local' ne fonctionne pas dans Cloudflare Workers
+  // (pas d'accès filesystem). Pour le dev local, utiliser les credentials OAuth.
+  storage: {
+    kind: 'github',
+    repo: {
+      owner: 'doctorfill-dev',
+      name:  'evo360.ch',
+    },
+  },
 
   ui: {
     brand: { name: 'evo360 — Admin' },
