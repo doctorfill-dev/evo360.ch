@@ -3,7 +3,7 @@ title: Coaching personnalisé
 order: 2
 summary: "Un accompagnement sur mesure en mouvement et préparation physique pour atteindre vos objectifs."
 cover_image: "/assets/img/prepa.jpg"
-icon: "🏋️"
+icon: "fitness_center"
 ---
 # Coaching personnalisé
 

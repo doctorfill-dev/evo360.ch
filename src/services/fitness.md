@@ -3,7 +3,7 @@ title: Fitness & Espace Cardio
 order: 3
 summary: "Un espace dédié à l'entraînement guidé avec du matériel de pointe dans une ambiance calme."
 cover_image: "/assets/img/fitness.jpg"
-icon: "🏃"
+icon: "directions_run"
 ---
 # Fitness & Espace Cardio
 

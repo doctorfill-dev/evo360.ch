@@ -3,7 +3,7 @@ title: Entreprises & Institutions
 order: 6
 summary: "Programmes santé et performance adaptés aux besoins spécifiques de votre organisation."
 cover_image: "/assets/img/mission.jpg"
-icon: "🏢"
+icon: "corporate_fare"
 ---
 # Entreprises & Institutions
 

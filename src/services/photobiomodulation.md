@@ -3,7 +3,7 @@ title: Photobiomodulation
 order: 4
 summary: "Thérapie par lumière rouge : ~15 minutes pour la récupération cellulaire et le bien-être global."
 cover_image: "/assets/img/redlight.jpg"
-icon: "🔴"
+icon: "lightbulb"
 ---
 # Photobiomodulation (Lumière Rouge)
 

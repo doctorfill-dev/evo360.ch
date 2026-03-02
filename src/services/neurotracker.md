@@ -3,7 +3,7 @@ title: Neurotracker & Performance
 order: 5
 summary: "Entraînez votre cerveau à traiter l'information plus rapidement pour une meilleure prise de décision."
 cover_image: "/assets/img/neurotracker.jpg"
-icon: "🧠"
+icon: "psychology"
 ---
 # Neurotracker & Performance Mentale
 

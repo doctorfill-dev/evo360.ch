@@ -3,7 +3,7 @@ title: Check-Up 360
 order: 1
 summary: "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé."
 cover_image: "/assets/img/bilans.jpg"
-icon: "🔍"
+icon: "search"
 ---
 # Check-Up 360
 
