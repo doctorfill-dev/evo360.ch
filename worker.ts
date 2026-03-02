@@ -65,6 +65,55 @@ export default {
       }
     }
 
+    // ── Debug: intercepter le callback OAuth pour voir la réponse brute ──
+    if (pathname === '/api/keystatic/github/oauth/callback') {
+      try {
+        const handler = makeGenericAPIRouteHandler({
+          config,
+          clientId:     env.KEYSTATIC_GITHUB_CLIENT_ID,
+          clientSecret: env.KEYSTATIC_GITHUB_CLIENT_SECRET,
+          secret:       env.KEYSTATIC_SECRET,
+        })
+        const ksRes = await handler(request)
+        const isStdResponse = ksRes instanceof Response
+
+        let debugHeaders: unknown = null
+        let debugBody: string | null = null
+
+        if (isStdResponse) {
+          const res = ksRes as Response
+          debugHeaders = Object.fromEntries(res.headers.entries())
+          debugBody = await res.text()
+        } else {
+          debugHeaders = ksRes.headers
+          debugBody = typeof ksRes.body === 'string' ? ksRes.body : null
+        }
+
+        return new Response(JSON.stringify({
+          _debug:        'Intercepted OAuth callback response from Keystatic',
+          isResponse:    isStdResponse,
+          status:        ksRes.status,
+          headersType:   typeof ksRes.headers,
+          isArrayHeaders: Array.isArray(ksRes.headers),
+          headers:       debugHeaders,
+          bodyPreview:   debugBody?.slice(0, 1000) ?? null,
+          requestCookies: request.headers.get('cookie'),
+        }, null, 2), {
+          headers: { 'Content-Type': 'application/json' },
+        })
+      } catch (err: unknown) {
+        const e = err instanceof Error ? err : new Error(String(err))
+        return new Response(JSON.stringify({
+          _debug: 'OAuth callback THREW an error',
+          name:    e.name,
+          message: e.message,
+          stack:   e.stack,
+        }, null, 2), {
+          headers: { 'Content-Type': 'application/json' },
+        })
+      }
+    }
+
     // ── Keystatic API ───────────────────────────────────────────────────
     if (pathname.startsWith('/api/keystatic/')) {
       try {
@@ -77,10 +126,24 @@ export default {
         // makeGenericAPIRouteHandler retourne un KeystaticResponse (objet plain),
         // pas un Response standard — conversion obligatoire pour Cloudflare Workers.
         const ksRes = await handler(request)
+
+        // Si c'est déjà une Response standard, on la retourne directement
+        if (ksRes instanceof Response) {
+          return ksRes
+        }
+
+        // Sinon, convertir le KeystaticResponse en Response standard
+        // ksRes.headers peut être un array de tuples, un iterable, ou un objet plain
         const headers = new Headers()
-        if (Array.isArray(ksRes.headers)) {
-          for (const [k, v] of ksRes.headers as [string, string][]) {
-            headers.append(k, v)
+        if (ksRes.headers) {
+          if (Symbol.iterator in Object(ksRes.headers)) {
+            for (const [k, v] of ksRes.headers as Iterable<[string, string]>) {
+              headers.append(k, v)
+            }
+          } else if (typeof ksRes.headers === 'object') {
+            for (const [k, v] of Object.entries(ksRes.headers)) {
+              headers.append(k, String(v))
+            }
           }
         }
         return new Response(ksRes.body ?? null, {
