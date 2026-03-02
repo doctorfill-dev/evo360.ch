@@ -2,37 +2,64 @@
   "site": {
     "name": "evo360",
     "phone": "076 507 03 60",
-    "email": "hello@evo360.ch",
+    "email": "v3@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
     "access": "Parking gratuit\nBus 101, Vauseyon"
   },
-
   "nav": {
     "links": [
-      { "label": "Notre approche", "url": "#about" },
-      { "label": "Services",       "url": "#services" },
-      { "label": "Témoignages",    "url": "#testimonials" },
-      { "label": "Contact",        "url": "#contact" }
+      {
+        "label": "Notre approche",
+        "url": "#about"
+      },
+      {
+        "label": "Services",
+        "url": "#services"
+      },
+      {
+        "label": "Témoignages",
+        "url": "#testimonials"
+      },
+      {
+        "label": "Contact",
+        "url": "#contact"
+      }
     ],
-    "cta": { "label": "Prendre rendez-vous", "url": "#contact" }
+    "cta": {
+      "label": "Prendre rendez-vous",
+      "url": "#contact"
+    }
   },
-
   "hero": {
     "badge": "Centre de performance & bien-être",
     "title": "Votre santé mérite une <span class=\"text-indigo\">approche à 360°</span>",
     "description": "Plus d'énergie. Plus d'équilibre. Un accompagnement personnalisé avec les meilleurs experts en mouvement, préparation physique et santé à Neuchâtel.",
-    "cta_primary":   { "label": "Découvrir evo360",       "url": "#about" },
-    "cta_secondary": { "label": "Prendre rendez-vous",    "url": "#contact" },
+    "cta_primary": {
+      "label": "Découvrir evo360",
+      "url": "#about"
+    },
+    "cta_secondary": {
+      "label": "Prendre rendez-vous",
+      "url": "#contact"
+    },
     "img1": "/assets/img/hero.jpg",
     "img2": "/assets/img/fitness.jpg",
     "img3": "/assets/img/redlight.jpg",
     "stats": [
-      { "value": "15+",  "label": "Experts" },
-      { "value": "360°", "label": "Accompagnement" },
-      { "value": "100%", "label": "Personnalisé" }
+      {
+        "value": "15+",
+        "label": "Experts"
+      },
+      {
+        "value": "360°",
+        "label": "Accompagnement"
+      },
+      {
+        "value": "100%",
+        "label": "Personnalisé"
+      }
     ]
   },
-
   "about": {
     "title": "Un lieu pour prendre soin de soi, <span class=\"accent\">vraiment</span>.",
     "lead": "evo360 est un centre de nouvelle génération qui réunit les meilleurs experts en mouvement, préparation physique et santé sous un même toit à Neuchâtel.",
@@ -40,7 +67,6 @@
     "quote": "Optimiser la performance, prévenir les blessures et construire une santé active durable, mesurable et personnalisée.",
     "image": "/assets/img/mission.jpg"
   },
-
   "services": {
     "items": [
       {
@@ -81,7 +107,6 @@
       }
     ]
   },
-
   "testimonials": {
     "items": [
       {
@@ -110,7 +135,6 @@
       }
     ]
   },
-
   "cta": {
     "title": "Prêt à reprendre le <span class=\"text-white\">contrôle</span> de votre santé ?",
     "text": "Prenez rendez-vous pour un premier échange et découvrez comment evo360 peut vous accompagner.",
@@ -118,18 +142,25 @@
     "btn_url": "#contact",
     "phone": "076 507 03 60"
   },
-
   "contact": {
     "title": "Venez nous <span class=\"accent\">rencontrer</span>",
     "description": "Situé au cœur de Neuchâtel, notre centre vous accueille dans un espace moderne et chaleureux."
   },
-
   "footer": {
     "description": "Un accompagnement personnalisé avec les meilleurs experts en mouvement, préparation physique et santé à Neuchâtel.",
     "social": [
-      { "label": "Instagram", "url": "#" },
-      { "label": "LinkedIn",  "url": "#" },
-      { "label": "Facebook",  "url": "#" }
+      {
+        "label": "Instagram",
+        "url": "#"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "#"
+      },
+      {
+        "label": "Facebook",
+        "url": "#"
+      }
     ]
   }
 }
