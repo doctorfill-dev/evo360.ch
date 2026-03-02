@@ -186,7 +186,7 @@ section {
    Transparent → frosted glass au scroll (.is-scrolled via JS)
 ------------------------------------------------------- */
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -265,7 +265,7 @@ section {
    7. HERO
 ------------------------------------------------------- */
 .hero {
-  padding-top: 10rem;
+  padding-top: 4rem;
   padding-bottom: 6rem;
   background-image:
     radial-gradient(circle at 10% 20%, rgba(70,34,204,.03) 0%, transparent 40%),
@@ -541,6 +541,9 @@ section {
 .services-header {
   margin-bottom: 5rem;
   max-width: 800px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .services-header .section-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -640,7 +643,7 @@ section {
 .testimonials {
   background-color: var(--dark);
   padding-bottom: 10rem;
-  padding-top: 0; /* Continuité avec .services */
+  padding-top: 6rem;
 }
 
 .testimonials-header {
@@ -1225,7 +1228,7 @@ section {
 
 .post-header {
   background: var(--cream);
-  padding: 8rem 0 4rem;
+  padding: 4rem 0 4rem;
   text-align: center;
 }
 .post-header-content {
@@ -1267,7 +1270,7 @@ section {
   margin: -2rem auto 0;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-2xl);
-  aspect-ratio: 16/9;
+  aspect-ratio: 3/1;
   object-fit: cover;
   display: block;
 }
@@ -1402,7 +1405,7 @@ section {
    21. BLOG ARCHIVE PAGE
 ------------------------------------------------------- */
 .blog-archive {
-  padding: 8rem 0;
+  padding: 4rem 0 8rem;
   background: var(--cream);
 }
 .blog-archive-header {
@@ -1422,7 +1425,499 @@ section {
 
 
 /* -------------------------------------------------------
-   22. RESPONSIVE
+   22. PROMO BAR
+------------------------------------------------------- */
+.promo-bar {
+  background: var(--indigo);
+  color: var(--white);
+  position: relative;
+  z-index: 1100;
+  font-size: .875rem;
+  line-height: 1.4;
+}
+.promo-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: .625rem 2.5rem .625rem 1.5rem;
+  min-height: 40px;
+}
+.promo-text {
+  text-align: center;
+}
+.promo-text a {
+  color: var(--citron);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.promo-text a:hover {
+  color: var(--white);
+}
+.promo-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.promo-close:hover {
+  color: var(--white);
+}
+
+
+/* -------------------------------------------------------
+   23. HERO GLOW & GRID PATTERN
+------------------------------------------------------- */
+.hero {
+  position: relative;
+}
+.hero-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-glow-1 {
+  width: 600px;
+  height: 600px;
+  background: rgba(70,34,204,.08);
+  top: -200px;
+  left: -100px;
+  animation: glow-drift 12s ease-in-out infinite alternate;
+}
+.hero-glow-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(215,241,78,.06);
+  bottom: -100px;
+  right: -50px;
+  animation: glow-drift 10s ease-in-out infinite alternate-reverse;
+}
+@keyframes glow-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+.hero-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: .3;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--gray-400) .75px, transparent .75px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+
+.hero-grid,
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* -------------------------------------------------------
+   24. QUOTE AUTHOR
+------------------------------------------------------- */
+.quote-author {
+  display: block;
+  margin-top: .75rem;
+  font-size: .875rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gray-600);
+}
+
+
+/* -------------------------------------------------------
+   25. BTN DARK
+------------------------------------------------------- */
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+.btn-dark:hover {
+  background: var(--gray-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* -------------------------------------------------------
+   26. DROPDOWN MENUS (navbar)
+------------------------------------------------------- */
+.nav-dropdown-parent {
+  position: relative;
+}
+.nav-dropdown-parent > .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+}
+.nav-chevron {
+  font-size: 1.125rem;
+  transition: transform .2s ease;
+}
+.nav-dropdown-parent:hover .nav-chevron,
+.nav-dropdown-parent:focus-within .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 220px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--gray-100);
+  padding: .5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  z-index: 100;
+}
+.nav-dropdown-parent:hover > .nav-dropdown,
+.nav-dropdown-parent:focus-within > .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-list {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-link {
+  display: block;
+  padding: .625rem 1.25rem;
+  font-size: .875rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.dropdown-link:hover {
+  background: var(--gray-100);
+  color: var(--indigo);
+}
+
+/* Mobile sub-list inside burger menu */
+.mobile-sub-list {
+  padding-left: 1rem;
+}
+.mobile-sub-link {
+  display: block;
+  padding: .5rem 0;
+  font-size: .875rem;
+  color: var(--gray-400);
+  font-weight: 400;
+}
+.mobile-sub-link:hover {
+  color: var(--indigo);
+}
+
+
+/* -------------------------------------------------------
+   27. SPORTMED SECTION ENHANCED
+------------------------------------------------------- */
+.sportmed-section {
+  background: var(--gray-100);
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sportmed-card-enhanced {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.sportmed-card-enhanced:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+}
+.sportmed-card-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(70,34,204,.03), rgba(215,241,78,.03));
+  pointer-events: none;
+}
+.sportmed-logo-img {
+  position: relative;
+  max-height: 60px;
+  width: auto;
+  margin: 0 auto 1rem;
+}
+.sportmed-card-tagline {
+  position: relative;
+  font-size: .9375rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  margin: 0;
+}
+
+
+/* -------------------------------------------------------
+   28. TESTIMONIALS — job style
+------------------------------------------------------- */
+.t-job {
+  font-size: .8125rem;
+  color: var(--gray-400);
+  display: block;
+  margin-top: .125rem;
+}
+
+
+/* -------------------------------------------------------
+   29. BLOG HEADER (preview section)
+------------------------------------------------------- */
+.blog-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.blog-header-desc {
+  color: var(--gray-600);
+  font-size: 1.0625rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+
+/* -------------------------------------------------------
+   30. TEAM SECTION
+------------------------------------------------------- */
+.team {
+  background: var(--cream);
+  padding: 8rem 0;
+}
+.team-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.team-header p {
+  color: var(--gray-600);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+.team-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--gray-100);
+  transition: var(--transition);
+  text-align: center;
+}
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.team-photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  background: var(--gray-100);
+}
+
+.team-info {
+  padding: 1.5rem 2rem 2rem;
+}
+.team-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: .25rem;
+  font-family: var(--font-heading);
+}
+.team-role {
+  display: inline-block;
+  font-size: .8125rem;
+  font-weight: 700;
+  color: var(--indigo);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .75rem;
+}
+.team-bio {
+  font-size: .9375rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.team-sportmed-note {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  font-size: .9375rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+.team-sportmed-note a {
+  color: var(--indigo);
+  font-weight: 700;
+}
+.team-sportmed-note a:hover {
+  color: var(--indigo-dark);
+  text-decoration: underline;
+}
+
+
+/* -------------------------------------------------------
+   31. SERVICE DETAIL — REFINED LAYOUT
+------------------------------------------------------- */
+.service-header-refined {
+  background: var(--dark);
+  padding: 4rem 0 4rem;
+}
+.service-header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.service-header-text {
+  position: relative;
+}
+
+.service-icon-wrap {
+  width: 64px;
+  height: 64px;
+  background: rgba(70,34,204,.15);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.service-mat-icon {
+  font-size: 2rem;
+  color: var(--citron);
+}
+
+.service-header-refined h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+.service-header-refined .service-summary {
+  font-size: 1.125rem;
+  color: var(--gray-400);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.service-header-image {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-2xl);
+}
+.service-header-image img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Back-link light (white text on dark bg) */
+.back-link-light {
+  color: rgba(255,255,255,.7);
+  margin-bottom: 2rem;
+}
+.back-link-light:hover {
+  color: var(--white);
+  transform: translateX(-4px);
+}
+
+/* Prev / Next service navigation */
+.service-nav {
+  margin-top: 3rem;
+}
+.service-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.service-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  text-decoration: none;
+}
+.service-nav-link:hover {
+  border-color: var(--indigo);
+  background: rgba(70,34,204,.03);
+  transform: translateY(-2px);
+}
+.service-nav-prev { text-align: left; }
+.service-nav-next { text-align: right; }
+
+.nav-direction {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--gray-400);
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+}
+.nav-service-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  font-family: var(--font-heading);
+}
+
+
+/* -------------------------------------------------------
+   32. RESPONSIVE
 ------------------------------------------------------- */
 @media (max-width: 992px) {
   /* Hero */
@@ -1433,13 +1928,17 @@ section {
   .hero-visual        { height: 400px; margin-top: 4rem; }
   .img-3              { display: none; }
 
+  /* Hero glow — smaller on tablet */
+  .hero-glow-1        { width: 400px; height: 400px; }
+  .hero-glow-2        { width: 250px; height: 250px; }
+
   /* About */
   .about-grid         { grid-template-columns: 1fr; gap: 4rem; }
   .experience-badge   { right: 2rem; }
 
   /* CTA */
   .cta-card           { grid-template-columns: 1fr; padding: 3rem; text-align: center; }
-  .cta-actions        { justify-content: center; }
+  .cta-actions        { justify-content: center; flex-wrap: wrap; }
   .cta-visual         { display: none; }
 
   /* Contact */
@@ -1450,9 +1949,20 @@ section {
   .pricing-card.highlighted { transform: none; }
   .pricing-card.highlighted:hover { transform: translateY(-8px); }
 
-  /* Detail pages */
+  /* Service detail — single column */
+  .service-header-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .service-header-image { max-height: 300px; }
   .service-header { min-height: 300px; }
+
+  /* Post */
   .post-cover img { margin-top: 0; border-radius: var(--radius-md); }
+
+  /* Team */
+  .team-grid          { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+  /* Service nav */
+  .service-nav-grid   { grid-template-columns: 1fr; }
+  .service-nav-next   { text-align: left; }
 }
 
 @media (max-width: 768px) {
@@ -1460,6 +1970,12 @@ section {
   .nav                { display: none; }
   .header-actions     { display: none; }
   .nav-burger         { display: flex; }
+
+  /* Dropdowns — hide on mobile (shown in mobile nav) */
+  .nav-dropdown       { display: none; }
+
+  /* Promo bar */
+  .promo-inner        { font-size: .8125rem; padding: .5rem 2.5rem .5rem 1rem; }
 
   /* Grilles */
   .services-grid      { grid-template-columns: 1fr; }
@@ -1474,8 +1990,89 @@ section {
   /* Blog */
   .blog-grid          { grid-template-columns: 1fr; }
 
+  /* Team */
+  .team-grid          { grid-template-columns: 1fr; }
+  .team              { padding: 4rem 0; }
+
   /* Detail pages */
   .prose-container     { padding: 2rem 1rem 4rem; }
   .detail-cta          { padding: 2rem; }
+  .service-header-refined { padding: 3rem 0 2rem; }
   .service-header      { min-height: 250px; padding: 2rem 0; }
+
+  /* Hero glow — hide on mobile for perf */
+  .hero-bg-glow       { display: none; }
+  .hero-grid-pattern  { display: none; }
+
+  /* Hero */
+  .hero               { padding-top: 2rem; }
+  .hero-actions       { flex-direction: column; align-items: stretch; }
+  .hero-stats         { gap: 1.5rem; }
+}
+
+
+/* -------------------------------------------------------
+   33. ACCESSIBILITY & PERFORMANCE
+------------------------------------------------------- */
+
+/* Reduced motion — disable animations for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-bg-glow { display: none; }
+}
+
+/* Focus visible — keyboard navigation indicator */
+:focus-visible {
+  outline: 3px solid var(--indigo);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip to content link — screen reader + keyboard */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--indigo);
+  color: var(--white);
+  padding: .75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: .875rem;
+  transition: top .2s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Safe area insets for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .promo-bar { padding-top: env(safe-area-inset-top); }
+  .footer-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* Minimum touch target size (48px) */
+.nav-burger,
+.promo-close,
+.mobile-nav-link,
+.mobile-sub-link {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Print styles */
+@media print {
+  .header, .promo-bar, .footer, .hero-visual,
+  .hero-bg-glow, .hero-grid-pattern, .cta,
+  .btn, .nav-burger { display: none !important; }
+  body { background: white; color: black; }
+  .hero { padding-top: 0; }
+  section { padding: 2rem 0; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: .8em; color: #666; }
 }
