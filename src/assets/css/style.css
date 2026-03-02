@@ -959,7 +959,470 @@ section {
 
 
 /* -------------------------------------------------------
-   14. RESPONSIVE
+   14. SPORTMED (partenaire médical)
+------------------------------------------------------- */
+.sportmed-badge {
+  display: inline-block;
+  padding: .5rem 1rem;
+  background: rgba(70,34,204,.08);
+  color: var(--indigo);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 1.5rem;
+}
+
+.prose-note {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+  font-size: .875rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  border-left: 4px solid var(--gray-200);
+}
+
+.sportmed-logo-placeholder {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--dark);
+}
+.sportmed-logo-placeholder span {
+  color: var(--indigo);
+}
+
+
+/* -------------------------------------------------------
+   15. PRICING (tarifs)
+------------------------------------------------------- */
+.pricing {
+  background: var(--cream);
+  padding: 8rem 0;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.pricing-header .section-title {
+  margin-bottom: 1rem;
+}
+.pricing-header p {
+  color: var(--gray-600);
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.0625rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  position: relative;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+.pricing-card.highlighted {
+  border-color: var(--indigo);
+  border-width: 2px;
+  box-shadow: var(--shadow-2xl);
+  transform: scale(1.05);
+  z-index: 2;
+}
+.pricing-card.highlighted:hover {
+  transform: scale(1.05) translateY(-8px);
+}
+
+.plan-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--indigo);
+  color: var(--white);
+  padding: .5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.plan-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+.plan-price {
+  margin-bottom: 1.5rem;
+}
+.plan-price .amount {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--dark);
+  font-family: var(--font-heading);
+}
+.plan-price .period {
+  color: var(--gray-400);
+}
+
+.plan-desc {
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+  font-size: .9375rem;
+}
+
+.plan-features {
+  flex: 1;
+  margin-bottom: 2rem;
+}
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  color: var(--gray-900);
+  font-size: .9375rem;
+  margin-bottom: 1rem;
+}
+.plan-features svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--indigo);
+  flex-shrink: 0;
+}
+
+.plan-cta .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+
+/* -------------------------------------------------------
+   16. BLOG PREVIEW
+------------------------------------------------------- */
+.blog-section {
+  background: var(--white);
+  padding: 8rem 0;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.blog-card {
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--gray-100);
+  transition: var(--transition);
+  background: var(--cream);
+}
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.blog-card h3 {
+  font-size: 1.25rem;
+  margin: 1rem 1.5rem .5rem;
+  color: var(--gray-900);
+}
+.blog-card p {
+  padding: 0 1.5rem;
+  color: var(--gray-600);
+  font-size: .9375rem;
+  line-height: 1.6;
+}
+.blog-card .blog-meta {
+  padding: 1rem 1.5rem 0;
+  font-size: .8125rem;
+  color: var(--gray-400);
+}
+.blog-card .read-more {
+  display: inline-block;
+  padding: 0 1.5rem 1.5rem;
+  color: var(--indigo);
+  font-weight: 700;
+  font-size: .875rem;
+}
+
+
+/* -------------------------------------------------------
+   17. SERVICE DETAIL PAGE
+------------------------------------------------------- */
+.service-detail {
+  padding-top: 0;
+}
+
+.service-header {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 0;
+  background: var(--dark);
+  overflow: hidden;
+}
+.service-header-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .3;
+}
+.service-header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.service-header h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+.service-summary {
+  font-size: 1.25rem;
+  color: var(--gray-400);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+
+/* -------------------------------------------------------
+   18. POST DETAIL PAGE
+------------------------------------------------------- */
+.post-detail {
+  padding-top: 0;
+}
+
+.post-header {
+  background: var(--cream);
+  padding: 8rem 0 4rem;
+  text-align: center;
+}
+.post-header-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.post-date {
+  display: inline-block;
+  color: var(--indigo);
+  font-weight: 700;
+  font-size: .875rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 1rem;
+}
+.post-header h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--gray-900);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+}
+.post-summary {
+  font-size: 1.25rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.post-author {
+  font-size: .875rem;
+  color: var(--gray-400);
+}
+
+.post-cover {
+  margin-bottom: 3rem;
+}
+.post-cover img {
+  width: 100%;
+  max-width: 900px;
+  margin: -2rem auto 0;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2xl);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* -------------------------------------------------------
+   19. PROSE (Markdown content styling)
+------------------------------------------------------- */
+.prose-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.prose h1 {
+  font-size: 2.25rem;
+  margin: 3rem 0 1.5rem;
+  color: var(--gray-900);
+}
+.prose h2 {
+  font-size: 1.75rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--gray-900);
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--gray-100);
+}
+.prose h3 {
+  font-size: 1.25rem;
+  margin: 2rem 0 .75rem;
+  color: var(--gray-900);
+}
+.prose p {
+  color: var(--gray-600);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  font-size: 1.0625rem;
+}
+.prose ul, .prose ol {
+  margin: 1rem 0 1.5rem 1.5rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+}
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li {
+  margin-bottom: .5rem;
+  font-size: 1.0625rem;
+}
+.prose strong {
+  color: var(--gray-900);
+  font-weight: 700;
+}
+.prose em {
+  font-style: italic;
+}
+.prose blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--gray-100);
+  border-left: 4px solid var(--indigo);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-style: italic;
+  color: var(--gray-600);
+}
+.prose blockquote p {
+  margin-bottom: 0;
+}
+.prose hr {
+  border: none;
+  border-top: 2px solid var(--gray-100);
+  margin: 3rem 0;
+}
+.prose a {
+  color: var(--indigo);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose a:hover {
+  color: var(--indigo-dark);
+}
+.prose img {
+  border-radius: var(--radius-md);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+
+/* -------------------------------------------------------
+   20. DETAIL PAGE SHARED (footer, back-link, CTA)
+------------------------------------------------------- */
+.detail-footer {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.detail-cta {
+  background: var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.detail-cta h3 {
+  font-size: 1.5rem;
+  margin-bottom: .75rem;
+  color: var(--gray-900);
+}
+.detail-cta p {
+  color: var(--gray-600);
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--indigo);
+  font-weight: 700;
+  font-size: .875rem;
+  transition: var(--transition);
+}
+.back-link:hover {
+  color: var(--indigo-dark);
+  transform: translateX(-4px);
+}
+
+
+/* -------------------------------------------------------
+   21. BLOG ARCHIVE PAGE
+------------------------------------------------------- */
+.blog-archive {
+  padding: 8rem 0;
+  background: var(--cream);
+}
+.blog-archive-header {
+  margin-bottom: 4rem;
+}
+.blog-archive-header .back-link {
+  margin-bottom: 2rem;
+}
+.blog-archive-header .section-title {
+  margin-bottom: 1rem;
+}
+.blog-archive-desc {
+  color: var(--gray-600);
+  font-size: 1.125rem;
+  max-width: 600px;
+}
+
+
+/* -------------------------------------------------------
+   22. RESPONSIVE
 ------------------------------------------------------- */
 @media (max-width: 992px) {
   /* Hero */
@@ -982,6 +1445,14 @@ section {
   /* Contact */
   .contact-layout     { grid-template-columns: 1fr; gap: 3rem; }
   .contact-map        { height: 380px; }
+
+  /* Pricing */
+  .pricing-card.highlighted { transform: none; }
+  .pricing-card.highlighted:hover { transform: translateY(-8px); }
+
+  /* Detail pages */
+  .service-header { min-height: 300px; }
+  .post-cover img { margin-top: 0; border-radius: var(--radius-md); }
 }
 
 @media (max-width: 768px) {
@@ -996,4 +1467,15 @@ section {
   .features-grid      { grid-template-columns: 1fr; }
   .footer-grid        { grid-template-columns: 1fr; gap: 3rem; }
   .bottom-inner       { flex-direction: column; gap: 1rem; text-align: center; }
+
+  /* Pricing */
+  .pricing-grid       { grid-template-columns: 1fr; }
+
+  /* Blog */
+  .blog-grid          { grid-template-columns: 1fr; }
+
+  /* Detail pages */
+  .prose-container     { padding: 2rem 1rem 4rem; }
+  .detail-cta          { padding: 2rem; }
+  .service-header      { min-height: 250px; padding: 2rem 0; }
 }

@@ -3,7 +3,7 @@
 // Chaque "singleton" correspond à un fichier JSON dans src/_data/.
 // Le schéma reproduit exactement la structure de home.json.
 
-import { config, fields, singleton } from '@keystatic/core'
+import { config, fields, singleton, collection } from '@keystatic/core'
 
 export default config({
   // Toujours GitHub — le storage 'local' ne fonctionne pas dans Cloudflare Workers
@@ -18,6 +18,10 @@ export default config({
 
   ui: {
     brand: { name: 'evo360 — Admin' },
+    navigation: {
+      'Page d\'accueil': ['home'],
+      'Contenu': ['services', 'posts'],
+    },
   },
 
   singletons: {
@@ -119,26 +123,64 @@ export default config({
           { label: "Section Notre approche" }
         ),
 
+        // ── Section SportMed360 (Partenaire) ─────────────────────────────
+        sportmed: fields.object(
+          {
+            title:       fields.text({ label: 'Titre (ex: Notre partenaire médical)' }),
+            description: fields.text({ label: 'Texte explicatif (neutre)', multiline: true }),
+            link_text:   fields.text({ label: 'Texte du lien' }),
+            link_url:    fields.text({ label: 'URL vers sportmed360.ch' }),
+            logo:        fields.text({ label: 'Logo SportMed (chemin)' }),
+          },
+          { label: 'Partenaire Médical (SportMed)' }
+        ),
+
         // ── Section Services ─────────────────────────────────────────────
         services: fields.object(
           {
             items: fields.array(
-              fields.object(
-                {
-                  id:          fields.text({ label: 'Numéro (01, 02…)' }),
-                  title:       fields.text({ label: 'Titre' }),
-                  description: fields.text({ label: 'Description', multiline: true }),
-                  image:       fields.text({ label: 'Image (chemin)' }),
-                },
-                { label: 'Service' }
-              ),
+              fields.object({
+                id:          fields.text({ label: 'Numéro (ex: 01)' }),
+                title:       fields.text({ label: 'Titre du service' }),
+                description: fields.text({ label: 'Description courte', multiline: true }),
+                image:       fields.text({ label: 'Image (chemin)' }),
+                url:         fields.text({ label: 'Lien vers la page détaillée' }),
+              }),
               {
-                label:     'Services',
+                label:     'Services affichés sur la homepage',
                 itemLabel: (props) => props.fields.title.value || 'Service',
               }
             ),
           },
           { label: 'Section Services' }
+        ),
+
+        // ── Section Tarifs & Abonnements ─────────────────────────────────
+        pricing: fields.object(
+          {
+            title:       fields.text({ label: 'Titre (ex: Choisissez votre formule)' }),
+            description: fields.text({ label: 'Description', multiline: true }),
+            plans: fields.array(
+              fields.object({
+                name:        fields.text({ label: 'Nom de l\'offre' }),
+                price:       fields.text({ label: 'Prix (ex: 89.-)' }),
+                period:      fields.text({ label: 'Période (ex: / mois)' }),
+                description: fields.text({ label: 'Résumé court' }),
+                features:    fields.array(fields.text({ label: 'Bénéfice inclus' }), {
+                  label: 'Liste des prestations incluses',
+                  itemLabel: (props) => props.value || 'Prestation',
+                }),
+                cta_label:   fields.text({ label: 'Texte du bouton' }),
+                cta_url:     fields.text({ label: 'Lien du bouton' }),
+                highlight:   fields.checkbox({ label: 'Mettre en avant (Badge "Populaire")' }),
+              }),
+              {
+                label: 'Plans d\'abonnements',
+                itemLabel: (props) => props.fields.name.value || 'Plan',
+              }
+            ),
+          },
+          { label: 'Section Tarifs' }
         ),
 
         // ── Section Témoignages ──────────────────────────────────────────
@@ -210,4 +252,64 @@ export default config({
       }, // fin schema
     }),  // fin singleton home
   },     // fin singletons
+
+  collections: {
+    // ── Collection Services (Pages détaillées) ────────────────────────
+    services: collection({
+      label: 'Services',
+      slugField: 'title',
+      path: 'src/services/*',
+      format: { contentField: 'content' },
+      schema: {
+        title:       fields.slug({ name: { label: 'Titre du service' } }),
+        order:       fields.number({ label: 'Ordre d\'affichage (1, 2...)' }),
+        summary:     fields.text({ label: 'Résumé (pour la carte accueil)', multiline: true }),
+        cover_image: fields.image({
+          label: 'Image de couverture',
+          directory: 'src/assets/img/services',
+          publicPath: '/assets/img/services/'
+        }),
+        icon:        fields.text({ label: 'Icône (emoji ou classe CSS)' }),
+        content:     fields.document({
+          label: 'Contenu détaillé',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'src/assets/img/content',
+            publicPath: '/assets/img/content/'
+          },
+        }),
+      },
+    }),
+
+    // ── Collection Blog (Articles) ────────────────────────────────────
+    posts: collection({
+      label: 'Blog & Conseils',
+      slugField: 'title',
+      path: 'src/blog/*',
+      format: { contentField: 'content' },
+      schema: {
+        title:       fields.slug({ name: { label: 'Titre de l\'article' } }),
+        publishedDate: fields.date({ label: 'Date de publication' }),
+        author:      fields.text({ label: 'Auteur' }),
+        summary:     fields.text({ label: 'Résumé (accroche)', multiline: true }),
+        cover_image: fields.image({
+          label: 'Image principale',
+          directory: 'src/assets/img/blog',
+          publicPath: '/assets/img/blog/'
+        }),
+        content:     fields.document({
+          label: 'Contenu de l\'article',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'src/assets/img/content',
+            publicPath: '/assets/img/content/'
+          },
+        }),
+      },
+    }),
+  },
 })

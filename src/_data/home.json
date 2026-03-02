@@ -17,6 +17,10 @@
         "url": "#services"
       },
       {
+        "label": "Tarifs",
+        "url": "#pricing"
+      },
+      {
         "label": "Témoignages",
         "url": "#testimonials"
       },
@@ -33,7 +37,7 @@
   "hero": {
     "badge": "Centre de performance & bien-être",
     "title": "Votre santé mérite une <span class=\"text-indigo\">approche à 360°</span>",
-    "description": "Plus d'énergie. Plus d'équilibre. Un accompagnement personnalisé avec les meilleurs experts en mouvement, préparation physique et santé à Neuchâtel.",
+    "description": "Plus d'énergie. Plus d'équilibre. Un accompagnement personnalisé avec des expert·e·s en physiologie du sport et préparation physique à Neuchâtel.",
     "cta_primary": {
       "label": "Découvrir evo360",
       "url": "#about"
@@ -60,55 +64,131 @@
       }
     ]
   },
-  "about": {
-    "title": "Un lieu pour prendre soin de soi, <span class=\"accent\">vraiment</span>.",
-    "lead": "evo360 est un centre de nouvelle génération qui réunit les meilleurs experts en mouvement, préparation physique et santé sous un même toit à Neuchâtel.",
-    "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
-    "quote": "Optimiser la performance, prévenir les blessures et construire une santé active durable, mesurable et personnalisée.",
-    "image": "/assets/img/mission.jpg"
-  },
-  "services": {
+    "about": {
+      "title": "Un lieu pour prendre soin de soi, <span class=\"accent\">vraiment</span>.",
+      "lead": "evo360 est un centre de nouvelle génération qui réunit les meilleurs experts en mouvement, préparation physique et santé sous un même toit à Neuchâtel.",
+      "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
+      "quote": "Optimiser la performance, prévenir les blessures et construire une santé active durable, mesurable et personnalisée.",
+      "image": "/assets/img/mission.jpg"
+    },
+  
+    "sportmed": {
+      "title": "Besoin d'une expertise médicale ?",
+      "description": "Nous partageons nos locaux avec SportMed360, un centre médical indépendant spécialisé dans la médecine du sport et la traumatologie.",
+      "link_text": "Aller sur sportmed360.ch",
+      "link_url": "https://sportmed360.ch",
+      "logo": "/assets/img/logo-sportmed.svg"
+    },
+  
+    "services": {
     "items": [
       {
         "id": "01",
         "title": "Check-Up 360",
         "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/bilans.jpg"
+        "image": "/assets/img/bilans.jpg",
+        "url": "/services/checkup-360/"
       },
       {
         "id": "02",
         "title": "Coaching personnalisé",
         "description": "Accompagnement sur mesure en mouvement et préparation physique.",
-        "image": "/assets/img/prepa.jpg"
+        "image": "/assets/img/prepa.jpg",
+        "url": "/services/coaching/"
       },
       {
         "id": "03",
         "title": "Fitness",
         "description": "Abonnements flexibles pour un entraînement guidé dans un espace dédié.",
-        "image": "/assets/img/fitness.jpg"
+        "image": "/assets/img/fitness.jpg",
+        "url": "/services/fitness/"
       },
       {
         "id": "04",
         "title": "Photobiomodulation",
         "description": "Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.",
-        "image": "/assets/img/redlight.jpg"
+        "image": "/assets/img/redlight.jpg",
+        "url": "/services/photobiomodulation/"
       },
       {
         "id": "05",
         "title": "Entreprises & Institutions",
         "description": "Programmes santé et performance adaptés à votre organisation.",
-        "image": "/assets/img/neurotracker.jpg"
+        "image": "/assets/img/neurotracker.jpg",
+        "url": "/services/entreprises/"
       },
       {
         "id": "06",
         "title": "Prévention active",
         "description": "Agir avant que la douleur ne s'installe — protéger et avancer.",
-        "image": "/assets/img/cerveau.jpg"
+        "image": "/assets/img/cerveau.jpg",
+        "url": "/services/neurotracker/"
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Des formules <span class='accent'>claires</span>, sans surprise.",
+    "description": "Choisissez l'accompagnement qui correspond à vos objectifs. Tous nos abonnements sont sans frais d'inscription cachés.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "89.-",
+        "period": "/ mois",
+        "description": "Idéal pour s'entraîner en autonomie dans un cadre premium.",
+        "features": [
+          "Accès illimité à l'espace Fitness & Cardio",
+          "Bilan initial (30 min)",
+          "Application de suivi d'entraînement",
+          "Accès aux vestiaires & douche individuelle"
+        ],
+        "cta_label": "Commencer maintenant",
+        "cta_url": "#contact",
+        "highlight": false
+      },
+      {
+        "name": "Performance",
+        "price": "189.-",
+        "period": "/ mois",
+        "description": "Le meilleur rapport résultats/investissement pour progresser.",
+        "features": [
+          "Tout ce qui est dans le plan Starter",
+          "2 séances de coaching privé par mois",
+          "1 séance de Photobiomodulation par semaine",
+          "Check-up 360 complet tous les 3 mois",
+          "Priorité sur les réservations"
+        ],
+        "cta_label": "Choisir Performance",
+        "cta_url": "#contact",
+        "highlight": true
+      },
+      {
+        "name": "Elite 360",
+        "price": "349.-",
+        "period": "/ mois",
+        "description": "L'expérience ultime de performance et de récupération.",
+        "features": [
+          "Accès illimité à TOUS les services",
+          "1 coaching privé par semaine",
+          "Accès illimité Neurotracker & Photobiomodulation",
+          "Suivi nutritionnel & physiologique",
+          "Accès VIP aux événements du centre"
+        ],
+        "cta_label": "Devenir Elite",
+        "cta_url": "#contact",
+        "highlight": false
       }
     ]
   },
   "testimonials": {
     "items": [
+      {
+        "name": "Léna Bühler",
+        "age": "Pilote F1 Academy",
+        "initial": "L",
+        "color": "#E50000",
+        "text": "La préparation physique est la clé de ma performance en piste. Avec evo360, j'ai trouvé une équipe qui comprend les exigences du haut niveau.",
+        "rotate": 0
+      },
       {
         "name": "Gaétan",
         "age": "35 ans",
@@ -147,7 +227,7 @@
     "description": "Situé au cœur de Neuchâtel, notre centre vous accueille dans un espace moderne et chaleureux."
   },
   "footer": {
-    "description": "Un accompagnement personnalisé avec les meilleurs experts en mouvement, préparation physique et santé à Neuchâtel.",
+    "description": "Un accompagnement personnalisé avec des experts en mouvement, préparation physique et santé à Neuchâtel.",
     "social": [
       {
         "label": "Instagram",

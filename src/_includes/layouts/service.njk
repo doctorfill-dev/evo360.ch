@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+---
+<article class="service-detail">
+  <header class="service-header">
+    {% if cover_image %}
+      <img src="{{ cover_image }}" alt="{{ title }}" class="service-header-img" loading="lazy">
+    {% endif %}
+    <div class="container">
+      <div class="service-header-content">
+        <div class="service-icon">{{ icon }}</div>
+        <h1>{{ title }}</h1>
+        <p class="service-summary">{{ summary }}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="prose-container">
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    <div class="detail-footer">
+      <div class="detail-cta">
+        <h3>Intéressé par ce service ?</h3>
+        <p>Prenez rendez-vous pour un premier échange et découvrez comment nous pouvons vous accompagner.</p>
+        <a href="/#contact" class="btn btn-primary">Prendre rendez-vous</a>
+      </div>
+      <a href="/#services" class="back-link">← Retour aux services</a>
+    </div>
+  </div>
+</article>

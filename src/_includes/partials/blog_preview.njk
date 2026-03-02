@@ -1,0 +1,26 @@
+<section id="blog" class="blog-section">
+  <div class="container">
+    <div class="services-header">
+      <h2 class="section-title">Conseils & <span class="accent">Expertise</span></h2>
+      <p class="services-desc">Découvrez nos derniers articles pour optimiser votre performance et votre bien-être au quotidien.</p>
+    </div>
+
+    <div class="blog-grid">
+      {% for post in collections.posts | reverse | batch(3) | first %}
+        <a href="{{ post.url }}" class="blog-card">
+          <img src="{{ post.data.cover_image }}" alt="{{ post.data.title }}" loading="lazy">
+          <div class="blog-meta">
+            <span class="read-more">{{ post.data.publishedDate | readableDate }}</span>
+          </div>
+          <h3>{{ post.data.title }}</h3>
+          <p>{{ post.data.summary }}</p>
+          <span class="read-more">Lire l'article →</span>
+        </a>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem;">
+      <a href="/blog" class="btn btn-outline">Voir tous les articles</a>
+    </div>
+  </div>
+</section>

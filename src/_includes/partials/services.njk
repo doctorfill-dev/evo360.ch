@@ -23,7 +23,7 @@
           <div class="card-content">
             <h3>{{ service.title }}</h3>
             <p>{{ service.description }}</p>
-            <a href="#contact" class="card-link">En savoir plus →</a>
+            <a href="{{ service.url | default('#contact') }}" class="card-link">En savoir plus →</a>
           </div>
         </article>
       {% endfor %}

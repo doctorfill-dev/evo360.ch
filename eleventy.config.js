@@ -21,6 +21,11 @@ export default function (eleventyConfig) {
     });
   });
 
+  // Filtre padStart : {{ 1 | padStart(2, '0') }} -> "01"
+  eleventyConfig.addFilter("padStart", (str, targetLength, padString) => {
+    return String(str).padStart(targetLength, padString);
+  });
+
   // Filtre pour l'année courante : {{ "" | currentYear }}
   eleventyConfig.addFilter("currentYear", () => {
     return new Date().getFullYear();

@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+---
+<article class="post-detail">
+  <header class="post-header">
+    <div class="container">
+      <div class="post-header-content">
+        <span class="post-date">{{ publishedDate | readableDate }}</span>
+        <h1>{{ title }}</h1>
+        <p class="post-summary">{{ summary }}</p>
+        <span class="post-author">Par {{ author }}</span>
+      </div>
+    </div>
+  </header>
+
+  {% if cover_image %}
+  <div class="post-cover">
+    <div class="container">
+      <img src="{{ cover_image }}" alt="{{ title }}" loading="lazy">
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="prose-container">
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    <div class="detail-footer">
+      <a href="/blog/" class="back-link">← Voir tous les articles</a>
+    </div>
+  </div>
+</article>

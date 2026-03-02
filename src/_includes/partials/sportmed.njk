@@ -1,0 +1,35 @@
+{#
+  sportmed.njk — Section partenaire médical.
+  Mention neutre de SportMed360 (pas de pub médicale).
+#}
+<section id="sportmed" class="about">
+  <div class="container">
+    <div class="about-grid">
+
+      {# Colonne Texte #}
+      <div class="about-content">
+        <div class="sportmed-badge">Partenaire Santé</div>
+        <h2 class="section-title">{{ home.sportmed.title }}</h2>
+        <p class="about-body">{{ home.sportmed.description }}</p>
+
+        <div class="prose-note">
+          Note : evo360 et SportMed360 sont deux entités distinctes. Les prestations médicales (consultations, infiltrations, etc.) sont assurées exclusivement par les médecins de SportMed360.
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <a href="{{ home.sportmed.link_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            {{ home.sportmed.link_text }} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      {# Colonne Visuel #}
+      <div class="about-image">
+        <div class="card-depth" style="padding: 4rem; display: flex; align-items: center; justify-content: center;">
+          <div class="sportmed-logo-placeholder">SportMed<span>360</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

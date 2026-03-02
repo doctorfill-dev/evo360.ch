@@ -1,0 +1,31 @@
+---
+title: Neurotracker & Performance
+order: 5
+summary: "Entraînez votre cerveau à traiter l'information plus rapidement pour une meilleure prise de décision."
+cover_image: "/assets/img/neurotracker.jpg"
+icon: "🧠"
+---
+# Neurotracker & Performance Mentale
+
+Parce que la performance commence dans le cerveau.
+
+## Entraîner votre vision périphérique
+
+Le Neurotracker est un outil d'entraînement cognitif utilisé par les pilotes de F1, les joueurs de hockey sur glace et les athlètes d'élite du monde entier. Il améliore votre attention, votre vitesse de traitement de l'information et votre capacité à prendre les bonnes décisions sous pression.
+
+## Comment ça fonctionne ?
+
+Assis devant un écran 3D, vous suivez du regard plusieurs cibles en mouvement parmi des distracteurs. L'exercice s'adapte en temps réel à votre niveau : plus vous progressez, plus le défi augmente. Une séance dure environ 30 minutes.
+
+### Pourquoi l'utiliser ?
+
+*   **Sportifs** — Meilleure lecture du jeu, anticipation plus rapide, concentration prolongée en compétition.
+*   **Professionnels** — Concentration accrue au travail, meilleure gestion du multitâche et du stress informationnel.
+*   **Seniors** — Prévention du déclin cognitif, maintien des réflexes et de l'attention au quotidien.
+*   **Étudiants** — Amélioration de la capacité de concentration et de la mémoire de travail.
+
+## Résultats mesurables
+
+Chaque séance produit un score précis qui permet de suivre votre progression dans le temps. Après 10 à 15 séances, la plupart des utilisateurs constatent une amélioration significative de leur attention et de leur temps de réaction.
+
+C'est le complément parfait à votre préparation physique : un corps performant piloté par un cerveau affûté.
