@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Blog — Conseils & Expertise
+description: "Découvrez nos articles sur la performance, la récupération, la mobilité et le bien-être. Des conseils d'experts pour optimiser votre santé au quotidien."
+---
+
+<section class="blog-archive">
+  <div class="container">
+    <div class="blog-archive-header">
+      <a href="/#blog" class="back-link">← Retour à l'accueil</a>
+      <h1 class="section-title">Conseils & <span class="accent">Expertise</span></h1>
+      <p class="blog-archive-desc">Découvrez nos derniers articles pour optimiser votre performance et votre bien-être au quotidien.</p>
+    </div>
+
+    <div class="blog-grid">
+      {% for post in collections.posts | reverse %}
+        <a href="{{ post.url }}" class="blog-card">
+          {% if post.data.cover_image %}
+            <img src="{{ post.data.cover_image }}" alt="{{ post.data.title }}" loading="lazy">
+          {% endif %}
+          <div class="blog-meta">
+            <span>{{ post.data.publishedDate | readableDate }}</span>
+          </div>
+          <h3>{{ post.data.title }}</h3>
+          <p>{{ post.data.summary }}</p>
+          <span class="read-more">Lire l'article →</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
