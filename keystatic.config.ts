@@ -5,7 +5,12 @@
 
 import { config, fields, singleton } from '@keystatic/core'
 
-const isProd = process.env.NODE_ENV === 'production'
+// En production (Worker Cloudflare), esbuild remplace process.env.NODE_ENV
+// par "production" via [define] dans wrangler.toml.
+// Le try/catch protège au cas où process serait absent dans un autre contexte.
+const isProd = (() => {
+  try { return process.env.NODE_ENV === 'production' } catch { return true }
+})()
 
 export default config({
   // En production (Cloudflare Pages) : lecture/écriture via GitHub API
