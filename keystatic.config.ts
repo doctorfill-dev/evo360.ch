@@ -87,6 +87,9 @@ export default config({
               },
               { label: 'Bouton secondaire' }
             ),
+            img1: fields.text({ label: 'Image hero 1 (chemin)' }),
+            img2: fields.text({ label: 'Image hero 2 (chemin)' }),
+            img3: fields.text({ label: 'Image hero 3 (chemin)' }),
             stats: fields.array(
               fields.object(
                 {
@@ -111,6 +114,7 @@ export default config({
             lead:      fields.text({ label: 'Accroche (gras)', multiline: true }),
             body_text: fields.text({ label: 'Corps du texte', multiline: true }),
             quote:     fields.text({ label: 'Citation (encadrée)', multiline: true }),
+            image:     fields.text({ label: 'Image (chemin)' }),
           },
           { label: "Section Notre approche" }
         ),
@@ -124,6 +128,7 @@ export default config({
                   id:          fields.text({ label: 'Numéro (01, 02…)' }),
                   title:       fields.text({ label: 'Titre' }),
                   description: fields.text({ label: 'Description', multiline: true }),
+                  image:       fields.text({ label: 'Image (chemin)' }),
                 },
                 { label: 'Service' }
               ),
