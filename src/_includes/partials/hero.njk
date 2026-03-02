@@ -1,9 +1,14 @@
 {#
-  hero.njk — Section héro.
+  hero.njk — Section héro avec orbes animées + grid pattern.
   Badge pill (classe hero-badge), titre avec .text-indigo, image stack 3 photos.
   home.hero.title contient du HTML → filtre `safe`.
 #}
 <section class="hero">
+  {# Decorative background elements #}
+  <div class="hero-bg-glow hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-bg-glow hero-glow-2" aria-hidden="true"></div>
+  <div class="hero-grid-pattern" aria-hidden="true"></div>
+
   <div class="container hero-grid">
 
     <div class="hero-content">

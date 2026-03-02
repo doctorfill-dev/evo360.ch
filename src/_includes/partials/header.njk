@@ -1,4 +1,4 @@
-{# header.njk — Logo SVG + nav. Transparent → frosted glass (.is-scrolled via JS). #}
+{# header.njk — Logo SVG + nav avec dropdowns. Transparent → frosted glass (.is-scrolled via JS). #}
 <header class="header" id="site-header">
   <div class="container header-inner">
 
@@ -9,7 +9,23 @@
     <nav class="nav" aria-label="Navigation principale">
       <ul class="nav-list">
         {% for link in home.nav.links %}
-          <li><a href="{{ link.url }}" class="nav-link">{{ link.label }}</a></li>
+          {% if link.children and link.children.length > 0 %}
+            <li class="nav-dropdown-parent">
+              <a href="{{ link.url }}" class="nav-link">
+                {{ link.label }}
+                <span class="material-symbols-outlined nav-chevron">expand_more</span>
+              </a>
+              <div class="nav-dropdown">
+                <ul class="dropdown-list">
+                  {% for child in link.children %}
+                    <li><a href="{{ child.url }}" class="dropdown-link">{{ child.label }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+          {% else %}
+            <li><a href="{{ link.url }}" class="nav-link">{{ link.label }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
     </nav>
@@ -30,7 +46,16 @@
     <div class="container">
       <ul class="mobile-nav-list">
         {% for link in home.nav.links %}
-          <li><a href="{{ link.url }}" class="mobile-nav-link">{{ link.label }}</a></li>
+          <li>
+            <a href="{{ link.url }}" class="mobile-nav-link">{{ link.label }}</a>
+            {% if link.children and link.children.length > 0 %}
+              <ul class="mobile-sub-list">
+                {% for child in link.children %}
+                  <li><a href="{{ child.url }}" class="mobile-sub-link">{{ child.label }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
         {% endfor %}
         <li style="padding-top:.5rem;">
           <a href="{{ home.nav.cta.url }}" class="btn btn-primary" style="width:100%;justify-content:center;">

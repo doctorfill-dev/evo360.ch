@@ -1,6 +1,5 @@
 {#
-  testimonials.njk — Section témoignages, fond --dark (continuité avec Services).
-  .testimonials ajoute juste padding-bottom, le fond vient de .section-dark.
+  testimonials.njk — Section témoignages, fond --dark.
   Cartes rotées ±1deg via style inline, redressées au hover.
 #}
 <section class="testimonials section-dark" id="testimonials">
@@ -19,6 +18,7 @@
             <div class="t-avatar" style="background-color: {{ item.color }};" aria-hidden="true">{{ item.initial }}</div>
             <div>
               <div class="t-name">{{ item.name }}</div>
+              {% if item.job %}<div class="t-job">{{ item.job }}</div>{% endif %}
               <div class="t-meta">{{ item.age }}</div>
             </div>
           </div>

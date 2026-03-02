@@ -2,16 +2,24 @@
 layout: layouts/base.njk
 ---
 <article class="service-detail">
-  <header class="service-header">
-    {% if cover_image %}
-      <img src="{{ cover_image }}" alt="{{ title }}" class="service-header-img" loading="lazy">
-    {% endif %}
-    <div class="container">
-      <div class="service-header-content">
-        <div class="service-icon">{{ icon }}</div>
+  <header class="service-header-refined">
+    <div class="container service-header-grid">
+      <div class="service-header-text">
+        <a href="/#services" class="back-link back-link-light">
+          <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">arrow_back</span>
+          Retour aux services
+        </a>
+        <div class="service-icon-wrap">
+          <span class="material-symbols-outlined service-mat-icon">{{ icon }}</span>
+        </div>
         <h1>{{ title }}</h1>
         <p class="service-summary">{{ summary }}</p>
       </div>
+      {% if cover_image %}
+        <div class="service-header-image">
+          <img src="{{ cover_image }}" alt="{{ title }}" loading="lazy">
+        </div>
+      {% endif %}
     </div>
   </header>
 
@@ -26,7 +34,36 @@ layout: layouts/base.njk
         <p>Prenez rendez-vous pour un premier échange et découvrez comment nous pouvons vous accompagner.</p>
         <a href="/#contact" class="btn btn-primary">Prendre rendez-vous</a>
       </div>
-      <a href="/#services" class="back-link">← Retour aux services</a>
+
+      {# Navigation précédent / suivant #}
+      {% set allServices = collections.services | sort(false, false, 'data.order') %}
+      {% set currentIndex = allServices | findServiceIndex(page.url) %}
+
+      <nav class="service-nav" aria-label="Navigation entre services">
+        <div class="service-nav-grid">
+          {% if currentIndex > 0 %}
+            <a href="{{ allServices[currentIndex - 1].url }}" class="service-nav-link service-nav-prev">
+              <span class="nav-direction">
+                <span class="material-symbols-outlined" style="font-size:.875rem;vertical-align:middle;">arrow_back</span>
+                Précédent
+              </span>
+              <span class="nav-service-title">{{ allServices[currentIndex - 1].data.title }}</span>
+            </a>
+          {% else %}
+            <div></div>
+          {% endif %}
+
+          {% if currentIndex >= 0 and currentIndex < allServices.length - 1 %}
+            <a href="{{ allServices[currentIndex + 1].url }}" class="service-nav-link service-nav-next">
+              <span class="nav-direction">
+                Suivant
+                <span class="material-symbols-outlined" style="font-size:.875rem;vertical-align:middle;">arrow_forward</span>
+              </span>
+              <span class="nav-service-title">{{ allServices[currentIndex + 1].data.title }}</span>
+            </a>
+          {% endif %}
+        </div>
+      </nav>
     </div>
   </div>
 </article>

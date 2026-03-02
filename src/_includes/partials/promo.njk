@@ -1,0 +1,20 @@
+{% if home.promo.enabled %}
+<div class="promo-bar" id="promo-bar">
+  <div class="container promo-inner">
+    {% if home.promo.link %}
+      <a href="{{ home.promo.link }}" class="promo-text">
+        <span class="material-symbols-outlined promo-icon">campaign</span>
+        {{ home.promo.text }}
+      </a>
+    {% else %}
+      <span class="promo-text">
+        <span class="material-symbols-outlined promo-icon">campaign</span>
+        {{ home.promo.text }}
+      </span>
+    {% endif %}
+    <button class="promo-close" id="promo-close" aria-label="Fermer">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+</div>
+{% endif %}

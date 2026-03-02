@@ -1,8 +1,9 @@
 {#
   sportmed.njk — Section partenaire médical.
   Mention neutre de SportMed360 (pas de pub médicale).
+  Background gray-100 pour séparation visuelle avec #about.
 #}
-<section id="sportmed" class="about">
+<section id="sportmed" class="sportmed-section">
   <div class="container">
     <div class="about-grid">
 
@@ -23,10 +24,12 @@
         </div>
       </div>
 
-      {# Colonne Visuel #}
+      {# Colonne Visuel — Carte améliorée #}
       <div class="about-image">
-        <div class="card-depth" style="padding: 4rem; display: flex; align-items: center; justify-content: center;">
-          <div class="sportmed-logo-placeholder">SportMed<span>360</span></div>
+        <div class="sportmed-card-enhanced">
+          <div class="sportmed-card-bg" aria-hidden="true"></div>
+          <img src="{{ home.sportmed.logo }}" alt="Logo SportMed360" class="sportmed-logo-img" loading="lazy">
+          <p class="sportmed-card-tagline">Médecine du sport & traumatologie</p>
         </div>
       </div>
 

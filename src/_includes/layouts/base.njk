@@ -8,32 +8,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%- set metaDesc = description or summary or home.hero.description -%}
   <title>{{ title }} — {{ home.site.name }}</title>
-  <meta name="description" content="{{ description }}">
+  <meta name="description" content="{{ metaDesc }}">
+
+  {# SEO — Canonical URL #}
+  <link rel="canonical" href="{{ home.site.url }}{{ page.url }}">
+
+  {# SEO — Open Graph #}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="{{ home.site.name }}">
+  <meta property="og:title" content="{{ title }} — {{ home.site.name }}">
+  <meta property="og:description" content="{{ metaDesc }}">
+  <meta property="og:url" content="{{ home.site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image }}{% else %}{{ home.site.og_image }}{% endif %}">
+
+  {# SEO — Twitter Card #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }} — {{ home.site.name }}">
+  <meta name="twitter:description" content="{{ metaDesc }}">
+  <meta name="twitter:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image }}{% else %}{{ home.site.og_image }}{% endif %}">
+
+  {# PWA — Theme color #}
+  <meta name="theme-color" content="#4622CC">
 
   <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  {# Google Fonts : Inter (body) + Outfit (headings) #}
+  {# Google Fonts : Inter (body) + Outfit (headings) — preconnect for speed #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
-</head>
-<body>
 
+  {# Google Material Symbols #}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  {# Structured Data — LocalBusiness (JSON-LD) #}
+  {% if page.url == "/" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "{{ home.site.name }}",
+    "description": "{{ description }}",
+    "url": "{{ home.site.url }}",
+    "telephone": "+41{{ home.site.phone | replace(' ', '') | replace('0', '', 1) }}",
+    "email": "{{ home.site.email }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avenue Édouard-Dubois 20",
+      "addressLocality": "Neuchâtel",
+      "postalCode": "2000",
+      "addressCountry": "CH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 46.9958,
+      "longitude": 6.9293
+    },
+    "image": "{{ home.site.url }}{{ home.site.og_image }}",
+    "priceRange": "CHF 89 - 349",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "07:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "17:00"
+      }
+    ],
+    "sameAs": []
+  }
+  </script>
+  {% endif %}
+</head>
+<body{% if page.url != "/" %} class="inner-page"{% endif %}>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  {% include "partials/promo.njk" %}
   {% include "partials/header.njk" %}
 
-  <main>
+  <main id="main-content">
     {{ content | safe }}
   </main>
 
   {% include "partials/footer.njk" %}
 
   <script>
-    // Header : frosted glass au scroll
+    // Header : frosted glass au scroll (sticky header)
     const header = document.getElementById('site-header');
+
+    // Force frosted header on inner pages (cream/white backgrounds)
+    if (document.body.classList.contains('inner-page')) {
+      header.classList.add('is-scrolled');
+    }
+
     window.addEventListener('scroll', () => {
-      header.classList.toggle('is-scrolled', window.scrollY > 50);
+      if (document.body.classList.contains('inner-page')) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.toggle('is-scrolled', window.scrollY > 50);
+      }
     }, { passive: true });
 
     // Burger menu mobile
@@ -45,12 +127,37 @@
         mobileNav.hidden = isOpen;
         burger.setAttribute('aria-expanded', String(!isOpen));
       });
-      // Fermer le menu en cliquant sur un lien
       mobileNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           mobileNav.hidden = true;
           burger.setAttribute('aria-expanded', 'false');
         });
+      });
+    }
+
+    // Dropdown menus (keyboard accessibility)
+    document.querySelectorAll('.nav-dropdown-parent').forEach(item => {
+      const link = item.querySelector('.nav-link');
+      if (link) {
+        link.addEventListener('focus', () => item.classList.add('dropdown-open'));
+        link.addEventListener('blur', () => {
+          setTimeout(() => {
+            if (!item.contains(document.activeElement)) item.classList.remove('dropdown-open');
+          }, 100);
+        });
+      }
+    });
+
+    // Promo bar dismiss (with localStorage persistence)
+    const promoBar = document.getElementById('promo-bar');
+    const promoClose = document.getElementById('promo-close');
+    if (promoBar && promoClose) {
+      if (localStorage.getItem('promo-dismissed') === 'true') {
+        promoBar.remove();
+      }
+      promoClose.addEventListener('click', () => {
+        promoBar.remove();
+        localStorage.setItem('promo-dismissed', 'true');
       });
     }
   </script>

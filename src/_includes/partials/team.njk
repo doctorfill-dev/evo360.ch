@@ -1,0 +1,34 @@
+{#
+  team.njk — Section équipe evo360.
+  Uniquement le staff non-médical.
+#}
+<section class="team" id="team">
+  <div class="container">
+    <div class="team-header">
+      <h2 class="section-title">{{ home.team.title | safe }}</h2>
+      <p class="team-desc">{{ home.team.description }}</p>
+    </div>
+
+    <div class="team-grid">
+      {% for member in home.team.members %}
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{{ member.image }}" alt="{{ member.name }}" loading="lazy">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">{{ member.name }}</h3>
+            <span class="team-role">{{ member.role }}</span>
+            <p class="team-bio">{{ member.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if home.team.sportmed_note %}
+    <div class="team-sportmed-note">
+      <span class="material-symbols-outlined">local_hospital</span>
+      <p>{{ home.team.sportmed_note }} <a href="{{ home.team.sportmed_link }}" target="_blank" rel="noopener">Voir l'équipe SportMed360 →</a></p>
+    </div>
+    {% endif %}
+  </div>
+</section>
