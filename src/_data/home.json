@@ -1,10 +1,17 @@
 {
+  "promo": {
+    "enabled": true,
+    "text": "Offre de lancement : -20% sur le Check-Up 360 jusqu'au 31 mars",
+    "link": "#contact"
+  },
   "site": {
     "name": "evo360",
+    "url": "https://evo360.ch",
     "phone": "076 507 03 60",
     "email": "v3@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
-    "access": "Parking gratuit\nBus 101, Vauseyon"
+    "access": "Parking gratuit\nBus 101, Vauseyon",
+    "og_image": "/assets/img/hero.jpg"
   },
   "nav": {
     "links": [
@@ -14,15 +21,23 @@
       },
       {
         "label": "Services",
-        "url": "#services"
+        "url": "#services",
+        "children": [
+          { "label": "Check-Up 360", "url": "/services/checkup-360/" },
+          { "label": "Coaching personnalisé", "url": "/services/coaching/" },
+          { "label": "Fitness & Cardio", "url": "/services/fitness/" },
+          { "label": "Photobiomodulation", "url": "/services/photobiomodulation/" },
+          { "label": "Neurotracker", "url": "/services/neurotracker/" },
+          { "label": "Entreprises", "url": "/services/entreprises/" }
+        ]
       },
       {
         "label": "Tarifs",
         "url": "#pricing"
       },
       {
-        "label": "Témoignages",
-        "url": "#testimonials"
+        "label": "Blog",
+        "url": "/blog/"
       },
       {
         "label": "Contact",
@@ -64,23 +79,24 @@
       }
     ]
   },
-    "about": {
-      "title": "Un lieu pour prendre soin de soi, <span class=\"accent\">vraiment</span>.",
-      "lead": "evo360 est un centre de nouvelle génération qui réunit les meilleurs experts en mouvement, préparation physique et santé sous un même toit à Neuchâtel.",
-      "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
-      "quote": "Optimiser la performance, prévenir les blessures et construire une santé active durable, mesurable et personnalisée.",
-      "image": "/assets/img/mission.jpg"
-    },
-  
-    "sportmed": {
-      "title": "Besoin d'une expertise médicale ?",
-      "description": "Nous partageons nos locaux avec SportMed360, un centre médical indépendant spécialisé dans la médecine du sport et la traumatologie.",
-      "link_text": "Aller sur sportmed360.ch",
-      "link_url": "https://sportmed360.ch",
-      "logo": "/assets/img/logo-sportmed.svg"
-    },
-  
-    "services": {
+  "about": {
+    "title": "Un lieu pour prendre soin de soi, <span class=\"accent\">vraiment</span>.",
+    "lead": "Nous combinons coaching sportif, technologies de pointe et expertise en physiologie pour construire un programme qui s'adapte à votre réalité — pas l'inverse.",
+    "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
+    "quote": "Optimiser la performance, prévenir les blessures et construire une santé active durable, mesurable et personnalisée.",
+    "quote_author": "Fred Corminboeuf",
+    "image": "/assets/img/mission.jpg"
+  },
+
+  "sportmed": {
+    "title": "Besoin d'une expertise médicale ?",
+    "description": "Nous partageons nos locaux avec SportMed360, un centre médical indépendant spécialisé dans la médecine du sport et la traumatologie.",
+    "link_text": "Aller sur sportmed360.ch",
+    "link_url": "https://sportmed360.ch",
+    "logo": "/assets/img/logo-sportmed360-black.svg"
+  },
+
+  "services": {
     "items": [
       {
         "id": "01",
@@ -183,14 +199,16 @@
     "items": [
       {
         "name": "Léna Bühler",
-        "age": "Pilote F1 Academy",
+        "job": "Pilote automobile",
+        "age": "F1 Academy",
         "initial": "L",
         "color": "#E50000",
         "text": "La préparation physique est la clé de ma performance en piste. Avec evo360, j'ai trouvé une équipe qui comprend les exigences du haut niveau.",
         "rotate": 0
       },
       {
-        "name": "Gaétan",
+        "name": "Gaétan Muller",
+        "job": "Entrepreneur",
         "age": "35 ans",
         "initial": "G",
         "color": "#4622CC",
@@ -198,7 +216,8 @@
         "rotate": -1
       },
       {
-        "name": "Didier",
+        "name": "Didier Rochat",
+        "job": "Retraité actif",
         "age": "65 ans",
         "initial": "D",
         "color": "#D7F14E",
@@ -206,7 +225,8 @@
         "rotate": 1
       },
       {
-        "name": "Sophie",
+        "name": "Sophie Terrettaz",
+        "job": "Enseignante",
         "age": "52 ans",
         "initial": "S",
         "color": "#9494a3",
@@ -214,6 +234,32 @@
         "rotate": -1
       }
     ]
+  },
+  "team": {
+    "title": "L'équipe <span class=\"accent\">evo360</span>",
+    "description": "Des passionnés du mouvement et de la performance, unis par une mission commune : votre bien-être.",
+    "members": [
+      {
+        "name": "Fred Corminboeuf",
+        "role": "Fondateur & Direction",
+        "image": "/assets/img/team/fred.jpg",
+        "description": "Passionné de performance et de santé intégrative, Fred a fondé evo360 pour offrir un accompagnement complet et personnalisé."
+      },
+      {
+        "name": "Marc Duval",
+        "role": "Préparateur physique",
+        "image": "/assets/img/team/marc.jpg",
+        "description": "Spécialiste en préparation physique et réathlétisation, Marc accompagne sportifs et particuliers vers leurs objectifs."
+      },
+      {
+        "name": "Julie Renaud",
+        "role": "Coach sportive",
+        "image": "/assets/img/team/julie.jpg",
+        "description": "Diplômée en sciences du sport, Julie apporte une approche bienveillante et exigeante à chaque séance de coaching."
+      }
+    ],
+    "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes) est celle de notre partenaire SportMed360.",
+    "sportmed_link": "https://sportmed360.ch"
   },
   "cta": {
     "title": "Prêt à reprendre le <span class=\"text-white\">contrôle</span> de votre santé ?",
