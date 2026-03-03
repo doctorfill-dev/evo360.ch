@@ -3,6 +3,13 @@
 
 export default function (eleventyConfig) {
 
+  // --- Extensions personnalisées ---
+  // Keystatic utilise .mdoc (Markdoc) pour les collections avec champ document.
+  // On dit à Eleventy de traiter les .mdoc exactement comme du Markdown.
+  eleventyConfig.addExtension("mdoc", {
+    key: "md",
+  });
+
   // --- Passthrough Copy ---
   // Ces dossiers sont copiés tels quels dans _site/, sans transformation.
   // Utile pour les CSS, images, fonts, JS client...
@@ -45,6 +52,9 @@ export default function (eleventyConfig) {
 
   // --- Configuration des dossiers ---
   return {
+    // Formats de templates reconnus (mdoc ajouté pour Keystatic)
+    templateFormats: ["md", "mdoc", "njk", "html", "liquid", "11ty.js"],
+
     // Moteur de template par défaut pour les fichiers .html et .md
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",

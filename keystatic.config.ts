@@ -5,16 +5,30 @@
 
 import { config, fields, singleton, collection } from '@keystatic/core'
 
+// ── Storage mode ────────────────────────────────────────────────────────
+// LOCAL  : `npm run dev:admin` → Vite dev server, lit/écrit sur le disque
+// GITHUB : production (Cloudflare Pages) → lit/écrit via l'API GitHub
+//
+// Ce fichier est importé dans 2 contextes :
+//  1. Navigateur (admin React) — `process` n'existe pas, on utilise import.meta.env.DEV
+//  2. Node.js (middleware API Vite) — import.meta.env n'existe pas, on utilise process.env
+//
+// @ts-ignore — import.meta.env est injecté par Vite dans le contexte navigateur
+const isLocal =
+  // Contexte navigateur (Vite remplace import.meta.env.DEV → true/false)
+  (typeof import.meta !== 'undefined' && (import.meta as any).env?.DEV === true) ||
+  // Contexte Node.js (middleware Vite, `process` existe)
+  (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production' && !process.env.CF_PAGES)
+
+const storage = isLocal
+  ? ({ kind: 'local' } as const)
+  : ({
+      kind: 'github',
+      repo: { owner: 'doctorfill-dev', name: 'evo360.ch' },
+    } as const)
+
 export default config({
-  // Toujours GitHub — le storage 'local' ne fonctionne pas dans Cloudflare Workers
-  // (pas d'accès filesystem). Pour le dev local, utiliser les credentials OAuth.
-  storage: {
-    kind: 'github',
-    repo: {
-      owner: 'doctorfill-dev',
-      name:  'evo360.ch',
-    },
-  },
+  storage,
 
   ui: {
     brand: { name: 'evo360 — Admin' },
@@ -308,11 +322,7 @@ export default config({
         title:       fields.slug({ name: { label: 'Titre du service' } }),
         order:       fields.number({ label: 'Ordre d\'affichage (1, 2...)' }),
         summary:     fields.text({ label: 'Résumé (pour la carte accueil)', multiline: true }),
-        cover_image: fields.image({
-          label: 'Image de couverture',
-          directory: 'src/assets/img/services',
-          publicPath: '/assets/img/services/'
-        }),
+        cover_image: fields.text({ label: 'Image de couverture (chemin, ex: /assets/img/bilans.jpg)' }),
         icon:        fields.text({ label: 'Nom d\'icône Material Symbols (ex: search, fitness_center)' }),
         content:     fields.document({
           label: 'Contenu détaillé',
@@ -338,11 +348,7 @@ export default config({
         publishedDate: fields.date({ label: 'Date de publication' }),
         author:      fields.text({ label: 'Auteur' }),
         summary:     fields.text({ label: 'Résumé (accroche)', multiline: true }),
-        cover_image: fields.image({
-          label: 'Image principale',
-          directory: 'src/assets/img/blog',
-          publicPath: '/assets/img/blog/'
-        }),
+        cover_image: fields.text({ label: 'Image principale (chemin, ex: /assets/img/hero.jpg)' }),
         content:     fields.document({
           label: 'Contenu de l\'article',
           formatting: true,
