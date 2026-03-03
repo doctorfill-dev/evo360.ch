@@ -42,16 +42,18 @@ export default config({
           { label: 'Barre promotionnelle' }
         ),
 
-        // ── Coordonnées ─────────────────────────────────────────────────
+        // ── Coordonnées & SEO ──────────────────────────────────────────
         site: fields.object(
           {
-            name:    fields.text({ label: 'Nom du site' }),
-            phone:   fields.text({ label: 'Téléphone' }),
-            email:   fields.text({ label: 'Email' }),
-            address: fields.text({ label: 'Adresse', multiline: true }),
-            access:  fields.text({ label: 'Accès (transports)', multiline: true }),
+            name:     fields.text({ label: 'Nom du site' }),
+            url:      fields.text({ label: 'URL du site (ex: https://evo360.ch)', description: 'Utilisé pour les balises SEO (canonical, Open Graph)' }),
+            phone:    fields.text({ label: 'Téléphone' }),
+            email:    fields.text({ label: 'Email' }),
+            address:  fields.text({ label: 'Adresse', multiline: true }),
+            access:   fields.text({ label: 'Accès (transports)', multiline: true }),
+            og_image: fields.text({ label: 'Image Open Graph (chemin)', description: 'Image partagée sur les réseaux sociaux (ex: /assets/img/hero.jpg)' }),
           },
-          { label: 'Coordonnées du centre' }
+          { label: 'Coordonnées & SEO' }
         ),
 
         // ── Navigation ──────────────────────────────────────────────────
