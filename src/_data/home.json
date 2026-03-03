@@ -1,6 +1,6 @@
 {
   "promo": {
-    "enabled": true,
+    "enabled": false,
     "text": "Offre de lancement : -20% sur le Check-Up 360 jusqu'au 31 mars",
     "link": "#contact"
   },
@@ -17,31 +17,53 @@
     "links": [
       {
         "label": "Notre approche",
-        "url": "#about"
+        "url": "#about",
+        "children": []
       },
       {
         "label": "Services",
         "url": "#services",
         "children": [
-          { "label": "Check-Up 360", "url": "/services/checkup-360/" },
-          { "label": "Coaching personnalisé", "url": "/services/coaching/" },
-          { "label": "Fitness & Cardio", "url": "/services/fitness/" },
-          { "label": "Photobiomodulation", "url": "/services/photobiomodulation/" },
-          { "label": "Neurotracker", "url": "/services/neurotracker/" },
-          { "label": "Entreprises", "url": "/services/entreprises/" }
+          {
+            "label": "Check-Up 360",
+            "url": "/services/checkup-360/"
+          },
+          {
+            "label": "Coaching personnalisé",
+            "url": "/services/coaching/"
+          },
+          {
+            "label": "Fitness & Cardio",
+            "url": "/services/fitness/"
+          },
+          {
+            "label": "Photobiomodulation",
+            "url": "/services/photobiomodulation/"
+          },
+          {
+            "label": "Neurotracker",
+            "url": "/services/neurotracker/"
+          },
+          {
+            "label": "Entreprises",
+            "url": "/services/entreprises/"
+          }
         ]
       },
       {
         "label": "Tarifs",
-        "url": "#pricing"
+        "url": "#pricing",
+        "children": []
       },
       {
         "label": "Blog",
-        "url": "/blog/"
+        "url": "/blog/",
+        "children": []
       },
       {
         "label": "Contact",
-        "url": "#contact"
+        "url": "#contact",
+        "children": []
       }
     ],
     "cta": {
@@ -87,7 +109,6 @@
     "quote_author": "Fred Corminboeuf",
     "image": "/assets/img/mission.jpg"
   },
-
   "sportmed": {
     "title": "Besoin d'une expertise médicale ?",
     "description": "Nous partageons nos locaux avec SportMed360, un centre médical indépendant spécialisé dans la médecine du sport et la traumatologie.",
@@ -95,7 +116,6 @@
     "link_url": "https://sportmed360.ch",
     "logo": "/assets/img/logo-sportmed360-black.svg"
   },
-
   "services": {
     "items": [
       {
