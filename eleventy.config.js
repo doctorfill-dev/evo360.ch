@@ -43,6 +43,16 @@ export default function (eleventyConfig) {
     return new Date(dateObj).toISOString().split('T')[0];
   });
 
+  // Filtre toPublicPath : convertit un chemin repo Keystatic en URL publique
+  // "src/assets/img/bilans.jpg" → "/assets/img/bilans.jpg"
+  // Passe les chemins déjà publics tels quels ("/assets/img/bilans.jpg" → "/assets/img/bilans.jpg")
+  eleventyConfig.addFilter("toPublicPath", (path) => {
+    if (!path) return '';
+    if (path.startsWith('/')) return path;           // déjà un chemin public
+    if (path.startsWith('src/')) return '/' + path.slice(4); // src/assets/… → /assets/…
+    return '/' + path;
+  });
+
   // Filtre findServiceIndex : retourne l'index du service courant dans la collection triée
   // Usage : {% set currentIndex = allServices | findServiceIndex(page.url) %}
   eleventyConfig.addFilter("findServiceIndex", (allServices, currentUrl) => {
