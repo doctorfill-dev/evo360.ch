@@ -1,6 +1,6 @@
 {
   "promo": {
-    "enabled": true,
+    "enabled": false,
     "text": "Offre de lancement : -20% sur le Check-Up 360 jusqu'au 31 mars",
     "link": "#contact"
   },
@@ -66,7 +66,7 @@
     "img3": "/assets/img/redlight.jpg",
     "stats": [
       {
-        "value": "15+",
+        "value": "5+",
         "label": "Experts"
       },
       {
@@ -81,17 +81,17 @@
   },
   "about": {
     "title": "Un lieu pour prendre soin de soi, <span class=\"accent\">vraiment</span>.",
-    "lead": "Nous combinons coaching sportif, technologies de pointe et expertise en physiologie pour construire un programme qui s'adapte à votre réalité — pas l'inverse.",
+    "lead": "Nous combinons coaching sportif, technologies de pointe et expertise en physiologie pour construire un programme qui s'adapte à chaque personne.",
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
-    "quote": "Optimiser la performance, prévenir les blessures et construire une santé active durable, mesurable et personnalisée.",
-    "quote_author": "Fred Corminboeuf",
-    "image": "/assets/img/mission.jpg"
+    "quote": "Talent wins games, but teamwork and intelligence win championships",
+    "quote_author": "Michael Jordan",
+    "image": "/assets/img/lol_1.jpg"
   },
 
   "sportmed": {
-    "title": "Besoin d'une expertise médicale ?",
-    "description": "Nous partageons nos locaux avec SportMed360, un centre médical indépendant spécialisé dans la médecine du sport et la traumatologie.",
-    "link_text": "Aller sur sportmed360.ch",
+    "title": "Médecine du sport et physiothérapie",
+    "description": "Nous partageons nos locaux avec SportMed360, un cabinet médical spécialisé dans la médecine du sport, la traumatologie et la physiothérapie.",
+    "link_text": "Site web de SportMed360",
     "link_url": "https://sportmed360.ch",
     "logo": "/assets/img/logo-sportmed360-black.svg"
   },
@@ -143,58 +143,62 @@
     ]
   },
   "pricing": {
-    "title": "Des formules <span class='accent'>claires</span>, sans surprise.",
-    "description": "Choisissez l'accompagnement qui correspond à vos objectifs. Tous nos abonnements sont sans frais d'inscription cachés.",
-    "plans": [
-      {
-        "name": "Starter",
-        "price": "89.-",
-        "period": "/ mois",
-        "description": "Idéal pour s'entraîner en autonomie dans un cadre premium.",
-        "features": [
-          "Accès illimité à l'espace Fitness & Cardio",
-          "Bilan initial (30 min)",
-          "Application de suivi d'entraînement",
-          "Accès aux vestiaires & douche individuelle"
-        ],
-        "cta_label": "Commencer maintenant",
-        "cta_url": "#contact",
-        "highlight": false
-      },
-      {
-        "name": "Performance",
-        "price": "189.-",
-        "period": "/ mois",
-        "description": "Le meilleur rapport résultats/investissement pour progresser.",
-        "features": [
-          "Tout ce qui est dans le plan Starter",
-          "2 séances de coaching privé par mois",
-          "1 séance de Photobiomodulation par semaine",
-          "Check-up 360 complet tous les 3 mois",
-          "Priorité sur les réservations"
-        ],
-        "cta_label": "Choisir Performance",
-        "cta_url": "#contact",
-        "highlight": true
-      },
-      {
-        "name": "Elite 360",
-        "price": "349.-",
-        "period": "/ mois",
-        "description": "L'expérience ultime de performance et de récupération.",
-        "features": [
-          "Accès illimité à TOUS les services",
-          "1 coaching privé par semaine",
-          "Accès illimité Neurotracker & Photobiomodulation",
-          "Suivi nutritionnel & physiologique",
-          "Accès VIP aux événements du centre"
-        ],
-        "cta_label": "Devenir Elite",
-        "cta_url": "#contact",
-        "highlight": false
-      }
-    ]
-  },
+  "title": "Nos <span class='accent'>abonnements</span>",
+  "description": "Des formules adaptées à vos objectifs, avec un suivi de départ inclus pour garantir votre progression.",
+  "plans": [
+    {
+      "name": "3 mois",
+      "price_onetime": "450.-",
+      "period_onetime": "en une fois",
+      "price_months": "150.-",
+      "period_months": "/ mois",
+      "description": "Idéal pour démarrer en toute sécurité et se familiariser avec nos équipements.",
+      "features": [
+        "1 Check-up 360 inclus avec un coach",
+        "Accès libre (lu-ve, 07h30-20h30)",
+        "Machines intelligentes Technogym & Sensopro",
+        "Accès à l'espace bien-être (sauna)"
+      ],
+      "cta_label": "Choisir 3 mois",
+      "cta_url": "#contact",
+      "highlight": false
+    },
+    {
+      "name": "6 mois",
+      "price_onetime": "780.-",
+      "period_onetime": "en une fois",
+      "price_months": "130.-",
+      "period_months": "/ mois",
+      "description": "L'engagement parfait pour consolider vos acquis et ajuster votre programme.",
+      "features": [
+        "2 Check-up 360 inclus avec un coach",
+        "Accès libre (lu-ve, 07h30-20h30)",
+        "Machines intelligentes Technogym & Sensopro",
+        "Accès à l'espace bien-être (sauna)"
+      ],
+      "cta_label": "Choisir 6 mois",
+      "cta_url": "#contact",
+      "highlight": true
+    },
+    {
+      "name": "12 mois",
+      "price_onetime": "1'320.-",
+      "period_onetime": "en une fois",
+      "price_months": "110.-",
+      "period_months": "/ mois",
+      "description": "La solution optimale pour un entraînement régulier et des résultats durables.",
+      "features": [
+        "3 Check-up 360 inclus avec un coach",
+        "Accès libre (lu-ve, 07h30-20h30)",
+        "Machines intelligentes Technogym & Sensopro",
+        "Accès à l'espace bien-être (sauna)"
+      ],
+      "cta_label": "Choisir 12 mois",
+      "cta_url": "#contact",
+      "highlight": false
+    }
+  ]
+},
   "testimonials": {
     "items": [
       {
@@ -202,65 +206,79 @@
         "job": "Pilote automobile",
         "age": "F1 Academy",
         "initial": "L",
-        "color": "#E50000",
-        "text": "La préparation physique est la clé de ma performance en piste. Avec evo360, j'ai trouvé une équipe qui comprend les exigences du haut niveau.",
-        "rotate": 0
-      },
-      {
-        "name": "Gaétan Muller",
-        "job": "Entrepreneur",
-        "age": "35 ans",
-        "initial": "G",
-        "color": "#4622CC",
-        "text": "Je cherchais de l'énergie au quotidien, pas de la performance. Ici, j'ai appris à bouger sans avoir peur.",
-        "rotate": -1
-      },
-      {
-        "name": "Didier Rochat",
-        "job": "Retraité actif",
-        "age": "65 ans",
-        "initial": "D",
         "color": "#D7F14E",
-        "text": "Je voulais agir préventivement, avant que la douleur ne s'installe. J'ai trouvé une approche qui me protège et me fait avancer.",
-        "rotate": 1
+        "text": "Super expérience avec Evo360 ! Accueil au top, accompagnement clair et résultats au rendez-vous. On sent le professionnalisme et l’envie de bien faire. Merci l’équipe, je recommande sans hésiter.",
+        "rotate": 0,
+        "source": "Google Reviews"
       },
       {
-        "name": "Sophie Terrettaz",
-        "job": "Enseignante",
-        "age": "52 ans",
-        "initial": "S",
+        "name": "T. Karlen",
+        "job": "",
+        "age": "",
+        "initial": "T",
+        "color": "#4622CC",
+        "text": "Super centre de sport pour l'entraînement de force. Le matériel est de qualité, l’espace est bien organisé et l'ambiance motive vraiment à se dépasser. Je recommande sans hésitation.",
+        "rotate": 0,
+        "source": "Google Reviews"
+      },
+      {
+        "name": "Mathieu Clément",
+        "job": "Ultra trailer",
+        "age": "",
+        "initial": "M",
+        "color": "#D7F14E",
+        "text": "On sent une vraie expertise du sport de performance, tout en intégrant la prévention des blessures et la santé sur le long terme. Je recommande vivement Evo360 à toute personne cherchant un suivi sérieux.",
+        "rotate": 1,
+        "source": "Google Reviews"
+      },
+      {
+        "name": "M. Biver",
+        "job": "",
+        "age": "",
+        "initial": "M",
         "color": "#9494a3",
-        "text": "Je suis venue pour arrêter d'avoir mal, pas pour devenir sportive. On m'a comprise et j'ai repris confiance petit à petit.",
-        "rotate": -1
+        "text": "Top fitness 👍🏻💪",
+        "rotate": 0,
+        "source": "Google Reviews"
+      },
+            {
+        "name": "S. Kresovic",
+        "job": "",
+        "age": "",
+        "initial": "L",
+        "color": "#4622CC",
+        "text": "Le personnel est extrêmement agréable, accueillant et professionnel.",
+        "rotate": 0,
+        "source": "Google Reviews"
       }
     ]
   },
   "team": {
-    "title": "L'équipe <span class=\"accent\">evo360</span>",
-    "description": "Des passionnés du mouvement et de la performance, unis par une mission commune : votre bien-être.",
-    "members": [
-      {
-        "name": "Fred Corminboeuf",
-        "role": "Fondateur & Direction",
-        "image": "/assets/img/team/fred.jpg",
-        "description": "Passionné de performance et de santé intégrative, Fred a fondé evo360 pour offrir un accompagnement complet et personnalisé."
-      },
-      {
-        "name": "Marc Duval",
-        "role": "Préparateur physique",
-        "image": "/assets/img/team/marc.jpg",
-        "description": "Spécialiste en préparation physique et réathlétisation, Marc accompagne sportifs et particuliers vers leurs objectifs."
-      },
-      {
-        "name": "Julie Renaud",
-        "role": "Coach sportive",
-        "image": "/assets/img/team/julie.jpg",
-        "description": "Diplômée en sciences du sport, Julie apporte une approche bienveillante et exigeante à chaque séance de coaching."
-      }
-    ],
-    "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes) est celle de notre partenaire SportMed360.",
-    "sportmed_link": "https://sportmed360.ch"
-  },
+  "title": "L'équipe <span class=\"accent\">evo360</span>",
+  "description": "Des passionnés du mouvement et de la performance, unis par une mission commune : votre bien-être.",
+  "members": [
+    {
+      "name": "Orlane Gaudenzi",
+      "role": "Physiologiste du sport",
+      "image": "/assets/img/team/orlane_gaudenzi.webp",
+      "description": "Spécialisée dans les bilans physiologiques et la prévention des blessures, Orlane met son expertise au service de votre performance et de votre santé."
+    },
+    {
+      "name": "Maïwenn Crausaz",
+      "role": "Coach sportive",
+      "image": "/assets/img/team/maiwenn_crausaz.webp",
+      "description": "Passionnée par le mouvement, Maïwenn conçoit des programmes de préparation physique sur mesure, adaptés aussi bien aux débutants qu'aux athlètes confirmés."
+    },
+    {
+      "name": "Karen Joray",
+      "role": "Le couteau suisse",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Swiss_army_knife_open_20050612_%28cropped%29.jpg/500px-Swiss_army_knife_open_20050612_%28cropped%29.jpg",
+      "description": "Véritable pilier du centre, Karen s'assure de la fluidité des opérations quotidiennes pour que votre expérience chez evo360 soit toujours impeccable."
+    }
+  ],
+  "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes) est celle de notre partenaire SportMed360.",
+  "sportmed_link": "https://sportmed360.ch"
+},
   "cta": {
     "title": "Prêt à reprendre le <span class=\"text-white\">contrôle</span> de votre santé ?",
     "text": "Prenez rendez-vous pour un premier échange et découvrez comment evo360 peut vous accompagner.",
