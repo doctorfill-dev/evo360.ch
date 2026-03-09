@@ -1,6 +1,6 @@
 {
   "promo": {
-    "enabled": true,
+    "enabled": false,
     "text": "Offre de lancement : -20% sur le Check-Up 360 jusqu'au 31 mars",
     "link": "#contact"
   },
