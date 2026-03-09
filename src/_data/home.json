@@ -14,37 +14,59 @@
     "email": "v3@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
     "access": "Parking gratuit\nBus 101, Vauseyon",
-    "og_image": "/assets/img/lieu/hero.webp"
+    "og_image": "/assets/img/lieu/site/og_image.webp"
   },
   "nav": {
     "links": [
       {
         "label": "Notre approche",
-        "url": "/#about"
+        "url": "/#about",
+        "children": []
       },
       {
         "label": "Services",
         "url": "/#services",
         "children": [
-          { "label": "Check-Up 360", "url": "/services/checkup-360/" },
-          { "label": "Coaching personnalisé", "url": "/services/coaching/" },
-          { "label": "Fitness & Cardio", "url": "/services/fitness/" },
-          { "label": "Red Light Therapy", "url": "/services/red-light-therapy/" },
-          { "label": "Neurotracker", "url": "/services/neurotracker/" },
-          { "label": "Entreprises", "url": "/services/entreprises/" }
+          {
+            "label": "Check-Up 360",
+            "url": "/services/checkup-360/"
+          },
+          {
+            "label": "Coaching personnalisé",
+            "url": "/services/coaching/"
+          },
+          {
+            "label": "Fitness & Cardio",
+            "url": "/services/fitness/"
+          },
+          {
+            "label": "Red Light Therapy",
+            "url": "/services/red-light-therapy/"
+          },
+          {
+            "label": "Neurotracker",
+            "url": "/services/neurotracker/"
+          },
+          {
+            "label": "Entreprises",
+            "url": "/services/entreprises/"
+          }
         ]
       },
       {
         "label": "Tarifs",
-        "url": "/#pricing"
+        "url": "/#pricing",
+        "children": []
       },
       {
         "label": "Blog",
-        "url": "/blog/"
+        "url": "/blog/",
+        "children": []
       },
       {
         "label": "Contact",
-        "url": "/#contact"
+        "url": "/#contact",
+        "children": []
       }
     ],
     "cta": {
@@ -64,9 +86,7 @@
       "label": "Prendre rendez-vous",
       "url": "/#contact"
     },
-    "img1": "/assets/img/services/fitness.webp",
-    "img2": "/assets/img/lieu/mission.webp",
-    "img3": "/assets/img/services/redlight.webp",
+    "img3": "/assets/img/services/hero/img3.webp",
     "stats": [
       {
         "value": "5+",
@@ -88,122 +108,123 @@
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
     "quote": "Talent wins games, but teamwork and intelligence win championships",
     "quote_author": "Michael Jordan",
-    "image": "/assets/img/lieu/lol_1.jpg",
-    "comments": "todo : changer le format de lol_1.jpg"
+    "image": "/assets/img/lieu/about/image.jpg"
   },
-
   "sportmed": {
     "title": "Médecine du sport et physiothérapie",
     "description": "Nous partageons nos locaux avec SportMed360, un cabinet médical spécialisé dans la médecine du sport, la traumatologie et la physiothérapie.",
     "link_text": "Site web de SportMed360",
     "link_url": "https://sportmed360.ch",
-    "logo": "/assets/img/logo-sportmed360-black.svg"
+    "logo": "/assets/img/sportmed/logo.svg"
   },
-
   "services": {
     "items": [
       {
         "id": "01",
         "title": "Check-Up 360",
         "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/services/bilans.webp",
-        "url": "/services/checkup-360/"
+        "image": "/assets/img/services/services/items/0/image.webp",
+        "url": "/services/checkup-360/",
+        "coming_soon": false
       },
       {
         "id": "02",
         "title": "Coaching personnalisé",
         "description": "Accompagnement sur mesure en mouvement et préparation physique.",
-        "image": "/assets/img/services/prepa.webp",
-        "url": "/services/coaching/"
+        "image": "/assets/img/services/services/items/1/image.webp",
+        "url": "/services/coaching/",
+        "coming_soon": false
       },
       {
         "id": "03",
         "title": "Fitness",
         "description": "Abonnements flexibles pour un entraînement guidé dans un espace dédié.",
-        "image": "/assets/img/services/fitness.webp",
-        "url": "/services/fitness/"
+        "image": "/assets/img/services/services/items/2/image.webp",
+        "url": "/services/fitness/",
+        "coming_soon": false
       },
       {
         "id": "04",
         "title": "Red Light Therapy",
         "description": "Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.",
-        "image": "/assets/img/services/redlight.webp",
-        "url": "/services/red-light-therapy/"
+        "image": "/assets/img/services/services/items/3/image.webp",
+        "url": "/services/red-light-therapy/",
+        "coming_soon": false
       },
       {
         "id": "05",
         "title": "Entreprises & Institutions",
         "description": "Programmes santé et performance adaptés à votre organisation.",
-        "image": "/assets/img/lieu/mission.webp",
-        "url": "/services/entreprises/"
+        "url": "/services/entreprises/",
+        "coming_soon": false
       },
       {
         "id": "06",
         "title": "Neurotracker",
         "description": "Parce que la performance commence dans le cerveau.",
-        "image": "/assets/img/services/neurotracker.webp",
+        "image": "/assets/img/services/services/items/5/image.webp",
         "url": "/services/neurotracker/",
         "coming_soon": true
       }
     ]
   },
   "pricing": {
-  "title": "Nos <span class='accent'>abonnements</span>",
-  "description": "Des formules adaptées à vos objectifs, avec un suivi de départ inclus pour garantir votre progression.",
-  "plans": [
-    {
-      "name": "3 mois",
-      "price_onetime": "450.-",
-      "period_onetime": "en une fois",
-      "price_months": "150.-",
-      "period_months": "/ mois",
-      "description": "Idéal pour démarrer en toute sécurité et se familiariser avec nos équipements.",
-      "features": [
-        "1 Check-up 360 inclus avec un coach",
-        "Accès libre (lu-ve, 07h30-20h30)",
-        "Machines intelligentes Technogym & Sensopro",
-        "Accès à l'espace bien-être (sauna)"
-      ],
-      "cta_label": "Choisir 3 mois",
-      "cta_url": "/#contact",
-      "highlight": false
-    },
-    {
-      "name": "6 mois",
-      "price_onetime": "780.-",
-      "period_onetime": "en une fois",
-      "price_months": "130.-",
-      "period_months": "/ mois",
-      "description": "L'engagement parfait pour consolider vos acquis et ajuster votre programme.",
-      "features": [
-        "2 Check-up 360 inclus avec un coach",
-        "Accès libre (lu-ve, 07h30-20h30)",
-        "Machines intelligentes Technogym & Sensopro",
-        "Accès à l'espace bien-être (sauna)"
-      ],
-      "cta_label": "Choisir 6 mois",
-      "cta_url": "/#contact",
-      "highlight": true
-    },
-    {
-      "name": "12 mois",
-      "price_onetime": "1'320.-",
-      "period_onetime": "en une fois",
-      "price_months": "110.-",
-      "period_months": "/ mois",
-      "description": "La solution optimale pour un entraînement régulier et des résultats durables.",
-      "features": [
-        "3 Check-up 360 inclus avec un coach",
-        "Accès libre (lu-ve, 07h30-20h30)",
-        "Machines intelligentes Technogym & Sensopro",
-        "Accès à l'espace bien-être (sauna)"
-      ],
-      "cta_label": "Choisir 12 mois",
-      "cta_url": "/#contact",
-      "highlight": false
-    }
-  ]
-},
+    "title": "Nos <span class='accent'>abonnements</span>",
+    "description": "Des formules adaptées à vos objectifs, avec un suivi de départ inclus pour garantir votre progression.",
+    "plans": [
+      {
+        "name": "3 mois",
+        "price_months": "150.-",
+        "period_months": "/ mois",
+        "price_onetime": "450.-",
+        "period_onetime": "en une fois",
+        "description": "Idéal pour démarrer en toute sécurité et se familiariser avec nos équipements.",
+        "features": [
+          "1 Check-up 360 inclus avec un coach",
+          "Accès libre (lu-ve, 07h30-20h30)",
+          "Machines intelligentes Technogym & Sensopro",
+          "Accès à l'espace bien-être (sauna)"
+        ],
+        "cta_label": "Choisir 3 mois",
+        "cta_url": "/#contact",
+        "highlight": false
+      },
+      {
+        "name": "6 mois",
+        "price_months": "130.-",
+        "period_months": "/ mois",
+        "price_onetime": "780.-",
+        "period_onetime": "en une fois",
+        "description": "L'engagement parfait pour consolider vos acquis et ajuster votre programme.",
+        "features": [
+          "2 Check-up 360 inclus avec un coach",
+          "Accès libre (lu-ve, 07h30-20h30)",
+          "Machines intelligentes Technogym & Sensopro",
+          "Accès à l'espace bien-être (sauna)"
+        ],
+        "cta_label": "Choisir 6 mois",
+        "cta_url": "/#contact",
+        "highlight": true
+      },
+      {
+        "name": "12 mois",
+        "price_months": "110.-",
+        "period_months": "/ mois",
+        "price_onetime": "1'320.-",
+        "period_onetime": "en une fois",
+        "description": "La solution optimale pour un entraînement régulier et des résultats durables.",
+        "features": [
+          "3 Check-up 360 inclus avec un coach",
+          "Accès libre (lu-ve, 07h30-20h30)",
+          "Machines intelligentes Technogym & Sensopro",
+          "Accès à l'espace bien-être (sauna)"
+        ],
+        "cta_label": "Choisir 12 mois",
+        "cta_url": "/#contact",
+        "highlight": false
+      }
+    ]
+  },
   "testimonials": {
     "items": [
       {
@@ -218,8 +239,6 @@
       },
       {
         "name": "T. Karlen",
-        "job": "",
-        "age": "",
         "initial": "T",
         "color": "#4622CC",
         "text": "Super centre de sport pour l'entraînement de force. Le matériel est de qualité, l’espace est bien organisé et l'ambiance motive vraiment à se dépasser. Je recommande sans hésitation.",
@@ -229,7 +248,6 @@
       {
         "name": "Mathieu Clément",
         "job": "Ultra trailer",
-        "age": "",
         "initial": "M",
         "color": "#D7F14E",
         "text": "On sent une vraie expertise du sport de performance, tout en intégrant la prévention des blessures et la santé sur le long terme. Je recommande vivement Evo360 à toute personne cherchant un suivi sérieux.",
@@ -238,18 +256,14 @@
       },
       {
         "name": "M. Biver",
-        "job": "",
-        "age": "",
         "initial": "M",
         "color": "#9494a3",
         "text": "Top fitness 👍🏻💪",
         "rotate": 0,
         "source": "Google Reviews"
       },
-            {
+      {
         "name": "S. Kresovic",
-        "job": "",
-        "age": "",
         "initial": "L",
         "color": "#4622CC",
         "text": "Le personnel est extrêmement agréable, accueillant et professionnel.",
@@ -259,31 +273,30 @@
     ]
   },
   "team": {
-  "title": "L'équipe <span class=\"accent\">evo360</span>",
-  "description": "Des passionnés du mouvement et de la performance, unis par une mission commune : votre bien-être.",
-  "members": [
-    {
-      "name": "Orlane Gaudenzi",
-      "role": "Physiologiste du sport",
-      "image": "/assets/img/team/orlane_gaudenzi.webp",
-      "description": "Spécialisée dans les bilans physiologiques et la prévention des blessures, Orlane met son expertise au service de votre performance et de votre santé."
-    },
-    {
-      "name": "Maïwenn Crausaz",
-      "role": "Coach sportive",
-      "image": "/assets/img/team/maiwenn_crausaz.webp",
-      "description": "Passionnée par le mouvement, Maïwenn conçoit des programmes de préparation physique sur mesure, adaptés aussi bien aux débutants qu'aux athlètes confirmés."
-    },
-    {
-      "name": "Karen Joray",
-      "role": "Le couteau suisse",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Swiss_army_knife_open_20050612_%28cropped%29.jpg/500px-Swiss_army_knife_open_20050612_%28cropped%29.jpg",
-      "description": "Véritable pilier du centre, Karen s'assure de la fluidité des opérations quotidiennes pour que votre expérience chez evo360 soit toujours impeccable."
-    }
-  ],
-  "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes) est celle de notre partenaire SportMed360.",
-  "sportmed_link": "https://sportmed360.ch"
-},
+    "title": "L'équipe <span class=\"accent\">evo360</span>",
+    "description": "Des passionnés du mouvement et de la performance, unis par une mission commune : votre bien-être.",
+    "members": [
+      {
+        "name": "Orlane Gaudenzi",
+        "role": "Physiologiste du sport",
+        "image": "/assets/img/team/team/members/0/image.webp",
+        "description": "Spécialisée dans les bilans physiologiques et la prévention des blessures, Orlane met son expertise au service de votre performance et de votre santé."
+      },
+      {
+        "name": "Maïwenn Crausaz",
+        "role": "Coach sportive",
+        "image": "/assets/img/team/team/members/1/image.webp",
+        "description": "Passionnée par le mouvement, Maïwenn conçoit des programmes de préparation physique sur mesure, adaptés aussi bien aux débutants qu'aux athlètes confirmés."
+      },
+      {
+        "name": "Karen Joray",
+        "role": "Le couteau suisse",
+        "description": "Véritable pilier du centre, Karen s'assure de la fluidité des opérations quotidiennes pour que votre expérience chez evo360 soit toujours impeccable."
+      }
+    ],
+    "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes) est celle de notre partenaire SportMed360.",
+    "sportmed_link": "https://sportmed360.ch"
+  },
   "cta": {
     "title": "Envie de <span class=\"text-white\">passer à l'action</span> ?",
     "text": "Faites le premier pas vers une meilleure version de vous-même. Notre équipe est là pour vous accompagner.",

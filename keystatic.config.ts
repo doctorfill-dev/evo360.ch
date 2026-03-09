@@ -210,10 +210,12 @@ export default config({
             description: fields.text({ label: 'Description', multiline: true }),
             plans: fields.array(
               fields.object({
-                name:        fields.text({ label: 'Nom de l\'offre' }),
-                price:       fields.text({ label: 'Prix (ex: 89.-)' }),
-                period:      fields.text({ label: 'Période (ex: / mois)' }),
-                description: fields.text({ label: 'Résumé court' }),
+                name:            fields.text({ label: 'Nom de l\'offre' }),
+                price_months:    fields.text({ label: 'Prix mensuel (ex: 150.-)' }),
+                period_months:   fields.text({ label: 'Période mensuel (ex: / mois)' }),
+                price_onetime:   fields.text({ label: 'Prix en une fois (ex: 450.-)' }),
+                period_onetime:  fields.text({ label: 'Période unique (ex: en une fois)' }),
+                description:     fields.text({ label: 'Résumé court' }),
                 features:    fields.array(fields.text({ label: 'Bénéfice inclus' }), {
                   label: 'Liste des prestations incluses',
                   itemLabel: (props) => props.value || 'Prestation',
@@ -244,6 +246,7 @@ export default config({
                   color:   fields.text({ label: 'Couleur avatar (hex, ex: #4622CC)' }),
                   text:    fields.text({ label: 'Témoignage', multiline: true }),
                   rotate:  fields.number({ label: 'Rotation carte (°, ex: -1 ou 1)' }),
+                  source:  fields.text({ label: 'Source (ex: Google Reviews)' }),
                 },
                 { label: 'Témoignage' }
               ),
