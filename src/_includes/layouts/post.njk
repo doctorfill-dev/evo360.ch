@@ -22,7 +22,7 @@ layout: layouts/base.njk
   {% if cover_image %}
   <div class="post-cover">
     <div class="container">
-      <img src="{{ cover_image }}" alt="{{ title }}" loading="lazy">
+      <img src="{{ cover_image | toPublicPath }}" alt="{{ title }}" loading="lazy">
     </div>
   </div>
   {% endif %}

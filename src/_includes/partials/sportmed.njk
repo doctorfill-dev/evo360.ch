@@ -9,12 +9,12 @@
 
       {# Colonne Texte #}
       <div class="about-content">
-        <div class="sportmed-badge">Partenaire Santé</div>
+        <div class="sportmed-badge">Partenaire médical</div>
         <h2 class="section-title">{{ home.sportmed.title }}</h2>
         <p class="about-body">{{ home.sportmed.description }}</p>
 
         <div class="prose-note">
-          Note : evo360 et SportMed360 sont deux entités distinctes. Les prestations médicales (consultations, infiltrations, etc.) sont assurées exclusivement par les médecins de SportMed360.
+          Note : evo360 et SportMed360 sont deux entités distinctes. Les prestations médicales  sont assurées exclusivement par l'équipe du cabinet médical.
         </div>
 
         <div style="margin-top: 2rem;">
@@ -28,7 +28,7 @@
       <div class="about-image">
         <div class="sportmed-card-enhanced">
           <div class="sportmed-card-bg" aria-hidden="true"></div>
-          <img src="{{ home.sportmed.logo }}" alt="Logo SportMed360" class="sportmed-logo-img" loading="lazy">
+          <img src="{{ home.sportmed.logo | toPublicPath }}" alt="SportMed360 | Cabinet de médecine du sport et physiothérapie à Neuchâtel" class="sportmed-logo-img" loading="lazy" width="200" height="60">
           <p class="sportmed-card-tagline">Médecine du sport & traumatologie</p>
         </div>
       </div>

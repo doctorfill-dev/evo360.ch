@@ -1,4 +1,7 @@
 {
+  "blog": {
+    "enabled": false
+  },
   "promo": {
     "enabled": false,
     "text": "Offre de lancement : -20% sur le Check-Up 360 jusqu'au 31 mars",
@@ -11,29 +14,29 @@
     "email": "v3@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
     "access": "Parking gratuit\nBus 101, Vauseyon",
-    "og_image": "/assets/img/hero.jpg"
+    "og_image": "/assets/img/lieu/hero.webp"
   },
   "nav": {
     "links": [
       {
         "label": "Notre approche",
-        "url": "#about"
+        "url": "/#about"
       },
       {
         "label": "Services",
-        "url": "#services",
+        "url": "/#services",
         "children": [
           { "label": "Check-Up 360", "url": "/services/checkup-360/" },
           { "label": "Coaching personnalisé", "url": "/services/coaching/" },
           { "label": "Fitness & Cardio", "url": "/services/fitness/" },
-          { "label": "Photobiomodulation", "url": "/services/photobiomodulation/" },
+          { "label": "Red Light Therapy", "url": "/services/red-light-therapy/" },
           { "label": "Neurotracker", "url": "/services/neurotracker/" },
           { "label": "Entreprises", "url": "/services/entreprises/" }
         ]
       },
       {
         "label": "Tarifs",
-        "url": "#pricing"
+        "url": "/#pricing"
       },
       {
         "label": "Blog",
@@ -41,12 +44,12 @@
       },
       {
         "label": "Contact",
-        "url": "#contact"
+        "url": "/#contact"
       }
     ],
     "cta": {
       "label": "Prendre rendez-vous",
-      "url": "#contact"
+      "url": "/#contact"
     }
   },
   "hero": {
@@ -55,15 +58,15 @@
     "description": "Plus d'énergie. Plus d'équilibre. Un accompagnement personnalisé avec des expert·e·s en physiologie du sport et préparation physique à Neuchâtel.",
     "cta_primary": {
       "label": "Découvrir evo360",
-      "url": "#about"
+      "url": "/#about"
     },
     "cta_secondary": {
       "label": "Prendre rendez-vous",
-      "url": "#contact"
+      "url": "/#contact"
     },
-    "img1": "/assets/img/hero.jpg",
-    "img2": "/assets/img/fitness.jpg",
-    "img3": "/assets/img/redlight.jpg",
+    "img1": "/assets/img/services/fitness.webp",
+    "img2": "/assets/img/lieu/mission.webp",
+    "img3": "/assets/img/services/redlight.webp",
     "stats": [
       {
         "value": "5+",
@@ -85,7 +88,8 @@
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
     "quote": "Talent wins games, but teamwork and intelligence win championships",
     "quote_author": "Michael Jordan",
-    "image": "/assets/img/lol_1.jpg"
+    "image": "/assets/img/lieu/lol_1.jpg",
+    "comments": "todo : changer le format de lol_1.jpg"
   },
 
   "sportmed": {
@@ -102,43 +106,44 @@
         "id": "01",
         "title": "Check-Up 360",
         "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/bilans.jpg",
+        "image": "/assets/img/services/bilans.webp",
         "url": "/services/checkup-360/"
       },
       {
         "id": "02",
         "title": "Coaching personnalisé",
         "description": "Accompagnement sur mesure en mouvement et préparation physique.",
-        "image": "/assets/img/prepa.jpg",
+        "image": "/assets/img/services/prepa.webp",
         "url": "/services/coaching/"
       },
       {
         "id": "03",
         "title": "Fitness",
         "description": "Abonnements flexibles pour un entraînement guidé dans un espace dédié.",
-        "image": "/assets/img/fitness.jpg",
+        "image": "/assets/img/services/fitness.webp",
         "url": "/services/fitness/"
       },
       {
         "id": "04",
-        "title": "Photobiomodulation",
+        "title": "Red Light Therapy",
         "description": "Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.",
-        "image": "/assets/img/redlight.jpg",
-        "url": "/services/photobiomodulation/"
+        "image": "/assets/img/services/redlight.webp",
+        "url": "/services/red-light-therapy/"
       },
       {
         "id": "05",
         "title": "Entreprises & Institutions",
         "description": "Programmes santé et performance adaptés à votre organisation.",
-        "image": "/assets/img/neurotracker.jpg",
+        "image": "/assets/img/lieu/mission.webp",
         "url": "/services/entreprises/"
       },
       {
         "id": "06",
-        "title": "Prévention active",
-        "description": "Agir avant que la douleur ne s'installe — protéger et avancer.",
-        "image": "/assets/img/cerveau.jpg",
-        "url": "/services/neurotracker/"
+        "title": "Neurotracker",
+        "description": "Parce que la performance commence dans le cerveau.",
+        "image": "/assets/img/services/neurotracker.webp",
+        "url": "/services/neurotracker/",
+        "coming_soon": true
       }
     ]
   },
@@ -160,7 +165,7 @@
         "Accès à l'espace bien-être (sauna)"
       ],
       "cta_label": "Choisir 3 mois",
-      "cta_url": "#contact",
+      "cta_url": "/#contact",
       "highlight": false
     },
     {
@@ -177,7 +182,7 @@
         "Accès à l'espace bien-être (sauna)"
       ],
       "cta_label": "Choisir 6 mois",
-      "cta_url": "#contact",
+      "cta_url": "/#contact",
       "highlight": true
     },
     {
@@ -194,7 +199,7 @@
         "Accès à l'espace bien-être (sauna)"
       ],
       "cta_label": "Choisir 12 mois",
-      "cta_url": "#contact",
+      "cta_url": "/#contact",
       "highlight": false
     }
   ]
@@ -280,10 +285,10 @@
   "sportmed_link": "https://sportmed360.ch"
 },
   "cta": {
-    "title": "Prêt à reprendre le <span class=\"text-white\">contrôle</span> de votre santé ?",
-    "text": "Prenez rendez-vous pour un premier échange et découvrez comment evo360 peut vous accompagner.",
-    "btn_label": "Prendre rendez-vous →",
-    "btn_url": "#contact",
+    "title": "Envie de <span class=\"text-white\">passer à l'action</span> ?",
+    "text": "Faites le premier pas vers une meilleure version de vous-même. Notre équipe est là pour vous accompagner.",
+    "btn_label": "Nous contacter →",
+    "btn_url": "/#contact",
     "phone": "076 507 03 60"
   },
   "contact": {

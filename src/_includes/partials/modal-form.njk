@@ -1,0 +1,64 @@
+{#
+  modal-form.njk — Modal de contact avec formulaire Formspree.
+  Inclus dans base.njk pour être accessible depuis toutes les pages.
+  Ouvert via data-open-modal="contact" sur n'importe quel bouton/lien.
+  Le motif peut être pré-rempli via data-motif="Abonnement 3 mois".
+#}
+<div class="modal-overlay" id="modal-contact" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-contact-title">
+  <div class="modal-container">
+    <button class="modal-close" aria-label="Fermer" id="modal-close">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <div class="modal-header">
+      <h2 id="modal-contact-title">Nous <span class="accent">contacter</span></h2>
+      <p class="modal-subtitle">Remplissez le formulaire et nous vous recontacterons rapidement.</p>
+    </div>
+
+    <div class="modal-notice">
+      <span class="material-symbols-outlined" style="font-size:1.125rem;vertical-align:middle;">info</span>
+      Nous migrons actuellement de système de réservation. En attendant, utilisez ce formulaire.
+    </div>
+
+    <form action="https://formspree.io/f/mgonoqwn" method="POST" class="modal-form" id="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="votre@email.ch" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="motif">Motif</label>
+        <select id="motif" name="motif">
+          <option value="">Sélectionnez un motif</option>
+          <option value="Renseignement général">Renseignement général</option>
+          <option value="Abonnement 3 mois">Abonnement 3 mois</option>
+          <option value="Abonnement 6 mois">Abonnement 6 mois</option>
+          <option value="Abonnement 12 mois">Abonnement 12 mois</option>
+          <option value="Check-Up 360">Check-Up 360</option>
+          <option value="Coaching personnalisé">Coaching personnalisé</option>
+          <option value="Red Light Therapy">Red Light Therapy</option>
+          <option value="Fitness & Wellness">Fitness & Wellness</option>
+          <option value="Entreprises">Entreprises</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="3" placeholder="Votre message (facultatif)"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+        <span class="material-symbols-outlined" style="font-size:1.125rem;">send</span>
+        Envoyer
+      </button>
+    </form>
+  </div>
+</div>

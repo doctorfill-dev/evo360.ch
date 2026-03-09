@@ -32,13 +32,13 @@
     <div class="hero-visual" aria-hidden="true">
       <div class="image-stack">
         <div class="img-wrapper img-1">
-          <img src="{{ home.hero.img1 }}" alt="Evo360 Centre de performance" fetchpriority="high">
+          <img src="{{ home.hero.img1 | toPublicPath }}" alt="Evo360 | Centre de santé, performance et bien-être à Neuchâtel" fetchpriority="high">
         </div>
         <div class="img-wrapper img-2">
-          <img src="{{ home.hero.img2 }}" alt="Entraînement fitness personnalisé">
+          <img src="{{ home.hero.img2 | toPublicPath }}" alt="Salle de fitness intelligente et préparation physique personnalisée à Neuchâtel">
         </div>
         <div class="img-wrapper img-3">
-          <img src="{{ home.hero.img3 }}" alt="Récupération photobiomodulation">
+          <img src="{{ home.hero.img3 | toPublicPath }}" alt="Séance de Red Light Therapy et récupération sportive haute performance">
         </div>
       </div>
     </div>

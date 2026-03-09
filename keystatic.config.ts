@@ -35,6 +35,7 @@ export default config({
     navigation: {
       'Page d\'accueil': ['home'],
       'Contenu': ['services', 'posts'],
+      'Médias': ['media'],
     },
   },
 
@@ -45,6 +46,14 @@ export default config({
       format: { data: 'json' },
 
       schema: {
+
+        // ── Section Blog (activation) ────────────────────────────────────
+        blog: fields.object(
+          {
+            enabled: fields.checkbox({ label: 'Activer la section Blog / Publications', defaultValue: false }),
+          },
+          { label: 'Blog & Publications' }
+        ),
 
         // ── Barre promotionnelle ──────────────────────────────────────────
         promo: fields.object(
@@ -65,7 +74,11 @@ export default config({
             email:    fields.text({ label: 'Email' }),
             address:  fields.text({ label: 'Adresse', multiline: true }),
             access:   fields.text({ label: 'Accès (transports)', multiline: true }),
-            og_image: fields.text({ label: 'Image Open Graph (chemin)', description: 'Image partagée sur les réseaux sociaux (ex: /assets/img/hero.jpg)' }),
+            og_image: fields.image({
+              label: 'Image Open Graph',
+              directory: 'src/assets/img/lieu',
+              publicPath: '/assets/img/lieu/',
+            }),
           },
           { label: 'Coordonnées & SEO' }
         ),
@@ -124,9 +137,9 @@ export default config({
               },
               { label: 'Bouton secondaire' }
             ),
-            img1: fields.text({ label: 'Image hero 1 (chemin)' }),
-            img2: fields.text({ label: 'Image hero 2 (chemin)' }),
-            img3: fields.text({ label: 'Image hero 3 (chemin)' }),
+            img1: fields.image({ label: 'Image hero 1', directory: 'src/assets/img/lieu', publicPath: '/assets/img/lieu/' }),
+            img2: fields.image({ label: 'Image hero 2', directory: 'src/assets/img/services', publicPath: '/assets/img/services/' }),
+            img3: fields.image({ label: 'Image hero 3', directory: 'src/assets/img/services', publicPath: '/assets/img/services/' }),
             stats: fields.array(
               fields.object(
                 {
@@ -152,7 +165,7 @@ export default config({
             body_text:    fields.text({ label: 'Corps du texte', multiline: true }),
             quote:        fields.text({ label: 'Citation (encadrée)', multiline: true }),
             quote_author: fields.text({ label: 'Auteur de la citation' }),
-            image:        fields.text({ label: 'Image (chemin)' }),
+            image:        fields.image({ label: 'Image', directory: 'src/assets/img/lieu', publicPath: '/assets/img/lieu/' }),
           },
           { label: "Section Notre approche" }
         ),
@@ -164,7 +177,7 @@ export default config({
             description: fields.text({ label: 'Texte explicatif (neutre)', multiline: true }),
             link_text:   fields.text({ label: 'Texte du lien' }),
             link_url:    fields.text({ label: 'URL vers sportmed360.ch' }),
-            logo:        fields.text({ label: 'Logo SportMed (chemin)' }),
+            logo:        fields.image({ label: 'Logo SportMed', directory: 'src/assets/img', publicPath: '/assets/img/' }),
           },
           { label: 'Partenaire Médical (SportMed)' }
         ),
@@ -177,8 +190,9 @@ export default config({
                 id:          fields.text({ label: 'Numéro (ex: 01)' }),
                 title:       fields.text({ label: 'Titre du service' }),
                 description: fields.text({ label: 'Description courte', multiline: true }),
-                image:       fields.text({ label: 'Image (chemin)' }),
+                image:       fields.image({ label: 'Image', directory: 'src/assets/img/services', publicPath: '/assets/img/services/' }),
                 url:         fields.text({ label: 'Lien vers la page détaillée' }),
+                coming_soon: fields.checkbox({ label: 'À venir (pas encore disponible)', defaultValue: false }),
               }),
               {
                 label:     'Services affichés sur la homepage',
@@ -251,7 +265,7 @@ export default config({
               fields.object({
                 name:        fields.text({ label: 'Nom complet' }),
                 role:        fields.text({ label: 'Rôle / Poste' }),
-                image:       fields.text({ label: 'Photo (chemin)' }),
+                image:       fields.image({ label: 'Photo', directory: 'src/assets/img/team', publicPath: '/assets/img/team/' }),
                 description: fields.text({ label: 'Description courte', multiline: true }),
               }),
               {
@@ -309,6 +323,32 @@ export default config({
 
       }, // fin schema
     }),  // fin singleton home
+
+    // ── Médiathèque (upload d'images) ─────────────────────────────────
+    // L'admin uploade ses images ici (drag & drop), puis les sélectionne
+    // via le champ "Image" dans les collections (Services, Blog).
+    media: singleton({
+      label: 'Médiathèque',
+      path: 'src/_data/media',
+      format: { data: 'json' },
+
+      schema: {
+        images: fields.array(
+          fields.object({
+            name: fields.text({ label: 'Nom / description (pour s\'y retrouver)' }),
+            file: fields.image({
+              label: 'Image',
+              directory: 'src/assets/img',
+              publicPath: '/assets/img/',
+            }),
+          }),
+          {
+            label: 'Images du site',
+            itemLabel: (props) => props.fields.name.value || 'Image sans nom',
+          }
+        ),
+      },
+    }),
   },     // fin singletons
 
   collections: {
@@ -322,8 +362,13 @@ export default config({
         title:       fields.slug({ name: { label: 'Titre du service' } }),
         order:       fields.number({ label: 'Ordre d\'affichage (1, 2...)' }),
         summary:     fields.text({ label: 'Résumé (pour la carte accueil)', multiline: true }),
-        cover_image: fields.text({ label: 'Image de couverture (chemin, ex: /assets/img/bilans.jpg)' }),
+        cover_image: fields.image({
+          label: 'Image de couverture',
+          directory: 'src/assets/img/services',
+          publicPath: '/assets/img/services/',
+        }),
         icon:        fields.text({ label: 'Nom d\'icône Material Symbols (ex: search, fitness_center)' }),
+        coming_soon: fields.checkbox({ label: 'À venir (pas encore disponible)', defaultValue: false }),
         content:     fields.document({
           label: 'Contenu détaillé',
           formatting: true,
@@ -348,7 +393,16 @@ export default config({
         publishedDate: fields.date({ label: 'Date de publication' }),
         author:      fields.text({ label: 'Auteur' }),
         summary:     fields.text({ label: 'Résumé (accroche)', multiline: true }),
-        cover_image: fields.text({ label: 'Image principale (chemin, ex: /assets/img/hero.jpg)' }),
+        cover_image: fields.image({
+          label: 'Image principale',
+          directory: 'src/assets/img/blog',
+          publicPath: '/assets/img/blog/',
+        }),
+        instagram_embed: fields.text({
+          label: 'Code Embed Instagram',
+          description: 'Collez ici le code HTML (<blockquote>...<script>...) fourni par Instagram. Si rempli, le contenu ci-dessous sera ignoré sur la liste.',
+          multiline: true,
+        }),
         content:     fields.document({
           label: 'Contenu de l\'article',
           formatting: true,

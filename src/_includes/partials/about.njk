@@ -10,7 +10,7 @@
     {# Colonne gauche : image + badge citron #}
     <div class="about-image">
       <div class="main-img-wrap">
-        <img src="{{ home.about.image }}" alt="Notre équipe" class="main-img">
+        <img src="{{ home.about.image | toPublicPath }}" alt="Équipe d'experts en physiologie du sport et accompagnement bien-être à Neuchâtel" class="main-img">
       </div>
       <div class="experience-badge">
         <span class="number">10+</span>
@@ -60,16 +60,10 @@
           <div><h3>Durabilité</h3><p>Des résultats dans le temps</p></div>
         </div>
       </div>
-      {# todo : améliorer le bouton
-      - rediriges vers une nouvelle page - et on reprend le texte actuel d'evo360.ch
-      #}
-        <div class="button">
-            <button>A propos de nous</button>
-        </div
+      <div style="margin-top:2.5rem;">
+        <a href="/about/" class="btn btn-primary">En savoir plus sur evo360</a>
+      </div>
     </div>
-
-
-
 
   </div>
 </section>

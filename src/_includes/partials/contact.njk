@@ -1,9 +1,6 @@
 {#
-  contact.njk — Section contact redesignée.
-  Fond sombre (continuité avec Testimonials), layout 2 colonnes :
-    - Gauche (60%) : carte Google Maps avec coins arrondis
-    - Droite (40%) : titre + 4 infos empilées avec séparateurs + CTA
-  Plus Code Maps : XWQ4+FV Neuchâtel → établissement "evo360"
+  contact.njk — Section contact (infos + carte).
+  Le formulaire est dans le modal (modal-form.njk).
 #}
 <section class="contact section-dark" id="contact">
   <div class="container">
@@ -17,7 +14,7 @@
     {# Layout : map | infos #}
     <div class="contact-layout">
 
-      {# Google Maps — evo360 Neuchâtel (Plus Code XWQ4+FV) #}
+      {# Carte Google Maps #}
       <div class="contact-map">
         <iframe
           src="https://maps.google.com/maps?q=evo360+Av.+Edouard-Dubois+20+Neuchatel&output=embed&z=16&hl=fr"
@@ -71,9 +68,12 @@
           </div>
         </div>
 
-        <a href="{{ home.nav.cta.url }}" class="btn btn-primary contact-cta">
-          {{ home.nav.cta.label }}
-        </a>
+        <div class="contact-cta">
+          <a href="#" class="btn btn-primary" data-open-modal="contact">
+            <span class="material-symbols-outlined" style="font-size:1.125rem;">mail</span>
+            Nous écrire
+          </a>
+        </div>
 
       </div>
 

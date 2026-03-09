@@ -15,10 +15,16 @@
 
     <div class="services-grid">
       {% for service in home.services.items %}
-        <article class="service-card">
+        <article class="service-card{% if service.coming_soon %} service-card--coming-soon{% endif %}">
           <div class="card-image">
-            <img src="{{ service.image }}" alt="{{ service.title }}" loading="lazy">
+            <img src="{{ service.image | toPublicPath }}" alt="{{ service.title }} - Accompagnement et performance à Neuchâtel" loading="lazy">
             <div class="card-id" aria-hidden="true">{{ service.id }}</div>
+            {% if service.coming_soon %}
+              <div class="coming-soon-badge">
+                <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">schedule</span>
+                À venir
+              </div>
+            {% endif %}
           </div>
           <div class="card-content">
             <h3>{{ service.title }}</h3>

@@ -9,7 +9,8 @@
     <nav class="nav" aria-label="Navigation principale">
       <ul class="nav-list">
         {% for link in home.nav.links %}
-          {% if link.children and link.children.length > 0 %}
+          {% if not home.blog.enabled and '/blog' in link.url %}
+          {% elif link.children and link.children.length > 0 %}
             <li class="nav-dropdown-parent">
               <a href="{{ link.url }}" class="nav-link">
                 {{ link.label }}
@@ -46,6 +47,8 @@
     <div class="container">
       <ul class="mobile-nav-list">
         {% for link in home.nav.links %}
+          {% if not home.blog.enabled and '/blog' in link.url %}
+          {% else %}
           <li>
             <a href="{{ link.url }}" class="mobile-nav-link">{{ link.label }}</a>
             {% if link.children and link.children.length > 0 %}
@@ -56,6 +59,7 @@
               </ul>
             {% endif %}
           </li>
+          {% endif %}
         {% endfor %}
         <li style="padding-top:.5rem;">
           <a href="{{ home.nav.cta.url }}" class="btn btn-primary" style="width:100%;justify-content:center;">

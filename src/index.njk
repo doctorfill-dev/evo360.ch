@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Accueil
-description: Evo360 — Centre de performance et bien-être à Neuchâtel. Coaching, fitness, photobiomodulation et accompagnement personnalisé.
+description: Evo360 — Centre de performance et bien-être à Neuchâtel. Coaching, fitness, Red Light Therapy et accompagnement personnalisé.
 ---
 
 {#
@@ -17,6 +17,8 @@ description: Evo360 — Centre de performance et bien-être à Neuchâtel. Coach
 {% include "partials/pricing.njk" %}
 {% include "partials/testimonials.njk" %}
 {% include "partials/team.njk" %}
+{% if home.blog.enabled %}
 {% include "partials/blog_preview.njk" %}
+{% endif %}
 {% include "partials/cta.njk" %}
 {% include "partials/contact.njk" %}
