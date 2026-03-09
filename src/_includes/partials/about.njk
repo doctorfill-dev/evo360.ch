@@ -25,12 +25,14 @@
       <div class="about-body">
         <p>{{ home.about.body_text }}</p>
       </div>
+      {#
       <div class="quote-card">
         <p>« {{ home.about.quote }} »</p>
         {% if home.about.quote_author %}
-          <cite class="quote-author">— {{ home.about.quote_author }}</cite>
+          <cite class="quote-author">{{ home.about.quote_author }}</cite>
         {% endif %}
       </div>
+      #}
 
       <div class="features-grid">
         <div class="feature">
@@ -58,7 +60,16 @@
           <div><h3>Durabilité</h3><p>Des résultats dans le temps</p></div>
         </div>
       </div>
+      {# todo : améliorer le bouton
+      - rediriges vers une nouvelle page - et on reprend le texte actuel d'evo360.ch
+      #}
+        <div class="button">
+            <button>A propos de nous</button>
+        </div
     </div>
+
+
+
 
   </div>
 </section>

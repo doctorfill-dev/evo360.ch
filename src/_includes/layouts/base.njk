@@ -22,13 +22,13 @@
   <meta property="og:title" content="{{ title }} — {{ home.site.name }}">
   <meta property="og:description" content="{{ metaDesc }}">
   <meta property="og:url" content="{{ home.site.url }}{{ page.url }}">
-  <meta property="og:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image }}{% else %}{{ home.site.og_image }}{% endif %}">
+  <meta property="og:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image | toPublicPath }}{% else %}{{ home.site.og_image }}{% endif %}">
 
   {# SEO — Twitter Card #}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title }} — {{ home.site.name }}">
   <meta name="twitter:description" content="{{ metaDesc }}">
-  <meta name="twitter:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image }}{% else %}{{ home.site.og_image }}{% endif %}">
+  <meta name="twitter:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image | toPublicPath }}{% else %}{{ home.site.og_image }}{% endif %}">
 
   {# PWA — Theme color #}
   <meta name="theme-color" content="#4622CC">
