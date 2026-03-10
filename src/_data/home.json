@@ -31,7 +31,7 @@
             "url": "/services/checkup-360/"
           },
           {
-            "label": "Coaching personnalisé",
+            "label": "Coaching & préparation physique",
             "url": "/services/coaching/"
           },
           {
@@ -130,7 +130,7 @@
       },
       {
         "id": "02",
-        "title": "Coaching personnalisé",
+        "title": "Coaching & préparation physique",
         "description": "Accompagnement sur mesure en mouvement et préparation physique.",
         "image": "/assets/img/services/services/items/1/coaching_1.webp",
         "url": "/services/coaching/",
