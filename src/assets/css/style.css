@@ -1733,67 +1733,79 @@ section {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  margin-top: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .team-card {
   background: var(--white);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--gray-100);
   transition: var(--transition);
   text-align: center;
 }
 .team-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-xl);
 }
 
 .team-photo {
   width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+  aspect-ratio: 3/4;
+  overflow: hidden;
   background: var(--gray-100);
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .team-info {
-  padding: 1.5rem 2rem 2rem;
+  padding: 1rem 1.25rem 1.25rem;
 }
 .team-name {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: var(--gray-900);
-  margin-bottom: .25rem;
+  margin-bottom: .15rem;
   font-family: var(--font-heading);
 }
 .team-role {
   display: inline-block;
-  font-size: .8125rem;
+  font-size: .75rem;
   font-weight: 700;
   color: var(--indigo);
   text-transform: uppercase;
   letter-spacing: .05em;
-  margin-bottom: .75rem;
+  margin-bottom: .5rem;
 }
 .team-bio {
-  font-size: .9375rem;
+  font-size: .85rem;
   color: var(--gray-600);
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
 }
 
 .team-sportmed-note {
-  margin-top: 3rem;
+  margin-top: 2rem;
   text-align: center;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.5rem;
   background: var(--white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
-  font-size: .9375rem;
+  font-size: .875rem;
   color: var(--gray-600);
   line-height: 1.6;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .team-sportmed-note a {
   color: var(--indigo);
@@ -1959,7 +1971,7 @@ section {
   .post-cover img { margin-top: 0; border-radius: var(--radius-md); }
 
   /* Team */
-  .team-grid          { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .team-grid          { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 
   /* Service nav */
   .service-nav-grid   { grid-template-columns: 1fr; }
