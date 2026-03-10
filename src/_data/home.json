@@ -13,8 +13,7 @@
     "phone": "076 507 03 60",
     "email": "v3@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
-    "access": "Parking gratuit\nBus 101, Vauseyon",
-    "og_image": "/assets/img/lieu/site/og_image.webp"
+    "access": "Parking gratuit\nBus 101, Vauseyon"
   },
   "nav": {
     "links": [
@@ -86,6 +85,8 @@
       "label": "Prendre rendez-vous",
       "url": "/#contact"
     },
+    "img1": "/assets/img/services/hero/img1.webp",
+    "img2": "/assets/img/services/hero/img2.webp",
     "img3": "/assets/img/services/hero/img3.webp",
     "stats": [
       {
@@ -108,14 +109,14 @@
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
     "quote": "Talent wins games, but teamwork and intelligence win championships",
     "quote_author": "Michael Jordan",
-    "image": "/assets/img/lieu/about/image.jpg"
+    "image": "/assets/img/lieu/about/fitness_1.jpg"
   },
   "sportmed": {
     "title": "Médecine du sport et physiothérapie",
     "description": "Nous partageons nos locaux avec SportMed360, un cabinet médical spécialisé dans la médecine du sport, la traumatologie et la physiothérapie.",
     "link_text": "Site web de SportMed360",
     "link_url": "https://sportmed360.ch",
-    "logo": "/assets/img/sportmed/logo.svg"
+    "logo": "/assets/img/sportmed/logo_sportmed.svg"
   },
   "services": {
     "items": [
@@ -123,7 +124,7 @@
         "id": "01",
         "title": "Check-Up 360",
         "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/services/services/items/0/image.webp",
+        "image": "/assets/img/services/services/items/0/checkup360_1.webp",
         "url": "/services/checkup-360/",
         "coming_soon": false
       },
@@ -131,7 +132,7 @@
         "id": "02",
         "title": "Coaching personnalisé",
         "description": "Accompagnement sur mesure en mouvement et préparation physique.",
-        "image": "/assets/img/services/services/items/1/image.webp",
+        "image": "/assets/img/services/services/items/1/coaching_1.webp",
         "url": "/services/coaching/",
         "coming_soon": false
       },
@@ -139,7 +140,7 @@
         "id": "03",
         "title": "Fitness",
         "description": "Abonnements flexibles pour un entraînement guidé dans un espace dédié.",
-        "image": "/assets/img/services/services/items/2/image.webp",
+        "image": "/assets/img/services/services/items/2/fitness_1.webp",
         "url": "/services/fitness/",
         "coming_soon": false
       },
@@ -147,7 +148,7 @@
         "id": "04",
         "title": "Red Light Therapy",
         "description": "Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.",
-        "image": "/assets/img/services/services/items/3/image.webp",
+        "image": "/assets/img/services/services/items/3/redlight_1.jpg",
         "url": "/services/red-light-therapy/",
         "coming_soon": false
       },
@@ -155,6 +156,7 @@
         "id": "05",
         "title": "Entreprises & Institutions",
         "description": "Programmes santé et performance adaptés à votre organisation.",
+        "image": "/assets/img/services/services/items/4/entreprise_1.jpg",
         "url": "/services/entreprises/",
         "coming_soon": false
       },
@@ -162,7 +164,7 @@
         "id": "06",
         "title": "Neurotracker",
         "description": "Parce que la performance commence dans le cerveau.",
-        "image": "/assets/img/services/services/items/5/image.webp",
+        "image": "/assets/img/services/services/items/5/neurotracker_1.webp",
         "url": "/services/neurotracker/",
         "coming_soon": true
       }
@@ -279,18 +281,19 @@
       {
         "name": "Orlane Gaudenzi",
         "role": "Physiologiste du sport",
-        "image": "/assets/img/team/team/members/0/image.webp",
+        "image": "/assets/img/team/team/members/0/orlane_gaudenzi.webp",
         "description": "Spécialisée dans les bilans physiologiques et la prévention des blessures, Orlane met son expertise au service de votre performance et de votre santé."
       },
       {
         "name": "Maïwenn Crausaz",
         "role": "Coach sportive",
-        "image": "/assets/img/team/team/members/1/image.webp",
+        "image": "/assets/img/team/team/members/1/maiwenn_crausaz.webp",
         "description": "Passionnée par le mouvement, Maïwenn conçoit des programmes de préparation physique sur mesure, adaptés aussi bien aux débutants qu'aux athlètes confirmés."
       },
       {
         "name": "Karen Joray",
         "role": "Le couteau suisse",
+        "image": "/assets/img/team/team/members/2/swiss_knife.png",
         "description": "Véritable pilier du centre, Karen s'assure de la fluidité des opérations quotidiennes pour que votre expérience chez evo360 soit toujours impeccable."
       }
     ],
