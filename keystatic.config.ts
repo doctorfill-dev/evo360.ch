@@ -372,6 +372,7 @@ export default config({
         }),
         icon:        fields.text({ label: 'Nom d\'icône Material Symbols (ex: search, fitness_center)' }),
         coming_soon: fields.checkbox({ label: 'À venir (pas encore disponible)', defaultValue: false }),
+        hide:        fields.checkbox({ label: 'Masquer complètement ce service du site', defaultValue: false }),
         content:     fields.document({
           label: 'Contenu détaillé',
           formatting: true,

@@ -14,7 +14,7 @@
     </div>
 
     <div class="services-grid">
-      {% for service in home.services.items %}
+      {% for service in home.services.items | filterHiddenHomeServices(collections.services) %}
         <article class="service-card{% if service.coming_soon %} service-card--coming-soon{% endif %}">
           <div class="card-image">
             <img src="{{ service.image | toPublicPath }}" alt="{{ service.title }} - Accompagnement et performance à Neuchâtel" loading="lazy">

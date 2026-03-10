@@ -53,6 +53,33 @@ export default function (eleventyConfig) {
     return '/' + path;
   });
 
+  // Filtre removeHidden : retire les services masqués (hide: true) d'une collection Eleventy
+  // Usage : {% set visible = collections.services | removeHidden %}
+  eleventyConfig.addFilter("removeHidden", (services) => {
+    if (!services) return [];
+    return services.filter(s => {
+      const hide = s.data.hide;
+      return hide !== true && hide !== "true";
+    });
+  });
+
+  // Filtre filterHiddenHomeServices : retire de la liste homepage les services
+  // dont le .mdoc a hide: true, en croisant par slug (le nom du fichier .mdoc)
+  // Usage : {% for s in home.services.items | filterHiddenHomeServices(collections.services) %}
+  eleventyConfig.addFilter("filterHiddenHomeServices", (homeServices, collectionServices) => {
+    if (!homeServices || !collectionServices) return homeServices || [];
+    const hiddenSlugs = new Set(
+      collectionServices
+        .filter(s => s.data.hide === true || s.data.hide === "true")
+        .map(s => s.fileSlug)
+    );
+    return homeServices.filter(item => {
+      // Extraire le slug depuis l'URL : "/services/neurotracker/" → "neurotracker"
+      const slug = (item.url || '').replace(/^\/services\//, '').replace(/\/$/, '');
+      return !hiddenSlugs.has(slug);
+    });
+  });
+
   // Filtre findServiceIndex : retourne l'index du service courant dans la collection triée
   // Usage : {% set currentIndex = allServices | findServiceIndex(page.url) %}
   eleventyConfig.addFilter("findServiceIndex", (allServices, currentUrl) => {

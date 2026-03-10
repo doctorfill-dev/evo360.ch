@@ -42,7 +42,7 @@ layout: layouts/base.njk
       </div>
 
       {# Navigation précédent / suivant #}
-      {% set allServices = collections.services | sort(false, false, 'data.order') %}
+      {% set allServices = collections.services | removeHidden | sort(false, false, 'data.order') %}
       {% set currentIndex = allServices | findServiceIndex(page.url) %}
 
       <nav class="service-nav" aria-label="Navigation entre services">

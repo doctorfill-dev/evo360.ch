@@ -18,7 +18,7 @@
               </a>
               <div class="nav-dropdown">
                 <ul class="dropdown-list">
-                  {% for child in link.children %}
+                  {% for child in link.children | filterHiddenHomeServices(collections.services) %}
                     <li><a href="{{ child.url }}" class="dropdown-link">{{ child.label }}</a></li>
                   {% endfor %}
                 </ul>
@@ -53,7 +53,7 @@
             <a href="{{ link.url }}" class="mobile-nav-link">{{ link.label }}</a>
             {% if link.children and link.children.length > 0 %}
               <ul class="mobile-sub-list">
-                {% for child in link.children %}
+                {% for child in link.children | filterHiddenHomeServices(collections.services) %}
                   <li><a href="{{ child.url }}" class="mobile-sub-link">{{ child.label }}</a></li>
                 {% endfor %}
               </ul>
