@@ -380,6 +380,7 @@ section {
   top: 0; right: 0;
   width: 80%; height: 70%;
   border-radius: var(--radius-lg);
+  border: 8px solid var(--white);
   z-index: 1;
 }
 .img-2 {

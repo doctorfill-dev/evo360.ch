@@ -74,8 +74,8 @@
     }
   },
   "hero": {
-    "badge": "Centre de performance & bien-être",
-    "title": "Votre santé mérite une <span class=\"text-indigo\">approche à 360°</span>",
+    "badge": "Centre de performance & de bien-être",
+    "title": "Votre bien-être mérite une <span class=\"text-indigo\">approche à 360°</span>",
     "description": "Plus d'énergie. Plus d'équilibre. Un accompagnement personnalisé avec des expert·e·s en physiologie du sport et préparation physique à Neuchâtel.",
     "cta_primary": {
       "label": "Découvrir evo360",
