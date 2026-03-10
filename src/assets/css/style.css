@@ -1896,7 +1896,7 @@ section {
   transform: translateY(-2px);
 }
 .service-nav-prev { text-align: left; }
-.service-nav-next { text-align: right; }
+.service-nav-next { text-align: left; align-items: flex-end; }
 
 .nav-direction {
   font-size: .75rem;
