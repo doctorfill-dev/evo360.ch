@@ -124,7 +124,7 @@
         "id": "01",
         "title": "Check-Up 360",
         "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/services/services/items/0/checkup360_1.webp",
+        "image": "/assets/img/services/services/items/0/checkup360_1.jpg",
         "url": "/services/checkup-360/",
         "coming_soon": false
       },
@@ -156,15 +156,39 @@
         "id": "05",
         "title": "Entreprises & Institutions",
         "description": "Programmes santé et performance adaptés à votre organisation.",
-        "image": "/assets/img/services/services/items/4/entreprise_1.jpg",
+        "image": "/assets/img/services/services/items/5/entreprise_1.webp",
         "url": "/services/entreprises/",
         "coming_soon": false
       },
       {
         "id": "06",
+        "title": "Profilage",
+        "description": "Mieux se comprendre pour mieux performer",
+        "image": "/assets/img/services/services/items/6/profilage_1.jpg",
+        "url": "/services/profilage/",
+        "coming_soon": false
+      },
+      {
+        "id": "07",
+        "title": "VO2max",
+        "description": "Évaluer votre endurance et définir vos zones d’entraînement.",
+        "image": "/assets/img/services/services/items/7/vo2max_course.png",
+        "url": "/services/vo2max",
+        "coming_soon": false
+      },
+      {
+        "id": "08",
+        "title": "Nutrition",
+        "description": "Nourrir, équilibrer, performer.\n",
+        "image": "/assets/img/services/services/items/8/nutrition_1.jpg",
+        "url": "/services/nutrition",
+        "coming_soon": false
+      },
+      {
+        "id": "09",
         "title": "Neurotracker",
         "description": "Parce que la performance commence dans le cerveau.",
-        "image": "/assets/img/services/services/items/5/neurotracker_1.webp",
+        "image": "/assets/img/services/services/items/9/neurotracker_1.webp",
         "url": "/services/neurotracker/",
         "coming_soon": true
       }
