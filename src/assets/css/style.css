@@ -1736,7 +1736,7 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
   margin-top: 3rem;
-  max-width: 500px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1930,6 +1930,112 @@ section {
 
 
 /* -------------------------------------------------------
+   31b. SERVICE PRICE BADGE & PRICES SIDEBAR
+------------------------------------------------------- */
+
+/* Single price badge — top right corner */
+.service-price-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  background: var(--citron);
+  color: var(--gray-900);
+  padding: .625rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-heading);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .125rem;
+  text-align: center;
+}
+.service-price-badge-amount {
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+.service-price-badge-note {
+  font-size: .6875rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  font-family: var(--font-body);
+  line-height: 1.3;
+  max-width: 140px;
+}
+
+/* Badge link variant (for multi-price) */
+.service-price-badge--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.service-price-badge--link:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Tarifs section at bottom of service page */
+.service-tarifs {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  background: var(--gray-100);
+  border-radius: var(--radius-lg);
+}
+.service-tarifs-title {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.5rem;
+  color: var(--gray-900);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+  padding-bottom: .75rem;
+  border-bottom: 2px solid var(--gray-200);
+}
+.service-tarifs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.service-tarifs-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .875rem 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+.service-tarifs-item:last-child {
+  border-bottom: none;
+}
+.service-tarifs-label {
+  color: var(--gray-600);
+  font-size: 1rem;
+}
+.service-tarifs-amount {
+  font-weight: 700;
+  color: var(--indigo);
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  white-space: nowrap;
+}
+.service-tarifs-note {
+  font-size: .8125rem;
+  color: var(--gray-400);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Ensure header is positioned for the badge */
+.service-header-refined {
+  position: relative;
+}
+
+
+/* -------------------------------------------------------
    32. RESPONSIVE
 ------------------------------------------------------- */
 @media (max-width: 992px) {
@@ -2012,6 +2118,12 @@ section {
   .detail-cta          { padding: 2rem; }
   .service-header-refined { padding: 3rem 0 2rem; }
   .service-header      { min-height: 250px; padding: 2rem 0; }
+
+  /* Price badge */
+  .service-price-badge { top: 1rem; right: 1rem; font-size: 1rem; padding: .375rem 1rem; }
+  .service-tarifs { padding: 1.5rem; }
+  .service-tarifs-label { font-size: .875rem; }
+  .service-tarifs-amount { font-size: .9375rem; }
 
   /* Hero glow — hide on mobile for perf */
   .hero-bg-glow       { display: none; }

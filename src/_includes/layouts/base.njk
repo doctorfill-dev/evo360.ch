@@ -8,9 +8,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {%- set metaDesc = description or summary or home.hero.description -%}
-  <title>{{ title if page.url != "/" else "evo360 | Centre de Santé, Performance et Bien-être à Neuchâtel" }}</title>
-  <meta name="description" content="{{ description if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, prévention des blessures et récupération." }}">
+  {%- set metaDesc = summary or description or home.hero.description -%}
+  {%- set metaTitle = title + " | evo360 Neuchâtel" if page.url != "/" else "evo360 | Centre de Santé, Performance et Bien-être à Neuchâtel" -%}
+  {%- set metaDescription = metaDesc if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, prévention des blessures et récupération." -%}
+  <title>{{ metaTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}">
 
   {# SEO — Canonical URL #}
   <link rel="canonical" href="{{ home.site.url }}{{ page.url }}">
@@ -19,15 +21,15 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CH">
   <meta property="og:site_name" content="{{ home.site.name }}">
-  <meta property="og:title" content="{{ title if page.url != "/" else "evo360 | Centre de Santé, Performance et Bien-être à Neuchâtel" }}">
-  <meta property="og:description" content="{{ description if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, prévention des blessures et récupération." }}">
+  <meta property="og:title" content="{{ metaTitle }}">
+  <meta property="og:description" content="{{ metaDescription }}">
   <meta property="og:url" content="{{ home.site.url }}{{ page.url }}">
   <meta property="og:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image | toPublicPath }}{% else %}{{ home.site.og_image | toPublicPath }}{% endif %}">
 
   {# SEO — Twitter Card #}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ title if page.url != "/" else "evo360 | Centre de Santé, Performance et Bien-être à Neuchâtel" }}">
-  <meta name="twitter:description" content="{{ description if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, prévention des blessures et récupération." }}">
+  <meta name="twitter:title" content="{{ metaTitle }}">
+  <meta name="twitter:description" content="{{ metaDescription }}">
   <meta name="twitter:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image | toPublicPath }}{% else %}{{ home.site.og_image | toPublicPath }}{% endif %}">
 
   {# PWA — Theme color #}
@@ -80,6 +82,87 @@
     ],
     "sameAs": [
       "https://www.instagram.com/evo360.ch"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "{{ home.testimonials.items | length }}",
+      "bestRating": "5"
+    },
+    "review": [
+      {% for review in home.testimonials.items %}
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "{{ review.name }}" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "{{ review.text | replace('"', '\\"') }}"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+
+  {# Structured Data — Service page (JSON-LD) #}
+  {% if tags and "services" in tags %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "{{ title }}",
+    "description": "{{ metaDesc }}",
+    "url": "{{ home.site.url }}{{ page.url }}",
+    {% if cover_image %}"image": "{{ home.site.url }}{{ cover_image | toPublicPath }}",{% endif %}
+    {% if price %}"offers": {
+      "@type": "Offer",
+      "price": "{{ price | replace('CHF ', '') | replace('.-', '') }}",
+      "priceCurrency": "CHF",
+      "availability": "https://schema.org/InStock"
+    },{% endif %}
+    "provider": {
+      "@type": "HealthAndBeautyBusiness",
+      "name": "evo360",
+      "url": "https://evo360.ch",
+      "telephone": "+41765070360",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Édouard-Dubois 20",
+        "addressLocality": "Neuchâtel",
+        "postalCode": "2000",
+        "addressCountry": "CH"
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Neuchâtel"
+    }
+  }
+  </script>
+
+  {# Breadcrumb schema #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "{{ home.site.url }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "{{ home.site.url }}/#services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ title }}",
+        "item": "{{ home.site.url }}{{ page.url }}"
+      }
     ]
   }
   </script>

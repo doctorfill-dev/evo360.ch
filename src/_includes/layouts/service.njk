@@ -3,6 +3,24 @@ layout: layouts/base.njk
 ---
 <article class="service-detail">
   <header class="service-header-refined">
+    {# Price badge — single price #}
+    {% if price and not prices %}
+      <div class="service-price-badge">
+        <span class="service-price-badge-amount">{{ price }}</span>
+        {% if price_note %}
+          <span class="service-price-badge-note">{{ price_note }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# Price badge — multiple prices: link to tarifs section #}
+    {% if prices %}
+      <a href="#tarifs" class="service-price-badge service-price-badge--link">
+        <span class="service-price-badge-amount">Tarifs</span>
+        <span class="service-price-badge-note">Voir ci-dessous ↓</span>
+      </a>
+    {% endif %}
+
     <div class="container service-header-grid">
       <div class="service-header-text">
         <a href="/#services" class="back-link back-link-light">
@@ -33,6 +51,27 @@ layout: layouts/base.njk
     <div class="prose">
       {{ content | safe }}
     </div>
+
+    {# Price table at bottom (multiple prices) #}
+    {% if prices %}
+      <section class="service-tarifs" id="tarifs">
+        <h2 class="service-tarifs-title">
+          <span class="material-symbols-outlined" style="font-size:1.5rem;vertical-align:middle;">payments</span>
+          Nos tarifs
+        </h2>
+        <ul class="service-tarifs-list">
+          {% for item in prices %}
+            <li class="service-tarifs-item">
+              <span class="service-tarifs-label">{{ item.label }}</span>
+              <span class="service-tarifs-amount">{{ item.amount }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+        {% if price_note %}
+          <p class="service-tarifs-note">{{ price_note }}</p>
+        {% endif %}
+      </section>
+    {% endif %}
 
     <div class="detail-footer">
       <div class="detail-cta">

@@ -13,7 +13,8 @@
     "phone": "076 507 03 60",
     "email": "hello@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
-    "access": "Parking gratuit\nBus 101, Vauseyon"
+    "access": "Parking gratuit\nBus 101, Vauseyon",
+    "og_image": "/assets/img/services/hero/img1.webp"
   },
   "nav": {
     "links": [
@@ -31,8 +32,16 @@
             "url": "/services/checkup-360/"
           },
           {
+            "label": "Test de VO₂max",
+            "url": "/services/vo2max/"
+          },
+          {
             "label": "Coaching & préparation physique",
             "url": "/services/coaching/"
+          },
+          {
+            "label": "Profilage",
+            "url": "/services/profilage/"
           },
           {
             "label": "Fitness & Sauna",
@@ -43,12 +52,16 @@
             "url": "/services/red-light-therapy/"
           },
           {
-            "label": "Neurotracker",
-            "url": "/services/neurotracker/"
+            "label": "Nutrition",
+            "url": "/services/nutrition/"
           },
           {
             "label": "Entreprises & institutions",
             "url": "/services/entreprises/"
+          },
+          {
+            "label": "Neurotracker",
+            "url": "/services/neurotracker/"
           }
         ]
       },
@@ -109,7 +122,7 @@
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
     "quote": "Talent wins games, but teamwork and intelligence win championships",
     "quote_author": "Michael Jordan",
-    "image": "/assets/img/lieu/about/fitness_1.jpg"
+    "image": "/assets/img/lieu/about/fitness_1.webp"
   },
   "sportmed": {
     "title": "Médecine du sport et physiothérapie",
@@ -124,12 +137,20 @@
         "id": "01",
         "title": "Check-Up 360",
         "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/services/services/items/0/checkup360_1.jpg",
+        "image": "/assets/img/services/services/items/0/checkup360_1.webp",
         "url": "/services/checkup-360/",
         "coming_soon": false
       },
       {
         "id": "02",
+        "title": "Test de VO₂max",
+        "description": "Évaluez votre endurance et définissez vos zones d'entraînement.",
+        "image": "/assets/img/services/services/items/7/vo2max_course.webp",
+        "url": "/services/vo2max/",
+        "coming_soon": false
+      },
+      {
+        "id": "03",
         "title": "Coaching & préparation physique",
         "description": "Accompagnement sur mesure en mouvement et préparation physique.",
         "image": "/assets/img/services/services/items/1/coaching_1.webp",
@@ -137,51 +158,43 @@
         "coming_soon": false
       },
       {
-        "id": "03",
-        "title": "Fitness",
+        "id": "04",
+        "title": "Profilage",
+        "description": "Mieux se comprendre pour mieux performer grâce à l'analyse comportementale.",
+        "image": "/assets/img/services/services/items/6/profilage_1.webp",
+        "url": "/services/profilage/",
+        "coming_soon": false
+      },
+      {
+        "id": "05",
+        "title": "Fitness & Sauna",
         "description": "Abonnements flexibles pour un entraînement guidé dans un espace dédié.",
         "image": "/assets/img/services/services/items/2/fitness_1.webp",
         "url": "/services/fitness/",
         "coming_soon": false
       },
       {
-        "id": "04",
+        "id": "06",
         "title": "Red Light Therapy",
         "description": "Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.",
-        "image": "/assets/img/services/services/items/3/redlight_1.jpg",
+        "image": "/assets/img/services/services/items/3/redlight_1.webp",
         "url": "/services/red-light-therapy/",
         "coming_soon": false
       },
       {
-        "id": "05",
-        "title": "Entreprises & Institutions",
-        "description": "Programmes santé et performance adaptés à votre organisation.",
-        "image": "/assets/img/services/services/items/5/entreprise_1.webp",
-        "url": "/services/entreprises/",
-        "coming_soon": false
-      },
-      {
-        "id": "06",
-        "title": "Profilage",
-        "description": "Mieux se comprendre pour mieux performer",
-        "image": "/assets/img/services/services/items/6/profilage_1.jpg",
-        "url": "/services/profilage/",
-        "coming_soon": false
-      },
-      {
         "id": "07",
-        "title": "VO2max",
-        "description": "Évaluer votre endurance et définir vos zones d’entraînement.",
-        "image": "/assets/img/services/services/items/7/vo2max_course.png",
-        "url": "/services/vo2max",
+        "title": "Nutrition",
+        "description": "Optimisez votre énergie et votre récupération grâce à une stratégie nutritionnelle personnalisée.",
+        "image": "/assets/img/services/services/items/8/nutrition_1.webp",
+        "url": "/services/nutrition/",
         "coming_soon": false
       },
       {
         "id": "08",
-        "title": "Nutrition",
-        "description": "Nourrir, équilibrer, performer.\n",
-        "image": "/assets/img/services/services/items/8/nutrition_1.jpg",
-        "url": "/services/nutrition",
+        "title": "Entreprises & Institutions",
+        "description": "Programmes santé et performance adaptés à votre organisation.",
+        "image": "/assets/img/services/services/items/5/entreprise_1.webp",
+        "url": "/services/entreprises/",
         "coming_soon": false
       },
       {
@@ -302,6 +315,12 @@
     "title": "L'équipe <span class=\"accent\">evo360</span>",
     "description": "Des passionnés du mouvement et de la performance, unis par une mission commune : votre bien-être.",
     "members": [
+      {
+        "name": "Franco Pisino",
+        "role": "Directeur",
+        "image": "/assets/img/team/team/members/2/franco_pisino.webp",
+        "description": "Fondateur d'evo360, Franco porte la vision d'un accompagnement global alliant performance, bien-être et innovation au service de chaque individu."
+      },
       {
         "name": "Orlane Gaudenzi",
         "role": "Physiologiste du sport",
