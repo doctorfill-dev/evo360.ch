@@ -3,17 +3,17 @@
   <div class="container promo-inner">
     {% if home.promo.link %}
       <a href="{{ home.promo.link }}" class="promo-text">
-        <span class="material-symbols-outlined promo-icon">campaign</span>
+        <svg class="icon promo-icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-campaign"></use></svg>
         {{ home.promo.text }}
       </a>
     {% else %}
       <span class="promo-text">
-        <span class="material-symbols-outlined promo-icon">campaign</span>
+        <svg class="icon promo-icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-campaign"></use></svg>
         {{ home.promo.text }}
       </span>
     {% endif %}
     <button class="promo-close" id="promo-close" aria-label="Fermer">
-      <span class="material-symbols-outlined">close</span>
+      <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-close"></use></svg>
     </button>
   </div>
 </div>

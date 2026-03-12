@@ -22,12 +22,12 @@
               <span class="team-role">{{ member.role }}</span>
               <p class="team-tagline">{{ member.tagline }}</p>
               <span class="team-diploma">
-                <span class="material-symbols-outlined" aria-hidden="true">school</span>
+                <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-school"></use></svg>
                 {{ member.diploma }}
               </span>
               <button class="team-flip-btn" aria-label="En savoir plus sur {{ member.name }}">
                 En savoir plus
-                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_forward"></use></svg>
               </button>
             </div>
           </div>
@@ -40,7 +40,7 @@
               <p class="team-bio">{{ member.bio }}</p>
             </div>
             <button class="team-flip-btn team-flip-btn--back" aria-label="Retourner la carte">
-              <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+              <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_back"></use></svg>
               Retour
             </button>
           </div>
@@ -50,7 +50,7 @@
 
     {% if home.team.sportmed_note %}
     <div class="team-sportmed-note">
-      <span class="material-symbols-outlined" aria-hidden="true">local_hospital</span>
+      <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-local_hospital"></use></svg>
       <p>{{ home.team.sportmed_note }} <a href="{{ home.team.sportmed_link }}" target="_blank" rel="noopener">Voir l'équipe SportMed360 →</a></p>
     </div>
     {% endif %}

@@ -24,16 +24,16 @@ layout: layouts/base.njk
     <div class="container service-header-grid">
       <div class="service-header-text">
         <a href="/#services" class="back-link back-link-light">
-          <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">arrow_back</span>
+          <svg class="icon" style="width:1rem;height:1rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_back"></use></svg>
           Retour aux services
         </a>
         <div class="service-icon-wrap">
-          <span class="material-symbols-outlined service-mat-icon">{{ icon }}</span>
+          <svg class="icon service-mat-icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-{{ icon }}"></use></svg>
         </div>
         <h1>{{ title }}</h1>
         {% if coming_soon %}
         <div class="coming-soon-badge">
-          <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">schedule</span>
+          <svg class="icon" style="width:1rem;height:1rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-schedule"></use></svg>
           Offre à venir
         </div>
         {% endif %}
@@ -56,7 +56,7 @@ layout: layouts/base.njk
     {% if prices %}
       <section class="service-tarifs" id="tarifs">
         <h2 class="service-tarifs-title">
-          <span class="material-symbols-outlined" style="font-size:1.5rem;vertical-align:middle;">payments</span>
+          <svg class="icon" style="width:1.5rem;height:1.5rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-payments"></use></svg>
           Nos tarifs
         </h2>
         <ul class="service-tarifs-list">
@@ -89,7 +89,7 @@ layout: layouts/base.njk
           {% if currentIndex > 0 %}
             <a href="{{ allServices[currentIndex - 1].url }}" class="service-nav-link service-nav-prev">
               <span class="nav-direction">
-                <span class="material-symbols-outlined" style="font-size:.875rem;vertical-align:middle;">arrow_back</span>
+                <svg class="icon" style="width:.875rem;height:.875rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_back"></use></svg>
                 Précédent
               </span>
               <span class="nav-service-title">{{ allServices[currentIndex - 1].data.title }}</span>
@@ -102,7 +102,7 @@ layout: layouts/base.njk
             <a href="{{ allServices[currentIndex + 1].url }}" class="service-nav-link service-nav-next">
               <span class="nav-direction">
                 Suivant
-                <span class="material-symbols-outlined" style="font-size:.875rem;vertical-align:middle;">arrow_forward</span>
+                <svg class="icon" style="width:.875rem;height:.875rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_forward"></use></svg>
               </span>
               <span class="nav-service-title">{{ allServices[currentIndex + 1].data.title }}</span>
             </a>

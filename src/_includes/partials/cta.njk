@@ -12,7 +12,7 @@
         <div class="cta-actions">
           <a href="#" class="btn btn-primary" data-open-modal="contact">{{ home.cta.btn_label }}</a>
           <a href="tel:{{ home.cta.phone | replace(' ', '') }}" class="btn btn-dark">
-            <span class="material-symbols-outlined" style="font-size:1.125rem;">phone</span>
+            <svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-phone"></use></svg>
             {{ home.cta.phone }}
           </a>
         </div>
