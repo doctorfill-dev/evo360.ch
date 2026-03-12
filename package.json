@@ -8,7 +8,8 @@
     "dev:admin": "vite",
     "build": "eleventy && vite build",
     "build:site": "eleventy",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "resize": "node scripts/optimize-images.mjs"
   },
   "repository": {
     "type": "git",

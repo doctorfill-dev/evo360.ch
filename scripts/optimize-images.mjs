@@ -1,90 +1,100 @@
 #!/usr/bin/env node
 /**
  * optimize-images.mjs
- * Converts large JPG/PNG images to optimized WebP and resizes them
- * for web use (max 1600px wide, quality 80).
+ * Generates responsive image variants (@400w, @800w) from existing WebP images.
+ * Skips files that already exist. Does NOT delete originals.
  */
 import sharp from "sharp";
-import { readdir, stat, unlink } from "node:fs/promises";
+import { readdir, stat } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { join, extname, basename, dirname } from "node:path";
 
 const IMG_DIR = "src/assets/img";
-const MAX_WIDTH = 1600;
 const QUALITY = 80;
-const EXTENSIONS = new Set([".jpg", ".jpeg", ".png"]);
+const VARIANTS = [
+  { suffix: "@400w", width: 400 },
+  { suffix: "@800w", width: 800 },
+];
 
-async function findImages(dir) {
+async function findWebpImages(dir) {
   const files = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const fullPath = join(dir, entry.name);
     if (entry.name === ".DS_Store") continue;
     if (entry.isDirectory()) {
-      files.push(...(await findImages(fullPath)));
-    } else if (EXTENSIONS.has(extname(entry.name).toLowerCase())) {
+      files.push(...(await findWebpImages(fullPath)));
+    } else if (
+      extname(entry.name).toLowerCase() === ".webp" &&
+      !entry.name.includes("@")
+    ) {
       files.push(fullPath);
     }
   }
   return files;
 }
 
-async function optimizeImage(filePath) {
-  const ext = extname(filePath).toLowerCase();
+async function generateVariants(filePath) {
+  const ext = extname(filePath);
   const name = basename(filePath, ext);
   const dir = dirname(filePath);
-  const outPath = join(dir, `${name}.webp`);
 
-  const info = await stat(filePath);
-  const sizeMB = (info.size / 1024 / 1024).toFixed(2);
+  const metadata = await sharp(filePath).metadata();
+  let generated = 0;
+  let skipped = 0;
 
-  try {
-    const image = sharp(filePath);
-    const metadata = await image.metadata();
+  for (const variant of VARIANTS) {
+    const outPath = join(dir, `${name}${variant.suffix}.webp`);
 
-    let pipeline = image;
-    if (metadata.width > MAX_WIDTH) {
-      pipeline = pipeline.resize(MAX_WIDTH, null, { withoutEnlargement: true });
+    if (existsSync(outPath)) {
+      console.log(`  SKIP  ${outPath} (already exists)`);
+      skipped++;
+      continue;
     }
 
-    await pipeline.webp({ quality: QUALITY }).toFile(outPath);
+    // Don't upscale: skip variant if source is narrower
+    if (metadata.width && metadata.width <= variant.width) {
+      console.log(`  SKIP  ${outPath} (source ${metadata.width}px < ${variant.width}px)`);
+      skipped++;
+      continue;
+    }
+
+    await sharp(filePath)
+      .resize(variant.width, null, { withoutEnlargement: true })
+      .webp({ quality: QUALITY })
+      .toFile(outPath);
 
     const outInfo = await stat(outPath);
-    const outSizeMB = (outInfo.size / 1024 / 1024).toFixed(2);
-    const reduction = (((info.size - outInfo.size) / info.size) * 100).toFixed(0);
-
-    console.log(
-      `  ${filePath} (${sizeMB}MB) → ${outPath} (${outSizeMB}MB) [-${reduction}%]`
-    );
-
-    // Delete original after successful conversion
-    await unlink(filePath);
-    console.log(`  ✓ Deleted original ${filePath}`);
-
-    return { original: filePath, output: outPath, saved: info.size - outInfo.size };
-  } catch (err) {
-    console.error(`  ✗ Failed: ${filePath} — ${err.message}`);
-    return null;
+    const sizeKB = (outInfo.size / 1024).toFixed(0);
+    console.log(`  OK    ${outPath} (${sizeKB} KB)`);
+    generated++;
   }
+
+  return { generated, skipped };
 }
 
 async function main() {
-  console.log("Scanning for images to optimize...\n");
-  const images = await findImages(IMG_DIR);
+  console.log("Scanning for WebP images to generate responsive variants...\n");
+  const images = await findWebpImages(IMG_DIR);
 
   if (images.length === 0) {
-    console.log("No JPG/PNG images found. All good!");
+    console.log("No WebP source images found.");
     return;
   }
 
-  console.log(`Found ${images.length} image(s) to optimize:\n`);
+  console.log(`Found ${images.length} source image(s).\n`);
 
-  let totalSaved = 0;
+  let totalGenerated = 0;
+  let totalSkipped = 0;
+
   for (const img of images) {
-    const result = await optimizeImage(img);
-    if (result) totalSaved += result.saved;
+    console.log(`Processing: ${img}`);
+    const result = await generateVariants(img);
+    totalGenerated += result.generated;
+    totalSkipped += result.skipped;
   }
 
   console.log(
-    `\nDone! Total saved: ${(totalSaved / 1024 / 1024).toFixed(1)} MB`
+    `\nDone! Generated: ${totalGenerated} variants, Skipped: ${totalSkipped}`
   );
 }
 
