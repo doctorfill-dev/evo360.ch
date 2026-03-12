@@ -37,6 +37,10 @@
 
   <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
+  {# ── Font preloads (eliminate CLS from font swap) ── #}
+  <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+
   {# ── Critical CSS (inlined for FCP performance) ── #}
   <style>
     /* 0. FONT-FACE — Self-hosted (Inter + Outfit) */
@@ -46,22 +50,22 @@
     @font-face{font-family:'Inter';src:url('/assets/fonts/inter-latin.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
     @font-face{font-family:'Inter';src:url('/assets/fonts/inter-latin.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
     @font-face{font-family:'Inter';src:url('/assets/fonts/inter-latin.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin-ext.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin-ext.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin-ext.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin-ext.woff2') format('woff2');font-weight:700;font-style:normal;font-display:optional;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin-ext.woff2') format('woff2');font-weight:800;font-style:normal;font-display:optional;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin-ext.woff2') format('woff2');font-weight:900;font-style:normal;font-display:optional;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin.woff2') format('woff2');font-weight:700;font-style:normal;font-display:optional;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin.woff2') format('woff2');font-weight:800;font-style:normal;font-display:optional;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Outfit';src:url('/assets/fonts/outfit-latin.woff2') format('woff2');font-weight:900;font-style:normal;font-display:optional;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
     /* 1. VARIABLES */
-    :root{--indigo:#4622CC;--indigo-dark:#2a157c;--indigo-soft:#6344d4;--citron:#D7F14E;--citron-dark:#b8cc42;--dark:#080613;--dark-surface:#12101e;--cream:#FAF9F6;--white:#ffffff;--gray-100:#f1f1f4;--gray-200:#e2e2e8;--gray-400:#9494a3;--gray-600:#525263;--gray-900:#1a1a1f;--font-body:'Inter',sans-serif;--font-heading:'Outfit',sans-serif;--shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);--shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 10px 10px -5px rgba(0,0,0,.04);--shadow-2xl:0 25px 50px -12px rgba(0,0,0,.25);--shadow-3d:0 20px 40px -10px rgba(70,34,204,.3);--radius-sm:0.5rem;--radius-md:1rem;--radius-lg:1.5rem;--radius-xl:2rem;--radius-full:9999px;--transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
+    :root{--indigo:#4622CC;--indigo-dark:#2a157c;--indigo-soft:#6344d4;--citron:#D7F14E;--citron-dark:#b8cc42;--dark:#080613;--dark-surface:#12101e;--cream:#FAF9F6;--white:#ffffff;--gray-100:#f1f1f4;--gray-200:#e2e2e8;--gray-400:#9494a3;--gray-600:#525263;--gray-900:#1a1a1f;--font-body:'Inter',sans-serif;--font-heading:'Outfit',sans-serif;--shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);--shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 10px 10px -5px rgba(0,0,0,.04);--shadow-2xl:0 25px 50px -12px rgba(0,0,0,.25);--shadow-3d:0 20px 40px -10px rgba(70,34,204,.3);--radius-sm:0.5rem;--radius-md:1rem;--radius-lg:1.5rem;--radius-xl:2rem;--radius-full:9999px;--transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1),background-color .3s cubic-bezier(.4,0,.2,1),color .3s cubic-bezier(.4,0,.2,1),border-color .3s cubic-bezier(.4,0,.2,1)}
 
     /* 2. RESET & BASE */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:var(--font-body);background-color:var(--cream);color:var(--gray-900);line-height:1.6;-webkit-font-smoothing:antialiased}
     h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);line-height:1.1;font-weight:800}
-    a{text-decoration:none;color:inherit;transition:var(--transition)}
+    a{text-decoration:none;color:inherit;transition:color .3s cubic-bezier(.4,0,.2,1)}
     ul{list-style:none}
     img{display:block;max-width:100%;height:auto}
     .icon{width:24px;height:24px;fill:currentColor;flex-shrink:0}
@@ -92,7 +96,7 @@
     .stat-label{font-size:.875rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em}
     .hero-visual{position:relative;height:500px}
     .image-stack{position:relative;width:100%;height:100%}
-    .img-wrapper{position:absolute;overflow:hidden;box-shadow:var(--shadow-2xl);transition:var(--transition)}
+    .img-wrapper{position:absolute;overflow:hidden;box-shadow:var(--shadow-2xl);transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1)}
     .img-wrapper img{width:100%;height:100%;object-fit:cover}
     .img-wrapper:hover{z-index:10 !important;transform:scale(1.05) translateY(-10px)}
     .img-1{top:0;right:0;width:80%;height:70%;border-radius:var(--radius-lg);border:8px solid var(--white);z-index:1}

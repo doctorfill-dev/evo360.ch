@@ -10,6 +10,28 @@ export default function (eleventyConfig) {
     key: "md",
   });
 
+  // --- CSS Minification (post-build) ---
+  // Minifie style.css dans _site/assets/css/ après la copie passthrough
+  eleventyConfig.on("eleventy.after", async () => {
+    const fs = await import("fs");
+    const path = await import("path");
+    const cssPath = path.default.join("_site", "assets", "css", "style.css");
+    if (fs.default.existsSync(cssPath)) {
+      let css = fs.default.readFileSync(cssPath, "utf8");
+      // Strip comments (except /*! ... */ licence)
+      css = css.replace(/\/\*(?!\!)[\s\S]*?\*\//g, "");
+      // Collapse whitespace
+      css = css.replace(/\s+/g, " ");
+      // Remove spaces around delimiters
+      css = css.replace(/\s*([{}:;,>~+])\s*/g, "$1");
+      // Remove trailing semicolons before closing brace
+      css = css.replace(/;}/g, "}");
+      // Trim
+      css = css.trim();
+      fs.default.writeFileSync(cssPath, css);
+    }
+  });
+
   // --- Passthrough Copy ---
   // Ces dossiers sont copiés tels quels dans _site/, sans transformation.
   // Utile pour les CSS, images, fonts, JS client...
