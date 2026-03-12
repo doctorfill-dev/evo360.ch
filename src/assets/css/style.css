@@ -728,6 +728,94 @@ section {
 
 
 /* -------------------------------------------------------
+   10b. INSTAGRAM FEED
+------------------------------------------------------- */
+.instagram {
+  background: var(--white);
+  padding: 6rem 0;
+}
+.instagram-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.instagram-header p {
+  color: var(--gray-600);
+  font-size: 1.0625rem;
+  margin-top: .75rem;
+}
+.instagram-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: .75rem;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--indigo);
+  text-decoration: none;
+  transition: color .2s;
+}
+.instagram-handle:hover { color: var(--indigo-dark); }
+.instagram-icon { flex-shrink: 0; }
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: .5rem;
+}
+.instagram-post {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  display: block;
+}
+.instagram-post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.instagram-post:hover img { transform: scale(1.08); }
+
+.instagram-post-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(70, 34, 204, .0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .3s;
+}
+.instagram-post-overlay .material-symbols-outlined {
+  color: var(--white);
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity .3s, transform .3s;
+}
+.instagram-post:hover .instagram-post-overlay {
+  background: rgba(70, 34, 204, .35);
+}
+.instagram-post:hover .instagram-post-overlay .material-symbols-outlined {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.instagram-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+  .instagram { padding: 4rem 0; }
+}
+@media (max-width: 480px) {
+  .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* -------------------------------------------------------
    11. CTA
    Section cream, carte citron avec shapes géométriques
 ------------------------------------------------------- */
@@ -1116,6 +1204,10 @@ section {
   justify-content: center;
 }
 
+.pricing-all-link {
+  text-align: center;
+  margin-top: 2.5rem;
+}
 
 /* -------------------------------------------------------
    16. BLOG PREVIEW
@@ -1308,6 +1400,9 @@ section {
   line-height: 1.8;
   margin-bottom: 1.25rem;
   font-size: 1.0625rem;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 .prose ul, .prose ol {
   margin: 1rem 0 1.5rem 1.5rem;
@@ -1731,32 +1826,51 @@ section {
   margin-top: 1rem;
 }
 
+/* Team grid */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 3rem;
-  max-width: 800px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.team-card {
-  background: var(--white);
+/* Flip card container */
+.team-flip-card {
+  position: relative;
+  aspect-ratio: 3/5;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+}
+.team-flip-card.is-flipped .team-flip-front { transform: rotateY(-180deg); }
+.team-flip-card.is-flipped .team-flip-back  { transform: rotateY(0deg); }
+
+/* Shared face styles */
+.team-flip-front,
+.team-flip-back {
+  position: absolute;
+  inset: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform .55s cubic-bezier(.4, .0, .2, 1);
   border: 1px solid var(--gray-100);
-  transition: var(--transition);
-  text-align: center;
-}
-.team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
 }
 
+/* — FRONT — */
+.team-flip-front {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 .team-photo {
-  width: 100%;
-  aspect-ratio: 3/4;
+  flex: 1 1 0;
+  min-height: 0;
   overflow: hidden;
   background: var(--gray-100);
 }
@@ -1764,33 +1878,109 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   display: block;
 }
-
 .team-info {
-  padding: 1rem 1.25rem 1.25rem;
+  padding: 1rem 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
 }
 .team-name {
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--gray-900);
-  margin-bottom: .15rem;
+  margin: 0;
   font-family: var(--font-heading);
 }
 .team-role {
   display: inline-block;
-  font-size: .75rem;
+  font-size: .7rem;
   font-weight: 700;
   color: var(--indigo);
   text-transform: uppercase;
   letter-spacing: .05em;
+}
+.team-tagline {
+  font-size: .82rem;
+  color: var(--gray-600);
+  line-height: 1.45;
+  margin: .25rem 0 0;
+}
+.team-diploma {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .72rem;
+  color: var(--gray-500);
+  margin-top: .35rem;
+  line-height: 1.3;
+}
+.team-diploma .material-symbols-outlined {
+  font-size: .85rem;
+  color: var(--indigo);
+}
+
+/* Flip button (front & back) */
+.team-flip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  margin-top: .6rem;
+  padding: .35rem .8rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--indigo);
+  background: var(--indigo-50, #f0ecfc);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.team-flip-btn .material-symbols-outlined { font-size: .9rem; }
+.team-flip-btn:hover {
+  background: var(--indigo);
+  color: var(--white);
+}
+
+/* — BACK — */
+.team-flip-back {
+  background: var(--indigo);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.team-back-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .35rem;
+}
+.team-back-content .team-name { color: var(--white); }
+.team-back-content .team-role {
+  color: var(--citron);
   margin-bottom: .5rem;
 }
 .team-bio {
   font-size: .85rem;
-  color: var(--gray-600);
-  line-height: 1.5;
+  color: rgba(255,255,255,.85);
+  line-height: 1.6;
   margin: 0;
+}
+.team-flip-btn--back {
+  margin-top: 1.25rem;
+  background: rgba(255,255,255,.15);
+  color: var(--white);
+}
+.team-flip-btn--back:hover {
+  background: var(--white);
+  color: var(--indigo);
 }
 
 .team-sportmed-note {
@@ -2036,6 +2226,149 @@ section {
 
 
 /* -------------------------------------------------------
+   31b. PRICING PAGE (all tariffs)
+------------------------------------------------------- */
+.pricing-page {
+  padding: 6rem 0 4rem;
+  background: var(--cream);
+}
+.pricing-page-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+.pricing-page-header p {
+  color: var(--gray-600);
+  font-size: 1.0625rem;
+  margin-top: .75rem;
+}
+
+.tarif-block {
+  margin-bottom: 3rem;
+}
+.tarif-block-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--indigo);
+}
+.tarif-block-icon {
+  font-size: 2rem;
+  color: var(--indigo);
+  margin-top: .15rem;
+}
+.tarif-block-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin: 0;
+}
+.tarif-block-header p {
+  color: var(--gray-600);
+  font-size: .95rem;
+  margin-top: .25rem;
+}
+
+/* Service cards grid */
+.tarif-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.tarif-service-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--gray-100);
+  transition: var(--transition);
+}
+.tarif-service-card:hover {
+  box-shadow: var(--shadow-md);
+}
+.tarif-service-head {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.tarif-service-head .material-symbols-outlined {
+  font-size: 1.25rem;
+  color: var(--indigo);
+}
+.tarif-service-head h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+/* Tariff list */
+.tarif-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tarif-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: .9rem;
+  color: var(--gray-700);
+}
+.tarif-list li:last-child { border-bottom: none; }
+.tarif-list li strong {
+  font-weight: 700;
+  color: var(--gray-900);
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.tarif-separator {
+  height: 1px;
+  background: var(--gray-200);
+  margin: .75rem 0;
+}
+.tarif-sublabel {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--indigo);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin: 0 0 .25rem;
+}
+.tarif-note {
+  font-size: .82rem;
+  color: var(--gray-500);
+  margin-top: .5rem;
+  font-style: italic;
+}
+
+.tarif-cta {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-100);
+}
+.tarif-cta p {
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .pricing-page { padding: 4rem 0 2rem; }
+  .tarif-services-grid { grid-template-columns: 1fr; }
+  .tarif-block-header { flex-direction: column; gap: .5rem; }
+}
+
+/* -------------------------------------------------------
    32. RESPONSIVE
 ------------------------------------------------------- */
 @media (max-width: 992px) {
@@ -2077,7 +2410,8 @@ section {
   .post-cover img { margin-top: 0; border-radius: var(--radius-md); }
 
   /* Team */
-  .team-grid          { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-flip-card { aspect-ratio: 3/5; }
 
   /* Service nav */
   .service-nav-grid   { grid-template-columns: 1fr; }
@@ -2110,8 +2444,9 @@ section {
   .blog-grid          { grid-template-columns: 1fr; }
 
   /* Team */
-  .team-grid          { grid-template-columns: 1fr; }
-  .team              { padding: 4rem 0; }
+  .team-grid { grid-template-columns: 1fr; }
+  .team-flip-card { aspect-ratio: 2/3; }
+  .team { padding: 4rem 0; }
 
   /* Detail pages */
   .prose-container     { padding: 2rem 1rem 4rem; }

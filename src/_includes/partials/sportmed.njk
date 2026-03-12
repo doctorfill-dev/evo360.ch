@@ -17,10 +17,15 @@
           Note : evo360 et SportMed360 sont deux entités distinctes. Les prestations médicales  sont assurées exclusivement par l'équipe du cabinet médical.
         </div>
 
-        <div style="margin-top: 2rem;">
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="{{ home.sportmed.link_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             {{ home.sportmed.link_text }} <span aria-hidden="true">→</span>
           </a>
+          {% if home.sportmed.zenith_url %}
+          <a href="{{ home.sportmed.zenith_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            {{ home.sportmed.zenith_text }} <span aria-hidden="true">→</span>
+          </a>
+          {% endif %}
         </div>
       </div>
 

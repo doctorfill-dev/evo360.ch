@@ -19,8 +19,8 @@
   "nav": {
     "links": [
       {
-        "label": "Notre approche",
-        "url": "/#about",
+        "label": "À propos",
+        "url": "/about/",
         "children": []
       },
       {
@@ -67,7 +67,7 @@
       },
       {
         "label": "Tarifs",
-        "url": "/#pricing",
+        "url": "/tarifs/",
         "children": []
       },
       {
@@ -92,7 +92,7 @@
     "description": "Plus d'énergie. Plus d'équilibre. Un accompagnement personnalisé avec des expert·e·s en physiologie du sport et préparation physique à Neuchâtel.",
     "cta_primary": {
       "label": "Découvrir evo360",
-      "url": "/#about"
+      "url": "/about/"
     },
     "cta_secondary": {
       "label": "Prendre rendez-vous",
@@ -117,7 +117,7 @@
     ]
   },
   "about": {
-    "title": "Un lieu pour prendre soin de soi, <span class=\"accent\">vraiment</span>.",
+    "title": "Un lieu pour se dépasser, <span class=\"accent\">vraiment</span>.",
     "lead": "Nous combinons coaching sportif, technologies de pointe et expertise en physiologie pour construire un programme qui s'adapte à chaque personne.",
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
     "quote": "Talent wins games, but teamwork and intelligence win championships",
@@ -129,6 +129,8 @@
     "description": "Nous partageons nos locaux avec SportMed360, un cabinet médical spécialisé dans la médecine du sport, la traumatologie et la physiothérapie.",
     "link_text": "Site web de SportMed360",
     "link_url": "https://sportmed360.ch",
+    "zenith_text": "Physiothérapie — Zenith Physio",
+    "zenith_url": "https://zenithphysio.ch",
     "logo": "/assets/img/sportmed/logo_sportmed.svg"
   },
   "services": {
@@ -192,7 +194,7 @@
       {
         "id": "08",
         "title": "Entreprises & Institutions",
-        "description": "Programmes santé et performance adaptés à votre organisation.",
+        "description": "Programmes bien-être et performance adaptés à votre organisation.",
         "image": "/assets/img/services/services/items/5/entreprise_1.webp",
         "url": "/services/entreprises/",
         "coming_soon": false
@@ -289,7 +291,7 @@
         "job": "Ultra trailer",
         "initial": "M",
         "color": "#D7F14E",
-        "text": "On sent une vraie expertise du sport de performance, tout en intégrant la prévention des blessures et la santé sur le long terme. Je recommande vivement Evo360 à toute personne cherchant un suivi sérieux.",
+        "text": "On sent une vraie expertise du sport de performance, tout en intégrant la préparation du corps et le bien-être sur le long terme. Je recommande vivement Evo360 à toute personne cherchant un suivi sérieux.",
         "rotate": 1,
         "source": "Google Reviews"
       },
@@ -317,21 +319,27 @@
     "members": [
       {
         "name": "Franco Pisino",
-        "role": "Directeur",
+        "role": "Préparateur physique & entraîneur Swiss Olympic",
         "image": "/assets/img/team/team/members/2/franco_pisino.webp",
-        "description": "Fondateur d'evo360, Franco porte la vision d'un accompagnement global alliant performance, bien-être et innovation au service de chaque individu."
+        "tagline": "Plus de 25 ans au service de la performance sportive de haut niveau.",
+        "diploma": "Swiss Olympic Coach Award 2019",
+        "bio": "Ancien athlète international de karaté (1987–1997), Franco est aujourd'hui l'un des préparateurs physiques les plus reconnus de Suisse. Entraîneur chef de l'équipe nationale suisse de karaté depuis 2000, il a également accompagné l'Union Neuchâtel rugby pendant 12 saisons ainsi que le Neuchâtel-Xamax FCS. Co-fondateur de PISINOATHLETICS."
       },
       {
         "name": "Orlane Gaudenzi",
         "role": "Physiologiste du sport",
         "image": "/assets/img/team/team/members/0/orlane_gaudenzi.webp",
-        "description": "Spécialisée dans les bilans physiologiques et la prévention des blessures, Orlane met son expertise au service de votre performance et de votre santé."
+        "tagline": "Évaluation et optimisation de la performance, avec rigueur et bienveillance.",
+        "diploma": "Master en sciences du mouvement et du sport — Entraînement & Performance",
+        "bio": "Spécialiste de la physiologie du sport, Orlane accompagne aussi bien les athlètes de haut niveau que les personnes en quête d'un mode de vie plus actif. Actuellement en formation CAS Préparation mentale (UNIL-EPFL, 2026)."
       },
       {
         "name": "Maïwenn Crausaz",
         "role": "Coach sportive",
         "image": "/assets/img/team/team/members/1/maiwenn_crausaz.webp",
-        "description": "Passionnée par le mouvement, Maïwenn conçoit des programmes de préparation physique sur mesure, adaptés aussi bien aux débutants qu'aux athlètes confirmés."
+        "tagline": "Énergie, bienveillance et programmes adaptés à chaque profil.",
+        "diploma": "Athlète IFBB Pro",
+        "bio": "Passionnée de mouvement et de dépassement de soi, Maïwenn conçoit des programmes sur mesure — que vous débutiez ou cherchiez à repousser vos limites. Actuellement en formation de préparatrice mentale (2026)."
       }
     ],
     "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes) est celle de notre partenaire SportMed360.",
@@ -344,12 +352,48 @@
     "btn_url": "/#contact",
     "phone": "076 507 03 60"
   },
+  "instagram": {
+    "handle": "@evo360_swiss",
+    "url": "https://www.instagram.com/evo360_swiss",
+    "posts": [
+      {
+        "image": "/assets/img/instagram/post-1.webp",
+        "url": "https://www.instagram.com/evo360_swiss",
+        "alt": "Entraînement au centre evo360 Neuchâtel"
+      },
+      {
+        "image": "/assets/img/instagram/post-2.webp",
+        "url": "https://www.instagram.com/evo360_swiss",
+        "alt": "Coaching personnalisé chez evo360"
+      },
+      {
+        "image": "/assets/img/instagram/post-3.webp",
+        "url": "https://www.instagram.com/evo360_swiss",
+        "alt": "Machines Technogym chez evo360 Neuchâtel"
+      },
+      {
+        "image": "/assets/img/instagram/post-4.webp",
+        "url": "https://www.instagram.com/evo360_swiss",
+        "alt": "Séance Red Light Therapy evo360"
+      },
+      {
+        "image": "/assets/img/instagram/post-5.webp",
+        "url": "https://www.instagram.com/evo360_swiss",
+        "alt": "Équipe evo360 en action"
+      },
+      {
+        "image": "/assets/img/instagram/post-6.webp",
+        "url": "https://www.instagram.com/evo360_swiss",
+        "alt": "Test VO2max au centre evo360"
+      }
+    ]
+  },
   "contact": {
     "title": "Venez nous <span class=\"accent\">rencontrer</span>",
     "description": "Situé au cœur de Neuchâtel, notre centre vous accueille dans un espace moderne et chaleureux."
   },
   "footer": {
-    "description": "Un accompagnement personnalisé avec des experts en mouvement, préparation physique et santé à Neuchâtel.",
+    "description": "Un accompagnement personnalisé avec des expert·e·s en mouvement, préparation physique et bien-être à Neuchâtel.",
     "social": [
       {
         "label": "Instagram",

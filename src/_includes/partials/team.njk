@@ -1,6 +1,6 @@
 {#
   team.njk — Section équipe evo360.
-  Uniquement le staff non-médical.
+  Carte retournable : face = photo + tagline + diplôme, dos = bio complète.
 #}
 <section class="team" id="team">
   <div class="container">
@@ -11,14 +11,38 @@
 
     <div class="team-grid">
       {% for member in home.team.members %}
-        <div class="team-card">
-          <div class="team-photo">
-            <img src="{{ member.image | toPublicPath }}" alt="{{ member.name }} | {{ member.role }} à Neuchâtel" loading="lazy" width="400" height="533">
+        <div class="team-flip-card" tabindex="0">
+          {# — FRONT — #}
+          <div class="team-flip-front">
+            <div class="team-photo">
+              <img src="{{ member.image | toPublicPath }}" alt="{{ member.name }} | {{ member.role }} à Neuchâtel" loading="lazy" width="400" height="533">
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">{{ member.name }}</h3>
+              <span class="team-role">{{ member.role }}</span>
+              <p class="team-tagline">{{ member.tagline }}</p>
+              <span class="team-diploma">
+                <span class="material-symbols-outlined" aria-hidden="true">school</span>
+                {{ member.diploma }}
+              </span>
+              <button class="team-flip-btn" aria-label="En savoir plus sur {{ member.name }}">
+                En savoir plus
+                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+              </button>
+            </div>
           </div>
-          <div class="team-info">
-            <h3 class="team-name">{{ member.name }}</h3>
-            <span class="team-role">{{ member.role }}</span>
-            <p class="team-bio">{{ member.description }}</p>
+
+          {# — BACK — #}
+          <div class="team-flip-back">
+            <div class="team-back-content">
+              <h3 class="team-name">{{ member.name }}</h3>
+              <span class="team-role">{{ member.role }}</span>
+              <p class="team-bio">{{ member.bio }}</p>
+            </div>
+            <button class="team-flip-btn team-flip-btn--back" aria-label="Retourner la carte">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+              Retour
+            </button>
           </div>
         </div>
       {% endfor %}
@@ -26,7 +50,7 @@
 
     {% if home.team.sportmed_note %}
     <div class="team-sportmed-note">
-      <span class="material-symbols-outlined">local_hospital</span>
+      <span class="material-symbols-outlined" aria-hidden="true">local_hospital</span>
       <p>{{ home.team.sportmed_note }} <a href="{{ home.team.sportmed_link }}" target="_blank" rel="noopener">Voir l'équipe SportMed360 →</a></p>
     </div>
     {% endif %}

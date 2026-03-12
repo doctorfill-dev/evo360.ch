@@ -8,12 +8,6 @@
     <div class="pricing-grid">
       {% for plan in home.pricing.plans %}
         <div class="pricing-card {% if plan.highlight %}highlighted{% endif %}">
-        {#
-          {% if plan.highlight %}
-            <div class="plan-badge">Conseillé</div>
-          {% endif %}
-          #}
-
           <div class="plan-header">
             <h3>{{ plan.name }}</h3>
 
@@ -47,6 +41,13 @@
           </div>
         </div>
       {% endfor %}
+    </div>
+
+    <div class="pricing-all-link">
+      <a href="/tarifs/" class="btn btn-outline">
+        Voir tous nos tarifs
+        <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">arrow_forward</span>
+      </a>
     </div>
   </div>
 </section>

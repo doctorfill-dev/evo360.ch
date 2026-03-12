@@ -9,8 +9,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {%- set metaDesc = summary or description or home.hero.description -%}
-  {%- set metaTitle = title + " | evo360 Neuchâtel" if page.url != "/" else "evo360 | Centre de Santé, Performance et Bien-être à Neuchâtel" -%}
-  {%- set metaDescription = metaDesc if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, prévention des blessures et récupération." -%}
+  {%- set metaTitle = title + " | evo360 Neuchâtel" if page.url != "/" else "evo360 | Centre de Performance et Bien-être à Neuchâtel" -%}
+  {%- set metaDescription = metaDesc if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération." -%}
   <title>{{ metaTitle }}</title>
   <meta name="description" content="{{ metaDescription }}">
 
@@ -54,7 +54,7 @@
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
     "name": "evo360",
-    "description": "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, prévention des blessures et récupération.",
+    "description": "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération.",
     "url": "https://evo360.ch",
     "telephone": "+41765070360",
     "email": "hello@evo360.ch",
@@ -294,6 +294,17 @@
     }
     checkContactHash();
     window.addEventListener('hashchange', checkContactHash);
+
+    // Team flip cards
+    document.querySelectorAll('.team-flip-card').forEach(card => {
+      const flip = () => card.classList.toggle('is-flipped');
+      card.querySelectorAll('.team-flip-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => { e.stopPropagation(); flip(); });
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+      });
+    });
   </script>
 
   <div id="cookie-banner" class="cookie-banner" hidden>
