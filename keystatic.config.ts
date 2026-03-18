@@ -240,8 +240,8 @@ export default config({
               fields.object(
                 {
                   name:    fields.text({ label: 'Nom complet' }),
-                  job:     fields.text({ label: 'Métier / Profession' }),
-                  age:     fields.text({ label: 'Âge (ex: 35 ans)' }),
+                  job:     fields.text({ label: 'Métier / Profession', description: 'Optionnel — laisser vide si non pertinent' }),
+                  age:     fields.text({ label: 'Catégorie / Contexte (ex: F1 Academy)', description: 'Optionnel — laisser vide si non pertinent' }),
                   initial: fields.text({ label: 'Initiale (1 lettre)' }),
                   color:   fields.text({ label: 'Couleur avatar (hex, ex: #4622CC)' }),
                   text:    fields.text({ label: 'Témoignage', multiline: true }),
@@ -266,10 +266,12 @@ export default config({
             description: fields.text({ label: 'Description', multiline: true }),
             members: fields.array(
               fields.object({
-                name:        fields.text({ label: 'Nom complet' }),
-                role:        fields.text({ label: 'Rôle / Poste' }),
-                image:       fields.image({ label: 'Photo', directory: 'src/assets/img/team', publicPath: '/assets/img/team/' }),
-                description: fields.text({ label: 'Description courte', multiline: true }),
+                name:    fields.text({ label: 'Nom complet' }),
+                role:    fields.text({ label: 'Rôle / Poste' }),
+                image:   fields.image({ label: 'Photo', directory: 'src/assets/img/team', publicPath: '/assets/img/team/' }),
+                tagline: fields.text({ label: 'Accroche courte (affichée sur la carte)' }),
+                diploma: fields.text({ label: 'Diplôme / Certification principale' }),
+                bio:     fields.text({ label: 'Biographie (texte long)', multiline: true }),
               }),
               {
                 label: 'Membres de l\'équipe',
@@ -292,6 +294,30 @@ export default config({
             phone:     fields.text({ label: 'Téléphone affiché (bouton secondaire)' }),
           },
           { label: 'Section CTA' }
+        ),
+
+        // ── Section Instagram ────────────────────────────────────────────
+        instagram: fields.object(
+          {
+            handle: fields.text({ label: 'Handle (ex: @evo360_swiss)' }),
+            url:    fields.text({ label: 'URL du profil Instagram' }),
+            posts: fields.array(
+              fields.object({
+                image: fields.image({
+                  label: 'Image du post',
+                  directory: 'src/assets/img/instagram',
+                  publicPath: '/assets/img/instagram/',
+                }),
+                url: fields.text({ label: 'URL du post Instagram' }),
+                alt: fields.text({ label: 'Texte alternatif (accessibilité)' }),
+              }),
+              {
+                label:     'Posts Instagram affichés',
+                itemLabel: (props) => props.fields.alt.value || 'Post',
+              }
+            ),
+          },
+          { label: 'Section Instagram' }
         ),
 
         // ── Section Contact ──────────────────────────────────────────────
@@ -373,6 +399,22 @@ export default config({
         icon:        fields.text({ label: 'Nom d\'icône Material Symbols (ex: search, fitness_center)' }),
         coming_soon: fields.checkbox({ label: 'À venir (pas encore disponible)', defaultValue: false }),
         hide:        fields.checkbox({ label: 'Masquer complètement ce service du site', defaultValue: false }),
+        // ── Tarification ─────────────────────────────────────────────────
+        // Deux formats possibles selon le service :
+        //   • price + price_note  → tarif unique (ex: Check-Up 360)
+        //   • prices[]            → grille tarifaire (ex: Coaching, Fitness)
+        price: fields.text({ label: 'Prix unique (ex: CHF 50.-)', description: 'Utilisez ce champ OU la grille ci-dessous, pas les deux.' }),
+        price_note: fields.text({ label: 'Note tarifaire (ex: Offert avec un abonnement fitness)' }),
+        prices: fields.array(
+          fields.object({
+            label:  fields.text({ label: 'Libellé (ex: Coaching 1 séance)' }),
+            amount: fields.text({ label: 'Montant (ex: CHF 90.-)' }),
+          }),
+          {
+            label:     'Grille tarifaire',
+            itemLabel: (props) => props.fields.label.value || 'Tarif',
+          }
+        ),
         content:     fields.document({
           label: 'Contenu détaillé',
           formatting: true,
