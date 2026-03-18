@@ -138,10 +138,10 @@
     @media(prefers-reduced-motion:reduce){
       .hero-bg-glow{display:none}
     }
-    /* ANTI-FOUC — modal : la règle opacity:0 doit être présente avant le
-       premier paint pour éviter que la transition CSS ne se déclenche au
-       chargement du style.css externe (passage implicite opacity 1→0). */
-    .modal-overlay{opacity:0;pointer-events:none}
+    /* ANTI-FOUC — modal : seul opacity:0 suffit pour éviter le flash.
+       pointer-events est intentionnellement absent ici pour ne pas bloquer
+       les clics une fois le modal ouvert (géré dans style.css). */
+    .modal-overlay{opacity:0}
   </style>
 
   <link rel="stylesheet" href="/assets/css/style.css" media="print" onload="this.media='all'">

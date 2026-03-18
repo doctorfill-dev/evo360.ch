@@ -2806,6 +2806,7 @@ section {
   justify-content: center;
   padding: 1.5rem;
   opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.25s ease;
 }
 .modal-overlay[aria-hidden="true"] {
