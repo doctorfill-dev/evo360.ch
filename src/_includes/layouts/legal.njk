@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | evo360</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://evo360.ch{{ page.url }}">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <style>
+    /* ============================================================
+       evo360 — Legal pages stylesheet
+       Style: minimal, LaTeX-inspired
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    :root {
+      --text:    #111111;
+      --muted:   #3a3a3a;
+      --light:   #777777;
+      --border:  #cccccc;
+      --bg:      #f9f9f7;
+      --link:    #1a1a6e;
+      --max-w:   680px;
+    }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* ── Header ── */
+    .legal-header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: .875rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .legal-header-logo {
+      height: 18px;
+      width: auto;
+      display: block;
+      filter: brightness(0);
+    }
+    .legal-header-back {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: .8125rem;
+      color: var(--link);
+      text-decoration: none;
+      letter-spacing: .01em;
+      white-space: nowrap;
+    }
+    .legal-header-back:hover { text-decoration: underline; }
+    /* ── Main ── */
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3.5rem 1.75rem 6rem;
+      flex: 1;
+      width: 100%;
+    }
+    /* ── Back link (in content) ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: .8125rem;
+      color: var(--light);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      letter-spacing: .01em;
+    }
+    .back-link:hover { color: var(--link); }
+    /* ── Title block ── */
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+    .doc-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: .8rem;
+      color: var(--light);
+      margin-bottom: 2rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    /* ── Headings ── */
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 2.75rem 0 .625rem;
+      color: var(--text);
+      letter-spacing: .01em;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      margin: 1.75rem 0 .5rem;
+      color: var(--muted);
+    }
+    /* ── Body text ── */
+    p { margin-bottom: 1rem; color: var(--muted); }
+    ul {
+      list-style: none;
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    ul li {
+      color: var(--muted);
+      margin-bottom: .375rem;
+      line-height: 1.65;
+      padding-left: .5rem;
+      position: relative;
+    }
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: -1.25rem;
+      color: var(--border);
+    }
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-color: rgba(26, 26, 110, .3);
+      text-underline-offset: 2px;
+    }
+    a:hover { text-decoration-color: var(--link); }
+    strong { font-weight: 600; color: var(--text); }
+    /* ── Info box ── */
+    .legal-box {
+      border-left: 2px solid var(--border);
+      padding: .75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: #f2f2f0;
+    }
+    .legal-box p { margin: 0; font-size: .9375rem; }
+    /* ── Horizontal rule ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    /* ── Footer ── */
+    .legal-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem 1.5rem;
+    }
+    .legal-footer p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: .775rem;
+      color: var(--light);
+      margin: 0;
+    }
+    .legal-footer nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .legal-footer nav a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: .775rem;
+      color: var(--light);
+      text-decoration: none;
+    }
+    .legal-footer nav a:hover { color: var(--link); }
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      main { padding: 2.5rem 1.25rem 4rem; }
+      h1 { font-size: 1.625rem; }
+      .legal-header { padding: .75rem 1.25rem; }
+      .legal-footer { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="legal-header">
+    <a href="/">
+      <img src="/assets/img/logo.svg" alt="evo360" class="legal-header-logo" width="147" height="32">
+    </a>
+    <a href="/" class="legal-header-back">← Retour au site</a>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="legal-footer">
+    <p>© {{ "" | currentYear }} evo360. Tous droits réservés.</p>
+    <nav>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/confidentialite">Politique de confidentialité</a>
+      <a href="/">Accueil</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
