@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+permalink: 404.html
+eleventyExcludeFromCollections: true
+title: "Page introuvable"
+description: "La page que vous recherchez n'existe pas ou a été déplacée."
+---
+
+<section class="error-page">
+  <div class="container error-container">
+
+    <div class="error-code" aria-hidden="true">404</div>
+
+    <h1 class="error-title">Page introuvable</h1>
+    <p class="error-desc">La page que vous recherchez n'existe pas ou a été déplacée.<br>Retournez à l'accueil et explorez nos services.</p>
+
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary">← Retour à l'accueil</a>
+      <a href="/#services" class="btn btn-outline">Nos services</a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .error-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+  }
+  .error-container {
+    text-align: center;
+    max-width: 560px;
+  }
+  .error-code {
+    font-family: var(--font-heading);
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--gray-200);
+    letter-spacing: -.04em;
+    margin-bottom: .5rem;
+    background: linear-gradient(135deg, var(--indigo) 0%, var(--gray-200) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .error-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+    color: var(--gray-900);
+  }
+  .error-desc {
+    color: var(--gray-600);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

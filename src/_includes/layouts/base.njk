@@ -32,8 +32,10 @@
   <meta name="twitter:description" content="{{ metaDescription }}">
   <meta name="twitter:image" content="{{ home.site.url }}{% if cover_image %}{{ cover_image | toPublicPath }}{% else %}{{ home.site.og_image | toPublicPath }}{% endif %}">
 
-  {# PWA — Theme color #}
+  {# PWA — Theme color, manifest, apple touch icon #}
   <meta name="theme-color" content="#4622CC">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
