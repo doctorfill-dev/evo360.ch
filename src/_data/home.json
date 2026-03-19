@@ -71,11 +71,6 @@
         "children": []
       },
       {
-        "label": "Blog",
-        "url": "/blog/",
-        "children": []
-      },
-      {
         "label": "Contact",
         "url": "/#contact",
         "children": []
