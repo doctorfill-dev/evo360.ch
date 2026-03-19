@@ -163,6 +163,7 @@
 html { scroll-behavior: smooth; }
 
 body {
+  overflow-x: hidden;
   font-family: var(--font-body);
   background-color: var(--cream);
   color: var(--gray-900);
@@ -2605,6 +2606,52 @@ section {
   .hero-stats         { gap: 1.5rem; }
 }
 
+
+/* -------------------------------------------------------
+   32b. VERY SMALL SCREENS (< 450px)
+------------------------------------------------------- */
+
+@media (max-width: 450px) {
+  /* Réduit le padding du container */
+  .container { padding: 0 1rem; }
+
+  /* Titres — les clamp() ont un minimum trop grand (3rem = 48px) */
+  .hero-title       { font-size: 2rem; }
+  .section-title    { font-size: 1.875rem; }
+  .about-content .section-title { font-size: 1.875rem; }
+  .services-header .section-title { font-size: 1.875rem; }
+  .contact-header .section-title { font-size: 1.875rem; }
+  .about-page-header .section-title { font-size: 1.75rem; }
+  .service-header h1,
+  .service-header-refined h1,
+  .post-header h1   { font-size: 1.875rem; }
+  .cta-title        { font-size: 1.75rem; }
+
+  /* Hero stats — passe en colonne sur très petits écrans */
+  .hero-stats       { flex-direction: column; gap: 1rem; padding-top: 1.5rem; }
+
+  /* Tarifs — supprime le nowrap qui déborde */
+  .service-tarifs-label { white-space: normal; }
+  .service-tarifs-amount { white-space: normal; margin-left: 0; }
+  .service-tarifs-row { flex-wrap: wrap; gap: .25rem; }
+
+  /* Modal */
+  .modal-container  { padding: 1.25rem 1rem; }
+  .modal-header h2  { font-size: 1.25rem; }
+
+  /* CTA section */
+  .cta-text         { font-size: 1rem; }
+  .detail-cta h3    { font-size: 1.25rem; }
+
+  /* Badge expérience — évite le débordement */
+  .experience-badge .text { white-space: normal; }
+
+  /* Hero title — le span inline-block empêche le retour à la ligne */
+  .hero-title .text-indigo { display: inline; }
+
+  /* Badge hero — évite le débordement du texte long */
+  .hero-badge { max-width: 100%; white-space: normal; text-align: center; }
+}
 
 /* -------------------------------------------------------
    33. ACCESSIBILITY & PERFORMANCE
