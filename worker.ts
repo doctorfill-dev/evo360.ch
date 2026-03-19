@@ -70,6 +70,24 @@ export default {
     }
 
     // ── Fichiers statiques (Eleventy + Vite → _site/) ───────────────────
-    return env.ASSETS.fetch(request)
+    const response = await env.ASSETS.fetch(request)
+
+    // ── Fallback 404 personnalisé ────────────────────────────────────────
+    if (response.status === 404) {
+      // /keystatic/* → SPA admin (on sert keystatic/index.html)
+      if (pathname.startsWith('/keystatic')) {
+        const spaUrl = new URL('/keystatic/index.html', request.url)
+        return env.ASSETS.fetch(new Request(spaUrl, request))
+      }
+      // Toute autre URL inconnue → page 404 personnalisée
+      const notFoundUrl = new URL('/404.html', request.url)
+      const notFoundRes = await env.ASSETS.fetch(new Request(notFoundUrl, request))
+      return new Response(notFoundRes.body, {
+        status:  404,
+        headers: notFoundRes.headers,
+      })
+    }
+
+    return response
   },
 }

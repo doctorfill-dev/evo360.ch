@@ -8,7 +8,7 @@ main = "worker.ts"
 [assets]
 directory = "./_site"
 
-# SPA fallback : si une route n'existe pas en tant que fichier statique,
-# Cloudflare sert le index.html le plus proche (ex: /keystatic/index.html
-# pour toutes les sous-routes de /keystatic/*).
-not_found_handling = "single-page-application"
+# Le fallback 404 est géré manuellement dans worker.ts :
+#   - /keystatic/* non-API → keystatic/index.html (SPA admin)
+#   - Tout autre 404       → 404.html avec status 404
+not_found_handling = "none"
