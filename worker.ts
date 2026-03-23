@@ -30,9 +30,21 @@ export default {
           clientSecret: env.KEYSTATIC_GITHUB_CLIENT_SECRET,
           secret:       env.KEYSTATIC_SECRET,
         })
+        // Keystatic construit le redirect_uri OAuth depuis reqUrl.origin.
+        // Si la requête arrive via un domaine alternatif (*.workers.dev, www.…),
+        // on force l'origin canonique pour que le redirect_uri corresponde
+        // exactement à ce qui est enregistré dans la GitHub OAuth App.
+        const reqUrl = new URL(request.url)
+        const canonicalRequest =
+          reqUrl.hostname === 'evo360.ch'
+            ? request
+            : new Request(
+                new URL(request.url.replace(reqUrl.origin, 'https://evo360.ch')).toString(),
+                request,
+              )
         // makeGenericAPIRouteHandler retourne un KeystaticResponse (objet plain),
         // pas un Response standard — conversion obligatoire pour Cloudflare Workers.
-        const ksRes = await handler(request)
+        const ksRes = await handler(canonicalRequest)
 
         // Si c'est déjà une Response standard, on la retourne directement
         if (ksRes instanceof Response) {
