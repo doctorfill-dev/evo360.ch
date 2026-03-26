@@ -76,8 +76,8 @@ export default config({
             access:   fields.text({ label: 'Accès (transports)', multiline: true }),
             og_image: fields.image({
               label: 'Image Open Graph',
-              directory: 'src/assets/img/lieu',
-              publicPath: '/assets/img/lieu/',
+              directory: 'src/assets/img/services',
+              publicPath: '/assets/img/services/',
             }),
           },
           { label: 'Coordonnées & SEO' }
@@ -137,7 +137,7 @@ export default config({
               },
               { label: 'Bouton secondaire' }
             ),
-            img1: fields.image({ label: 'Image hero 1', directory: 'src/assets/img/lieu', publicPath: '/assets/img/lieu/' }),
+            img1: fields.image({ label: 'Image hero 1', directory: 'src/assets/img/services', publicPath: '/assets/img/services/' }),
             img2: fields.image({ label: 'Image hero 2', directory: 'src/assets/img/services', publicPath: '/assets/img/services/' }),
             img3: fields.image({ label: 'Image hero 3', directory: 'src/assets/img/services', publicPath: '/assets/img/services/' }),
             stats: fields.array(
