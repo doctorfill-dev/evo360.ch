@@ -1,4 +1,20 @@
 # Cloudflare Workers — règles de redirection
 # Le SPA fallback pour /keystatic/* est géré par wrangler.toml
 # (not_found_handling = "single-page-application")
-# → aucune règle nécessaire ici.
+
+# ── Redirections permanentes (301) — anciens slugs → nouveaux slugs ─────────
+# Ces règles résolvent les erreurs 5xx dans Google Search Console :
+# ASSETS les traite avant d'atteindre le gestionnaire 404 du Worker.
+
+/entreprise-institutions              /services/entreprises/    301
+/entreprise-institutions/*            /services/entreprises/    301
+/notre-approche                       /about/                   301
+/notre-approche/*                     /about/                   301
+/services/fitness-evo360              /services/fitness/        301
+/services/fitness-evo360/*            /services/fitness/        301
+/votre-objectif                       /services/coaching/       301
+/votre-objectif/*                     /services/coaching/       301
+/notre-equipe                         /about/                   301
+/notre-equipe/*                       /about/                   301
+/services/red-light-copy              /services/red-light-therapy/ 301
+/services/red-light-copy/*            /services/red-light-therapy/ 301

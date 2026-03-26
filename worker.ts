@@ -82,7 +82,19 @@ export default {
     }
 
     // ── Fichiers statiques (Eleventy + Vite → _site/) ───────────────────
-    const response = await env.ASSETS.fetch(request)
+    let response: Response
+    try {
+      response = await env.ASSETS.fetch(request)
+    } catch {
+      // env.ASSETS.fetch peut lancer une exception pour certaines URLs
+      // (ex. anciens slugs non reconnus) → on sert directement la 404.
+      const notFoundUrl = new URL('/404.html', request.url)
+      const notFoundRes = await env.ASSETS.fetch(new Request(notFoundUrl.toString()))
+      return new Response(notFoundRes.body, {
+        status:  404,
+        headers: notFoundRes.headers,
+      })
+    }
 
     // ── Fallback 404 personnalisé ────────────────────────────────────────
     if (response.status === 404) {
@@ -93,7 +105,7 @@ export default {
       }
       // Toute autre URL inconnue → page 404 personnalisée
       const notFoundUrl = new URL('/404.html', request.url)
-      const notFoundRes = await env.ASSETS.fetch(new Request(notFoundUrl, request))
+      const notFoundRes = await env.ASSETS.fetch(new Request(notFoundUrl.toString()))
       return new Response(notFoundRes.body, {
         status:  404,
         headers: notFoundRes.headers,
