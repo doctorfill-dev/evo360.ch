@@ -2604,10 +2604,13 @@ section {
   /* Dropdowns — hide on mobile (shown in mobile nav) */
   .nav-dropdown       { display: none; }
 
-  /* Promo bar */
-  .promo-inner        { gap: .5rem; padding: .5rem .75rem; min-height: 40px; }
+  /* Promo bar — single compact row on mobile */
+  .promo-inner        { gap: .4rem; padding: .375rem .625rem; min-height: 0; flex-wrap: nowrap; align-items: center; }
   .promo-badge        { display: none; }
-  .promo-text         { font-size: .8rem; gap: .4rem .625rem; }
+  .promo-text         { font-size: .8rem; flex: 1; min-width: 0; flex-wrap: nowrap; gap: .4rem; justify-content: flex-start; overflow: hidden; }
+  .promo-message      { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+  .promo-cta          { flex-shrink: 0; font-size: .7rem; padding: .2rem .5rem; }
+  .promo-close        { flex-shrink: 0; }
 
   /* Grilles */
   .services-grid      { grid-template-columns: 1fr; }
