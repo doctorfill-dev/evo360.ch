@@ -29,20 +29,6 @@ const REDIRECTS: Record<string, string> = {
   '/services/red-light-copy':   '/services/red-light-therapy/',
 }
 
-async function serve404(env: Env, request: Request): Promise<Response> {
-  try {
-    const notFoundUrl = new URL('/404.html', request.url)
-    const res = await env.ASSETS.fetch(new Request(notFoundUrl.toString()))
-    return new Response(res.body, { status: 404, headers: res.headers })
-  } catch {
-    return new Response(
-      '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>404 – Page introuvable</title></head>' +
-      '<body><h1>Page introuvable</h1><p><a href="/">Retour à l\'accueil</a></p></body></html>',
-      { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } },
-    )
-  }
-}
-
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const { pathname } = new URL(request.url)
@@ -117,21 +103,15 @@ export default {
     }
 
     // ── Fichiers statiques (Eleventy + Vite → _site/) ───────────────────
-    let response: Response
-    try {
-      response = await env.ASSETS.fetch(request)
-    } catch {
-      return serve404(env, request)
-    }
+    // not_found_handling = "404-page" : ASSETS sert 404.html automatiquement
+    // pour tout fichier manquant — aucune exception, aucun fetch supplémentaire.
+    const response = await env.ASSETS.fetch(request)
 
-    // ── Fallback 404 personnalisé ────────────────────────────────────────
-    if (response.status === 404) {
-      // /keystatic/* → SPA admin (on sert keystatic/index.html)
-      if (pathname.startsWith('/keystatic')) {
-        const spaUrl = new URL('/keystatic/index.html', request.url)
-        return env.ASSETS.fetch(new Request(spaUrl, request))
-      }
-      return serve404(env, request)
+    // ── SPA Keystatic ────────────────────────────────────────────────────
+    // ASSETS ne connaît pas les routes React de l'admin → on renvoie index.html
+    if (response.status === 404 && pathname.startsWith('/keystatic')) {
+      const spaUrl = new URL('/keystatic/index.html', request.url)
+      return env.ASSETS.fetch(new Request(spaUrl, request))
     }
 
     return response
