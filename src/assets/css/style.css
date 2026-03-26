@@ -1660,12 +1660,19 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  padding: .625rem 2.5rem .625rem 1.5rem;
+  padding: .625rem 3rem;
   min-height: 40px;
 }
 .promo-text {
+  display: flex;
+  align-items: center;
+  gap: .375rem;
   text-align: center;
+}
+.promo-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
 }
 .promo-text a {
   color: var(--citron);
@@ -2564,7 +2571,9 @@ section {
   .nav-dropdown       { display: none; }
 
   /* Promo bar */
-  .promo-inner        { font-size: .8125rem; padding: .5rem 2.5rem .5rem 1rem; }
+  .promo-inner        { font-size: .8125rem; padding: .5rem 2.75rem .5rem .75rem; }
+  .promo-icon         { display: none; }
+  .promo-close        { top: .625rem; transform: none; }
 
   /* Grilles */
   .services-grid      { grid-template-columns: 1fr; }
