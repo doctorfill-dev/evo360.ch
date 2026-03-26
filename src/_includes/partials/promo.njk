@@ -1,18 +1,16 @@
 {% if home.promo.enabled %}
-<div class="promo-bar" id="promo-bar">
-  <div class="container promo-inner">
-    {% if home.promo.link %}
-      <a href="{{ home.promo.link }}" class="promo-text">
-        <svg class="icon promo-icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-campaign"></use></svg>
-        {{ home.promo.text }}
-      </a>
-    {% else %}
-      <span class="promo-text">
-        <svg class="icon promo-icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-campaign"></use></svg>
-        {{ home.promo.text }}
-      </span>
-    {% endif %}
-    <button class="promo-close" id="promo-close" aria-label="Fermer">
+<div class="promo-bar" id="promo-bar" role="banner">
+  <div class="promo-inner container">
+    <span class="promo-badge" aria-hidden="true">
+      <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-campaign"></use></svg>
+    </span>
+    <p class="promo-text">
+      <span class="promo-message">{{ home.promo.text }}</span>
+      {% if home.promo.link %}
+        <a href="{{ home.promo.link }}" class="promo-cta">Voir l'offre <span aria-hidden="true">→</span></a>
+      {% endif %}
+    </p>
+    <button class="promo-close" id="promo-close" aria-label="Fermer la bannière">
       <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-close"></use></svg>
     </button>
   </div>

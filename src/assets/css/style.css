@@ -1649,58 +1649,92 @@ section {
    22. PROMO BAR
 ------------------------------------------------------- */
 .promo-bar {
-  background: var(--indigo);
+  background: linear-gradient(100deg, #2d14a0 0%, var(--indigo) 55%, #5a28e8 100%);
   color: var(--white);
   position: relative;
   z-index: 1100;
-  font-size: .875rem;
-  line-height: 1.4;
+  overflow: hidden;
+}
+.promo-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 200% at 50% 50%, rgba(215,241,78,.07) 0%, transparent 70%);
+  pointer-events: none;
 }
 .promo-inner {
   display: flex;
   align-items: center;
+  gap: .75rem;
+  padding: .625rem 1rem;
+  min-height: 44px;
+  position: relative;
+}
+.promo-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: .625rem 3rem;
-  min-height: 40px;
+  width: 30px;
+  height: 30px;
+  background: rgba(215,241,78,.12);
+  border: 1px solid rgba(215,241,78,.28);
+  border-radius: 50%;
+  color: var(--citron);
+}
+.promo-badge .icon {
+  width: 15px;
+  height: 15px;
 }
 .promo-text {
-  display: flex;
-  align-items: center;
-  gap: .375rem;
-  text-align: center;
-}
-.promo-icon {
-  width: 1.125rem;
-  height: 1.125rem;
-  flex-shrink: 0;
-}
-.promo-text a {
-  color: var(--citron);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.promo-text a:hover {
-  color: var(--white);
-}
-.promo-close {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgba(255,255,255,.7);
-  cursor: pointer;
-  padding: 4px;
-  line-height: 1;
-  transition: var(--transition);
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: .625rem .875rem;
+  flex-wrap: wrap;
+  font-size: .875rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
 }
+.promo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  background: var(--citron);
+  color: var(--dark);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  padding: .25rem .75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .2s, color .2s, transform .15s;
+}
+.promo-cta:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+.promo-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .2s, background .2s;
+  border-radius: var(--radius-sm);
+}
+.promo-close .icon { width: 16px; height: 16px; }
 .promo-close:hover {
   color: var(--white);
+  background: rgba(255,255,255,.1);
 }
 
 
@@ -2571,9 +2605,9 @@ section {
   .nav-dropdown       { display: none; }
 
   /* Promo bar */
-  .promo-inner        { font-size: .8125rem; padding: .5rem 2.75rem .5rem .75rem; }
-  .promo-icon         { display: none; }
-  .promo-close        { top: .625rem; transform: none; }
+  .promo-inner        { gap: .5rem; padding: .5rem .75rem; min-height: 40px; }
+  .promo-badge        { display: none; }
+  .promo-text         { font-size: .8rem; gap: .4rem .625rem; }
 
   /* Grilles */
   .services-grid      { grid-template-columns: 1fr; }
