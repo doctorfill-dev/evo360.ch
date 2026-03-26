@@ -9,6 +9,10 @@
 
 import { makeGenericAPIRouteHandler } from '@keystatic/core/api/generic'
 import config from './keystatic.config'
+// Bundlé par wrangler via [[rules]] type = "Text" — généré par Eleventy avant le déploiement.
+// Permet de servir la page 404 sans aucun fetch() supplémentaire (évite 1101 et 1042).
+// @ts-ignore
+import notFoundHtml from './_site/404.html'
 
 interface Env {
   ASSETS:                         { fetch(r: Request): Promise<Response> }
@@ -27,40 +31,11 @@ const REDIRECTS: Record<string, string> = {
   '/services/red-light-copy':   '/services/red-light-therapy/',
 }
 
-// ── Fallback 404 ─────────────────────────────────────────────────────────────
-// Utilise fetch() global (subrequest HTTP) plutôt que env.ASSETS.fetch() :
-// après un premier échec d'ASSETS, le binding peut être dans un état cassé.
-// Le subrequest arrive dans une nouvelle invocation du Worker où ASSETS est sain.
-// Le header x-internal-404 évite toute boucle infinie.
-async function serve404(request: Request): Promise<Response> {
-  if (request.headers.get('x-internal-404') === '1') {
-    // Deuxième passage — retourner le HTML minimal pour éviter une boucle
-    return new Response(
-      '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">' +
-      '<title>404 – Page introuvable</title></head><body>' +
-      '<h1>Page introuvable</h1><p><a href="/">Retour à l\'accueil</a></p>' +
-      '</body></html>',
-      { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } },
-    )
-  }
-  try {
-    const origin = new URL(request.url).origin
-    const res = await fetch(`${origin}/404.html`, {
-      headers: { 'x-internal-404': '1' },
-    })
-    return new Response(res.body, {
-      status: 404,
-      headers: { 'Content-Type': res.headers.get('Content-Type') ?? 'text/html; charset=utf-8' },
-    })
-  } catch {
-    return new Response(
-      '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">' +
-      '<title>404 – Page introuvable</title></head><body>' +
-      '<h1>Page introuvable</h1><p><a href="/">Retour à l\'accueil</a></p>' +
-      '</body></html>',
-      { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } },
-    )
-  }
+function serve404(): Response {
+  return new Response(notFoundHtml as string, {
+    status: 404,
+    headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' },
+  })
 }
 
 export default {
@@ -127,8 +102,9 @@ export default {
       try {
         response = await env.ASSETS.fetch(request)
       } catch {
-        // env.ASSETS.fetch() a lancé une exception (fichier non trouvé ou état cassé)
-        return serve404(request)
+        // env.ASSETS.fetch() a lancé une exception (fichier introuvable).
+        // On sert le HTML 404 bundlé — aucun fetch() supplémentaire nécessaire.
+        return serve404()
       }
 
       // ── SPA Keystatic ──────────────────────────────────────────────────────
@@ -137,19 +113,18 @@ export default {
           const spaUrl = new URL('/keystatic/index.html', request.url)
           return await env.ASSETS.fetch(new Request(spaUrl, request))
         } catch {
-          return serve404(request)
+          return serve404()
         }
       }
 
-      // ── 404 personnalisé (ASSETS a retourné 404 au lieu de lancer) ─────────
       if (response.status === 404) {
-        return serve404(request)
+        return serve404()
       }
 
       return response
     } catch {
       // Filet de sécurité absolu — empêche toute erreur 1101 Cloudflare
-      return serve404(request)
+      return serve404()
     }
   },
 }
