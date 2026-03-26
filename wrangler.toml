@@ -8,11 +8,3 @@ main = "worker.ts"
 [assets]
 directory = "./_site"
 not_found_handling = "none"
-
-# Bundle _site/404.html comme module texte dans le Worker.
-# Généré par Eleventy avant wrangler deploy → toujours disponible au déploiement.
-# Permet de servir la page 404 sans aucun fetch() supplémentaire,
-# évitant les erreurs 1101 (exception ASSETS) et 1042 (subrequest bloqué).
-[[rules]]
-type = "Text"
-globs = ["_site/404.html"]
