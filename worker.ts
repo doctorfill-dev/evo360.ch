@@ -17,9 +17,44 @@ interface Env {
   KEYSTATIC_SECRET:               string
 }
 
+// ── Redirections permanentes (anciens slugs → nouveaux slugs) ────────────────
+// Gérées ici plutôt que dans _redirects pour garantir leur exécution
+// avant que le binding ASSETS ne lève une exception sur des URLs inconnues.
+const REDIRECTS: Record<string, string> = {
+  '/entreprise-institutions':   '/services/entreprises/',
+  '/notre-approche':            '/about/',
+  '/services/fitness-evo360':   '/services/fitness/',
+  '/votre-objectif':            '/services/coaching/',
+  '/notre-equipe':              '/about/',
+  '/services/red-light-copy':   '/services/red-light-therapy/',
+}
+
+async function serve404(env: Env, request: Request): Promise<Response> {
+  try {
+    const notFoundUrl = new URL('/404.html', request.url)
+    const res = await env.ASSETS.fetch(new Request(notFoundUrl.toString()))
+    return new Response(res.body, { status: 404, headers: res.headers })
+  } catch {
+    return new Response(
+      '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>404 – Page introuvable</title></head>' +
+      '<body><h1>Page introuvable</h1><p><a href="/">Retour à l\'accueil</a></p></body></html>',
+      { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } },
+    )
+  }
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const { pathname } = new URL(request.url)
+
+    // ── Redirections 301 ─────────────────────────────────────────────────────
+    const cleanPath = pathname.endsWith('/') && pathname !== '/'
+      ? pathname.slice(0, -1)
+      : pathname
+    const redirectTarget = REDIRECTS[cleanPath] ?? REDIRECTS[pathname]
+    if (redirectTarget) {
+      return Response.redirect(new URL(redirectTarget, request.url).toString(), 301)
+    }
 
     // ── Keystatic API ───────────────────────────────────────────────────
     if (pathname.startsWith('/api/keystatic/')) {
@@ -86,14 +121,7 @@ export default {
     try {
       response = await env.ASSETS.fetch(request)
     } catch {
-      // env.ASSETS.fetch peut lancer une exception pour certaines URLs
-      // (ex. anciens slugs non reconnus) → on sert directement la 404.
-      const notFoundUrl = new URL('/404.html', request.url)
-      const notFoundRes = await env.ASSETS.fetch(new Request(notFoundUrl.toString()))
-      return new Response(notFoundRes.body, {
-        status:  404,
-        headers: notFoundRes.headers,
-      })
+      return serve404(env, request)
     }
 
     // ── Fallback 404 personnalisé ────────────────────────────────────────
@@ -103,13 +131,7 @@ export default {
         const spaUrl = new URL('/keystatic/index.html', request.url)
         return env.ASSETS.fetch(new Request(spaUrl, request))
       }
-      // Toute autre URL inconnue → page 404 personnalisée
-      const notFoundUrl = new URL('/404.html', request.url)
-      const notFoundRes = await env.ASSETS.fetch(new Request(notFoundUrl.toString()))
-      return new Response(notFoundRes.body, {
-        status:  404,
-        headers: notFoundRes.headers,
-      })
+      return serve404(env, request)
     }
 
     return response
