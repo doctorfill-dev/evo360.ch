@@ -1666,7 +1666,7 @@ section {
   display: flex;
   align-items: center;
   gap: .75rem;
-  padding: .625rem 1rem;
+  padding: .9rem 1rem;
   min-height: 44px;
   position: relative;
 }
@@ -1694,7 +1694,8 @@ section {
   gap: .625rem .875rem;
   flex-wrap: wrap;
   font-size: .875rem;
-  line-height: 1.5;
+  line-height: 1.65;
+  letter-spacing: .01em;
   text-align: center;
   margin: 0;
 }
@@ -2609,10 +2610,10 @@ section {
   .nav-dropdown       { display: none; }
 
   /* Promo bar — mobile */
-  .promo-inner        { gap: .5rem .75rem; padding: .75rem .875rem 1rem; align-items: flex-start; flex-wrap: nowrap; }
+  .promo-bar .promo-inner { gap: .5rem .75rem; padding: 1.1rem 1.25rem 1.35rem; align-items: flex-start; flex-wrap: nowrap; }
   .promo-badge        { width: 28px; height: 28px; margin-top: .15rem; flex-shrink: 0; }
   .promo-badge .icon  { width: 14px; height: 14px; }
-  .promo-text         { flex: 1; min-width: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; flex-wrap: nowrap; gap: .5rem; font-size: .875rem; text-align: left; line-height: 1.45; }
+  .promo-text         { flex: 1; min-width: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; flex-wrap: nowrap; gap: .5rem; font-size: .875rem; text-align: left; line-height: 1.6; letter-spacing: .01em; }
   .promo-message      { font-weight: 500; display: block; }
   .promo-cta          { align-self: stretch; justify-content: center; font-size: .8125rem; padding: .35rem 1rem; }
   .promo-close        { flex-shrink: 0; align-self: flex-start; margin-top: .05rem; }
