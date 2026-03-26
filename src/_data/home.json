@@ -13,8 +13,7 @@
     "phone": "076 507 03 60",
     "email": "hello@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
-    "access": "Parking gratuit\nBus 101, Vauseyon",
-    "og_image": "/assets/img/services/site/og_image.webp"
+    "access": "Parking gratuit\nBus 101, Vauseyon"
   },
   "nav": {
     "links": [
@@ -93,7 +92,6 @@
       "label": "Prendre rendez-vous",
       "url": "/#contact"
     },
-    "img1": "/assets/img/services/hero/img1.webp",
     "img2": "/assets/img/services/hero/img2.webp",
     "img3": "/assets/img/services/hero/img3.webp",
     "stats": [
