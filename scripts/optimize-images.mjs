@@ -13,6 +13,7 @@ const IMG_DIR = "src/assets/img";
 const QUALITY = 80;
 const VARIANTS = [
   { suffix: "@400w", width: 400 },
+  { suffix: "@600w", width: 600 },
   { suffix: "@800w", width: 800 },
 ];
 

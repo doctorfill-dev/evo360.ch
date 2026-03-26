@@ -123,6 +123,7 @@
   --indigo:       #4622CC;
   --indigo-dark:  #2a157c;
   --indigo-soft:  #6344d4;
+  --indigo-light: #9b87ff;
   --citron:       #D7F14E;
   --citron-dark:  #b8cc42;
   --dark:         #080613;
@@ -776,7 +777,7 @@ section {
   margin-bottom: 5rem;
 }
 .testimonials-header .section-title { color: var(--white); }
-.testimonials-header .text-indigo   { color: var(--indigo); }
+.testimonials-header .text-indigo   { color: var(--indigo-light); }
 
 .testimonials-grid {
   display: grid;
@@ -1020,7 +1021,7 @@ section {
   color: var(--white);
   margin-bottom: 1.5rem;
 }
-.contact-header .section-title .accent { color: var(--indigo); }
+.contact-header .section-title .accent { color: var(--indigo-light); }
 .contact-desc {
   max-width: 600px;
   margin: 1rem auto 0;
@@ -1169,7 +1170,7 @@ section {
   justify-content: space-between;
   align-items: center;
   font-size: .8125rem;
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 .legal { display: flex; gap: 2rem; }
 .legal a:hover { color: var(--gray-900); }
@@ -1296,7 +1297,7 @@ section {
   font-family: var(--font-heading);
 }
 .plan-price .period {
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 
 .plan-desc {
