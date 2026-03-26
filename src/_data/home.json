@@ -3,8 +3,8 @@
     "enabled": false
   },
   "promo": {
-    "enabled": false,
-    "text": "Offre de lancement : -20% sur le Check-Up 360 jusqu'au 31 mars",
+    "enabled": true,
+    "text": "Horaires spéciaux Pâques : Ouverture vendredi Saints (3 avril) et lundi de Pâques (6 avril) de 9h à 16h. ",
     "link": "#contact"
   },
   "site": {
@@ -13,8 +13,7 @@
     "phone": "076 507 03 60",
     "email": "hello@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
-    "access": "Parking gratuit\nBus 101, Vauseyon",
-    "og_image": "/assets/img/services/hero/img1.webp"
+    "access": "Parking gratuit\nBus 101, Vauseyon"
   },
   "nav": {
     "links": [
@@ -93,7 +92,6 @@
       "label": "Prendre rendez-vous",
       "url": "/#contact"
     },
-    "img1": "/assets/img/services/hero/img1.webp",
     "img2": "/assets/img/services/hero/img2.webp",
     "img3": "/assets/img/services/hero/img3.webp",
     "stats": [
@@ -117,14 +115,14 @@
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
     "quote": "Talent wins games, but teamwork and intelligence win championships",
     "quote_author": "Michael Jordan",
-    "image": "/assets/img/lieu/about/fitness_1.webp"
+    "image": "/assets/img/lieu/about/image.webp"
   },
   "sportmed": {
     "title": "Médecine du sport et physiothérapie",
     "description": "Nous partageons nos locaux avec SportMed360, un cabinet médical spécialisé dans la médecine du sport, la traumatologie et la physiothérapie.",
     "link_text": "Site web de SportMed360",
     "link_url": "https://sportmed360.ch",
-    "logo": "/assets/img/sportmed/logo_sportmed.svg"
+    "logo": "/assets/img/sportmed/logo.svg"
   },
   "services": {
     "items": [
@@ -132,7 +130,7 @@
         "id": "01",
         "title": "Check-Up 360",
         "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/services/services/items/0/checkup360_1.webp",
+        "image": "/assets/img/services/services/items/0/image.webp",
         "url": "/services/checkup-360/",
         "coming_soon": false
       },
@@ -140,7 +138,7 @@
         "id": "02",
         "title": "Test de VO₂max",
         "description": "Évaluez votre endurance et définissez vos zones d'entraînement.",
-        "image": "/assets/img/services/services/items/7/vo2max_course.webp",
+        "image": "/assets/img/services/services/items/1/image.webp",
         "url": "/services/vo2max/",
         "coming_soon": false
       },
@@ -148,7 +146,7 @@
         "id": "03",
         "title": "Coaching & préparation physique",
         "description": "Accompagnement sur mesure en mouvement et préparation physique.",
-        "image": "/assets/img/services/services/items/1/coaching_1.webp",
+        "image": "/assets/img/services/services/items/2/image.webp",
         "url": "/services/coaching/",
         "coming_soon": false
       },
@@ -156,7 +154,7 @@
         "id": "04",
         "title": "Profilage",
         "description": "Mieux se comprendre pour mieux performer grâce à l'analyse comportementale.",
-        "image": "/assets/img/services/services/items/6/profilage_1.webp",
+        "image": "/assets/img/services/services/items/3/image.webp",
         "url": "/services/profilage/",
         "coming_soon": false
       },
@@ -164,7 +162,7 @@
         "id": "05",
         "title": "Fitness & Sauna",
         "description": "Abonnements flexibles pour un entraînement guidé dans un espace dédié.",
-        "image": "/assets/img/services/services/items/2/fitness_1.webp",
+        "image": "/assets/img/services/services/items/4/image.webp",
         "url": "/services/fitness/",
         "coming_soon": false
       },
@@ -172,7 +170,7 @@
         "id": "06",
         "title": "Red Light Therapy",
         "description": "Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.",
-        "image": "/assets/img/services/services/items/3/redlight_1.webp",
+        "image": "/assets/img/services/services/items/5/image.webp",
         "url": "/services/red-light-therapy/",
         "coming_soon": false
       },
@@ -180,7 +178,7 @@
         "id": "07",
         "title": "Nutrition",
         "description": "Optimisez votre énergie et votre récupération grâce à une stratégie nutritionnelle personnalisée.",
-        "image": "/assets/img/services/services/items/8/nutrition_1.webp",
+        "image": "/assets/img/services/services/items/6/image.webp",
         "url": "/services/nutrition/",
         "coming_soon": false
       },
@@ -188,7 +186,7 @@
         "id": "08",
         "title": "Entreprises & Institutions",
         "description": "Programmes bien-être et performance adaptés à votre organisation.",
-        "image": "/assets/img/services/services/items/5/entreprise_1.webp",
+        "image": "/assets/img/services/services/items/7/image.webp",
         "url": "/services/entreprises/",
         "coming_soon": false
       },
@@ -196,7 +194,7 @@
         "id": "09",
         "title": "Neurotracker",
         "description": "Parce que la performance commence dans le cerveau.",
-        "image": "/assets/img/services/services/items/9/neurotracker_1.webp",
+        "image": "/assets/img/services/services/items/8/image.webp",
         "url": "/services/neurotracker/",
         "coming_soon": true
       }
@@ -313,7 +311,7 @@
       {
         "name": "Franco Pisino",
         "role": "Préparateur physique & entraîneur Swiss Olympic",
-        "image": "/assets/img/team/team/members/2/franco_pisino.webp",
+        "image": "/assets/img/team/team/members/0/image.webp",
         "tagline": "Plus de 25 ans au service de la performance sportive de haut niveau.",
         "diploma": "Swiss Olympic Coach Award 2019",
         "bio": "Ancien athlète international de karaté (1987–1997), Franco est aujourd'hui l'un des préparateurs physiques les plus reconnus de Suisse. Entraîneur chef de l'équipe nationale suisse de karaté depuis 2000, il a également accompagné l'Union Neuchâtel rugby pendant 12 saisons ainsi que le Neuchâtel-Xamax FCS. Co-fondateur de PISINOATHLETICS."
@@ -321,7 +319,7 @@
       {
         "name": "Orlane Gaudenzi",
         "role": "Physiologiste du sport",
-        "image": "/assets/img/team/team/members/0/orlane_gaudenzi.webp",
+        "image": "/assets/img/team/team/members/1/image.webp",
         "tagline": "Évaluation et optimisation de la performance.",
         "diploma": "Master en sciences du mouvement et du sport — Entraînement & Performance",
         "bio": "Spécialiste de la physiologie du sport, Orlane accompagne aussi bien les athlètes de haut niveau que les personnes en quête d'un mode de vie plus actif. Actuellement en formation CAS Préparation mentale (UNIL-EPFL, 2026)."
@@ -329,7 +327,7 @@
       {
         "name": "Maïwenn Crausaz",
         "role": "Coach sportive",
-        "image": "/assets/img/team/team/members/1/maiwenn_crausaz.webp",
+        "image": "/assets/img/team/team/members/2/image.webp",
         "tagline": "Énergie, bienveillance et programmes adaptés à chaque profil.",
         "diploma": "Athlète IFBB Pro",
         "bio": "Passionnée de mouvement et de dépassement de soi, Maïwenn conçoit des programmes sur mesure — que vous débutiez ou cherchiez à repousser vos limites. Actuellement en formation de préparatrice mentale (2026)."
@@ -350,32 +348,32 @@
     "url": "https://www.instagram.com/evo360_swiss",
     "posts": [
       {
-        "image": "/assets/img/instagram/post-1.webp",
+        "image": "/assets/img/instagram/instagram/posts/0/image.webp",
         "url": "https://www.instagram.com/evo360_swiss",
         "alt": "Entraînement au centre evo360 Neuchâtel"
       },
       {
-        "image": "/assets/img/instagram/post-2.webp",
+        "image": "/assets/img/instagram/instagram/posts/1/image.webp",
         "url": "https://www.instagram.com/evo360_swiss",
         "alt": "Coaching personnalisé chez evo360"
       },
       {
-        "image": "/assets/img/instagram/post-3.webp",
+        "image": "/assets/img/instagram/instagram/posts/2/image.webp",
         "url": "https://www.instagram.com/evo360_swiss",
         "alt": "Machines Technogym chez evo360 Neuchâtel"
       },
       {
-        "image": "/assets/img/instagram/post-4.webp",
+        "image": "/assets/img/instagram/instagram/posts/3/image.webp",
         "url": "https://www.instagram.com/evo360_swiss",
         "alt": "Séance Red Light Therapy evo360"
       },
       {
-        "image": "/assets/img/instagram/post-5.webp",
+        "image": "/assets/img/instagram/instagram/posts/4/image.webp",
         "url": "https://www.instagram.com/evo360_swiss",
         "alt": "Équipe evo360 en action"
       },
       {
-        "image": "/assets/img/instagram/post-6.webp",
+        "image": "/assets/img/instagram/instagram/posts/5/image.webp",
         "url": "https://www.instagram.com/evo360_swiss",
         "alt": "Test VO2max au centre evo360"
       }
