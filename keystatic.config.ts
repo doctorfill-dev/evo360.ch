@@ -5,6 +5,10 @@
 
 import { config, fields, singleton, collection } from '@keystatic/core'
 
+// `process` n'est pas typé dans ce tsconfig (lib: DOM uniquement).
+// Déclaration minimale pour le contexte Node.js (middleware Vite).
+declare const process: { env: Record<string, string | undefined> } | undefined
+
 // ── Storage mode ────────────────────────────────────────────────────────
 // LOCAL  : `npm run dev:admin` → Vite dev server, lit/écrit sur le disque
 // GITHUB : production (Cloudflare Pages) → lit/écrit via l'API GitHub
