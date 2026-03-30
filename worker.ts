@@ -103,11 +103,19 @@ export default {
         response = await env.ASSETS.fetch(request)
       } catch {
         // env.ASSETS.fetch() a lancé une exception (fichier introuvable).
-        // On sert le HTML 404 bundlé — aucun fetch() supplémentaire nécessaire.
+        // Cas SPA Keystatic d'abord, sinon 404 générique.
+        if (pathname.startsWith('/keystatic')) {
+          try {
+            const spaUrl = new URL('/keystatic/index.html', request.url)
+            return await env.ASSETS.fetch(new Request(spaUrl, request))
+          } catch {
+            return serve404()
+          }
+        }
         return serve404()
       }
 
-      // ── SPA Keystatic ──────────────────────────────────────────────────────
+      // ── SPA Keystatic (réponse 404 sans exception) ─────────────────────────
       if (response.status === 404 && pathname.startsWith('/keystatic')) {
         try {
           const spaUrl = new URL('/keystatic/index.html', request.url)
