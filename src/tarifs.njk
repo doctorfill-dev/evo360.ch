@@ -45,7 +45,7 @@ description: Tous les tarifs evo360 à Neuchâtel. Fitness, coaching, VO₂max, 
               {% endfor %}
             </ul>
             <div class="plan-cta">
-              <a href="#" class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline{% endif %}" data-open-modal="contact" data-motif="Abonnement {{ plan.name }}">{{ plan.cta_label }}</a>
+              <a href="/contact/?motif=Abonnement+{{ plan.name | urlencode }}" class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline{% endif %}">{{ plan.cta_label }}</a>
             </div>
           </div>
         {% endfor %}
@@ -171,7 +171,7 @@ description: Tous les tarifs evo360 à Neuchâtel. Fitness, coaching, VO₂max, 
           </div>
           <p class="tarif-note">Programmes sur mesure. Contactez-nous pour un devis personnalisé.</p>
           <div class="plan-cta" style="margin-top:.75rem;">
-            <a href="#" class="btn btn-outline btn-sm" data-open-modal="contact" data-motif="Entreprises">Demander un devis</a>
+            <a href="/contact/?motif=Entreprises" class="btn btn-outline btn-sm">Demander un devis</a>
           </div>
         </div>
 

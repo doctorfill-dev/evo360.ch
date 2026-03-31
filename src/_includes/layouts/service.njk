@@ -77,7 +77,7 @@ layout: layouts/base.njk
       <div class="detail-cta">
         <h3>Intéressé par ce service ?</h3>
         <p>Prenez rendez-vous pour un premier échange et découvrez comment nous pouvons vous accompagner.</p>
-        <a href="#" class="btn btn-primary" data-open-modal="contact">Prendre rendez-vous</a>
+        <a href="/contact/?motif={{ title | urlencode }}" class="btn btn-primary">Prendre rendez-vous</a>
       </div>
 
       {# Navigation précédent / suivant #}

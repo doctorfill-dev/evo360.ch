@@ -176,3 +176,21 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
     .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
   }
 </style>
+
+<script>
+  // Pré-sélectionner le motif depuis le query param ?motif=
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const motif = params.get('motif');
+    if (!motif) return;
+    const select = document.getElementById('cp-motif');
+    if (!select) return;
+    // Chercher l'option dont la valeur correspond (insensible à la casse)
+    const match = Array.from(select.options).find(
+      opt => opt.value.toLowerCase() === motif.toLowerCase()
+    );
+    if (match) {
+      select.value = match.value;
+    }
+  })();
+</script>
