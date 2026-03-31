@@ -1,0 +1,200 @@
+---
+layout: layouts/base.njk
+title: Contact
+description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et demandes de tarifs. Disponible par téléphone, WhatsApp ou formulaire en ligne. Lundi–Vendredi 07h30–20h30."
+---
+
+<section class="contact-page">
+  <div class="container">
+
+    <div class="about-page-header">
+      <a href="/" class="back-link" style="color: var(--indigo); margin-bottom: 2rem;">
+        <svg class="icon" style="width:1rem;height:1rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_back"></use></svg>
+        Retour à l'accueil
+      </a>
+      <h1 class="section-title">Nous <span class="accent">contacter</span></h1>
+      <p class="about-page-lead">Une question, une demande de rendez-vous ou d'information sur nos services ? Nous vous recontactons rapidement.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      {# Coordonnées #}
+      <div class="contact-info">
+        <h2>Coordonnées</h2>
+        <ul class="contact-details-list">
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg class="icon" style="width:1.25rem;height:1.25rem;"><use href="/assets/img/icons/sprite.svg#icon-phone"></use></svg>
+            </span>
+            <div>
+              <strong>Téléphone &amp; WhatsApp</strong>
+              <a href="tel:+41765070360">076 507 03 60</a>
+            </div>
+          </li>
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg class="icon" style="width:1.25rem;height:1.25rem;"><use href="/assets/img/icons/sprite.svg#icon-mail"></use></svg>
+            </span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:hello@evo360.ch">hello@evo360.ch</a>
+            </div>
+          </li>
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg style="width:1.25rem;height:1.25rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <strong>Adresse</strong>
+              <span>Av. Édouard-Dubois 20<br>2000 Neuchâtel</span>
+            </div>
+          </li>
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg class="icon" style="width:1.25rem;height:1.25rem;"><use href="/assets/img/icons/sprite.svg#icon-schedule"></use></svg>
+            </span>
+            <div>
+              <strong>Horaires</strong>
+              <span>Lundi – Vendredi, 07h30 – 20h30</span>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top: 2rem;">
+          <a
+            href="https://maps.google.com/?q=Av.+%C3%89douard-Dubois+20,+2000+Neuch%C3%A2tel"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline btn-sm"
+          >
+            <svg style="width:1rem;height:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Voir sur Google Maps
+          </a>
+        </div>
+      </div>
+
+      {# Formulaire embarqué #}
+      <div class="contact-form-card">
+        <h2>Formulaire de contact</h2>
+
+        <form action="https://formspree.io/f/mgonoqwn" method="POST" class="modal-form" id="contact-page-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cp-prenom">Prénom</label>
+              <input type="text" id="cp-prenom" name="prenom" placeholder="Votre prénom" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="cp-nom">Nom</label>
+              <input type="text" id="cp-nom" name="nom" placeholder="Votre nom" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cp-email">Email <span class="required">*</span></label>
+            <input type="email" id="cp-email" name="email" placeholder="votre@email.ch" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="cp-motif">Motif</label>
+            <select id="cp-motif" name="motif">
+              <option value="">Sélectionnez un motif</option>
+              <option value="Renseignement général">Renseignement général</option>
+              <option value="Check-Up 360">Check-Up 360</option>
+              <option value="Test de VO₂max">Test de VO₂max</option>
+              <option value="Coaching &amp; préparation physique">Coaching &amp; préparation physique</option>
+              <option value="Profilage">Profilage</option>
+              <option value="Fitness &amp; Sauna">Fitness &amp; Sauna</option>
+              <option value="Red Light Therapy">Red Light Therapy</option>
+              <option value="Nutrition">Nutrition</option>
+              <option value="Neurotracker">Neurotracker</option>
+              <option value="Entreprises &amp; institutions">Entreprises &amp; institutions</option>
+              <option value="Abonnement 3 mois">Abonnement 3 mois</option>
+              <option value="Abonnement 6 mois">Abonnement 6 mois</option>
+              <option value="Abonnement 12 mois">Abonnement 12 mois</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cp-message">Message</label>
+            <textarea id="cp-message" name="message" rows="4" placeholder="Votre message (facultatif)"></textarea>
+          </div>
+          <p id="contact-page-error" hidden style="color:#c0392b;font-size:.875rem;margin-bottom:.5rem;">
+            Une erreur est survenue. Veuillez réessayer ou nous appeler au 076 507 03 60.
+          </p>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="contact-page-submit-btn">
+            <svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg>
+            Envoyer
+          </button>
+        </form>
+
+        <div id="contact-page-success" hidden style="text-align:center;padding:2rem 0;">
+          <svg style="width:3rem;height:3rem;color:var(--indigo);margin-bottom:1rem;display:block;margin-left:auto;margin-right:auto;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3 style="margin-bottom:.5rem;">Message envoyé !</h3>
+          <p style="color:var(--gray-600);">Merci, nous vous recontacterons dans les plus brefs délais.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contact-page { padding: 4rem 0 6rem; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+  .contact-info h2,
+  .contact-form-card h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .contact-details-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .contact-detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(70,34,204,.08);
+    color: var(--indigo);
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+  .contact-detail-item strong { display: block; font-size: 0.875rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: .04em; margin-bottom: .25rem; }
+  .contact-detail-item a,
+  .contact-detail-item span { color: var(--gray-900); font-size: 1rem; }
+  .contact-detail-item a:hover { color: var(--indigo); }
+  .contact-form-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+  }
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
+
+<script>
+  // Pré-sélectionner le motif depuis le query param ?motif=
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const motif = params.get('motif');
+    if (!motif) return;
+    const select = document.getElementById('cp-motif');
+    if (!select) return;
+    // Chercher l'option dont la valeur correspond (insensible à la casse)
+    const match = Array.from(select.options).find(
+      opt => opt.value.toLowerCase() === motif.toLowerCase()
+    );
+    if (match) {
+      select.value = match.value;
+    }
+  })();
+</script>

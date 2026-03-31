@@ -109,6 +109,19 @@ export default function (eleventyConfig) {
     return allServices.findIndex(s => s.url === currentUrl);
   });
 
+  // Filtre jsonEscape : échappe une valeur pour injection sûre dans un bloc JSON-LD
+  // Nunjucks auto-échappe les " en &quot; — ce filtre + | safe contourne ce bug.
+  // Usage : {{ value | jsonEscape | safe }}
+  eleventyConfig.addFilter("jsonEscape", (str) => {
+    if (str == null) return '';
+    return String(str)
+      .replace(/\\/g, '\\\\')
+      .replace(/"/g, '\\"')
+      .replace(/\n/g, '\\n')
+      .replace(/\r/g, '\\r')
+      .replace(/\t/g, '\\t');
+  });
+
   // --- Configuration des dossiers ---
   return {
     // Formats de templates reconnus (mdoc ajouté pour Keystatic)

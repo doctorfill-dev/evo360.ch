@@ -71,13 +71,13 @@
       },
       {
         "label": "Contact",
-        "url": "/#contact",
+        "url": "/contact/",
         "children": []
       }
     ],
     "cta": {
       "label": "Prendre rendez-vous",
-      "url": "/#contact"
+      "url": "/contact/"
     }
   },
   "hero": {
@@ -90,7 +90,7 @@
     },
     "cta_secondary": {
       "label": "Prendre rendez-vous",
-      "url": "/#contact"
+      "url": "/contact/"
     },
     "img2": "/assets/img/services/hero/img2.webp",
     "img3": "/assets/img/services/hero/img3.webp",
@@ -340,7 +340,7 @@
     "title": "Envie de <span class=\"text-white\">passer à l'action</span> ?",
     "text": "Faites le premier pas vers une meilleure version de vous-même. Notre équipe est là pour vous accompagner.",
     "btn_label": "Nous contacter →",
-    "btn_url": "/#contact",
+    "btn_url": "/contact/",
     "phone": "076 507 03 60"
   },
   "instagram": {

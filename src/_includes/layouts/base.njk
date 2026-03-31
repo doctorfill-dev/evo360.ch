@@ -8,6 +8,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NW4WVTML');</script>
+  <!-- End Google Tag Manager -->
   {%- set metaDesc = summary or description or home.hero.description -%}
   {%- set metaTitle = title + " | evo360 Neuchâtel" if page.url != "/" else "evo360 | Centre de Performance et Bien-être à Neuchâtel" -%}
   {%- set metaDescription = metaDesc if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération." -%}
@@ -197,9 +204,9 @@
       {% for review in home.testimonials.items %}
       {
         "@type": "Review",
-        "author": { "@type": "Person", "name": "{{ review.name }}" },
+        "author": { "@type": "Person", "name": "{{ review.name | jsonEscape | safe }}" },
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "{{ review.text | replace('"', '\\"') }}"
+        "reviewBody": "{{ review.text | jsonEscape | safe }}"
       }{% if not loop.last %},{% endif %}
       {% endfor %}
     ]
@@ -213,8 +220,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "{{ title }}",
-    "description": "{{ metaDesc }}",
+    "name": "{{ title | jsonEscape | safe }}",
+    "description": "{{ metaDesc | jsonEscape | safe }}",
     "url": "{{ home.site.url }}{{ page.url }}",
     {% if cover_image %}"image": "{{ home.site.url }}{{ cover_image | toPublicPath }}",{% endif %}
     {% if price %}"offers": {
@@ -264,7 +271,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "{{ title }}",
+        "name": "{{ title | jsonEscape | safe }}",
         "item": "{{ home.site.url }}{{ page.url }}"
       }
     ]
@@ -273,6 +280,10 @@
   {% endif %}
 </head>
 <body{% if page.url != "/" %} class="inner-page"{% endif %}>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4WVTML"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
@@ -387,6 +398,59 @@
         openModal(btn.dataset.motif || '');
       });
     });
+
+    // Contact form — AJAX submission + GA4 conversion tracking
+    // Fonctionne pour le modal (#contact-form) et la page /contact/ (#contact-page-form)
+    function attachFormHandler(formId, submitBtnId, errorId, successId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById(submitBtnId);
+        const errorEl = document.getElementById(errorId);
+        const motifValue = form.querySelector('[name="motif"]')?.value || '';
+        const sendIcon = '<svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg>';
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours…';
+        if (errorEl) errorEl.hidden = true;
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            form.hidden = true;
+            const successEl = document.getElementById(successId);
+            if (successEl) successEl.hidden = false;
+
+            // GA4 — événement de conversion
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'generate_lead', {
+                event_category: 'contact',
+                event_label: motifValue || 'Formulaire général'
+              });
+            }
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = sendIcon + ' Envoyer';
+            if (errorEl) errorEl.hidden = false;
+          }
+        } catch {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = sendIcon + ' Envoyer';
+          if (errorEl) errorEl.hidden = false;
+        }
+      });
+    }
+
+    // Modal (toutes les pages)
+    attachFormHandler('contact-form', 'form-submit-btn', 'form-error', 'form-success');
+    // Page /contact/ (formulaire embarqué)
+    attachFormHandler('contact-page-form', 'contact-page-submit-btn', 'contact-page-error', 'contact-page-success');
 
     // Handle hash #contact — open modal on page load or nav
     function checkContactHash() {
