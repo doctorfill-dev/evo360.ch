@@ -8,6 +8,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NW4WVTML');</script>
+  <!-- End Google Tag Manager -->
   {%- set metaDesc = summary or description or home.hero.description -%}
   {%- set metaTitle = title + " | evo360 Neuchâtel" if page.url != "/" else "evo360 | Centre de Performance et Bien-être à Neuchâtel" -%}
   {%- set metaDescription = metaDesc if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération." -%}
@@ -273,6 +280,10 @@
   {% endif %}
 </head>
 <body{% if page.url != "/" %} class="inner-page"{% endif %}>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4WVTML"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
