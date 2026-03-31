@@ -10,7 +10,7 @@
         <h2 class="cta-title">{{ home.cta.title | safe }}</h2>
         <p class="cta-text">{{ home.cta.text }}</p>
         <div class="cta-actions">
-          <a href="#" class="btn btn-primary" data-open-modal="contact">{{ home.cta.btn_label }}</a>
+          <a href="/contact/" class="btn btn-primary">{{ home.cta.btn_label }}</a>
           <a href="tel:{{ home.cta.phone | replace(' ', '') }}" class="btn btn-dark">
             <svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-phone"></use></svg>
             {{ home.cta.phone }}
