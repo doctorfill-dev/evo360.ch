@@ -77,7 +77,7 @@
     ],
     "cta": {
       "label": "Prendre rendez-vous",
-      "url": "/#contact"
+      "url": "/contact/"
     }
   },
   "hero": {

@@ -21,7 +21,6 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
       {# Coordonnées #}
       <div class="contact-info">
         <h2>Coordonnées</h2>
-
         <ul class="contact-details-list">
           <li class="contact-detail-item">
             <span class="contact-detail-icon" aria-hidden="true">
@@ -74,27 +73,59 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
         </div>
       </div>
 
-      {# Formulaire de contact #}
+      {# Formulaire embarqué #}
       <div class="contact-form-card">
         <h2>Formulaire de contact</h2>
-        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">
-          Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais.
-        </p>
-        <button
-          class="btn btn-primary"
-          data-open-modal="contact"
-          style="width: 100%; justify-content: center;"
-        >
-          <svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg>
-          Envoyer un message
-        </button>
 
-        <p style="font-size: 0.875rem; color: var(--gray-400); margin-top: 1rem; text-align: center;">
-          Ou contactez-nous directement par
-          <a href="tel:+41765070360" style="color: var(--indigo);">téléphone</a>
-          ou
-          <a href="https://wa.me/41765070360" target="_blank" rel="noopener noreferrer" style="color: var(--indigo);">WhatsApp</a>.
-        </p>
+        <form action="https://formspree.io/f/mgonoqwn" method="POST" class="modal-form" id="contact-page-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cp-prenom">Prénom</label>
+              <input type="text" id="cp-prenom" name="prenom" placeholder="Votre prénom" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="cp-nom">Nom</label>
+              <input type="text" id="cp-nom" name="nom" placeholder="Votre nom" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cp-email">Email <span class="required">*</span></label>
+            <input type="email" id="cp-email" name="email" placeholder="votre@email.ch" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="cp-motif">Motif</label>
+            <select id="cp-motif" name="motif">
+              <option value="">Sélectionnez un motif</option>
+              <option value="Renseignement général">Renseignement général</option>
+              <option value="Abonnement 3 mois">Abonnement 3 mois</option>
+              <option value="Abonnement 6 mois">Abonnement 6 mois</option>
+              <option value="Abonnement 12 mois">Abonnement 12 mois</option>
+              <option value="Check-Up 360">Check-Up 360</option>
+              <option value="Coaching personnalisé">Coaching personnalisé</option>
+              <option value="Red Light Therapy">Red Light Therapy</option>
+              <option value="Fitness & Wellness">Fitness & Wellness</option>
+              <option value="Entreprises">Entreprises</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cp-message">Message</label>
+            <textarea id="cp-message" name="message" rows="4" placeholder="Votre message (facultatif)"></textarea>
+          </div>
+          <p id="contact-page-error" hidden style="color:#c0392b;font-size:.875rem;margin-bottom:.5rem;">
+            Une erreur est survenue. Veuillez réessayer ou nous appeler au 076 507 03 60.
+          </p>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="contact-page-submit-btn">
+            <svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg>
+            Envoyer
+          </button>
+        </form>
+
+        <div id="contact-page-success" hidden style="text-align:center;padding:2rem 0;">
+          <svg class="icon" style="width:3rem;height:3rem;color:var(--indigo);margin-bottom:1rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-check_circle"></use></svg>
+          <h3 style="margin-bottom:.5rem;">Message envoyé !</h3>
+          <p style="color:var(--gray-600);">Merci, nous vous recontacterons dans les plus brefs délais.</p>
+        </div>
       </div>
 
     </div>
@@ -106,8 +137,8 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
   .contact-page { padding: 4rem 0 6rem; }
   .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
     margin-top: 3rem;
     align-items: start;
   }
