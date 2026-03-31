@@ -1,0 +1,147 @@
+---
+layout: layouts/base.njk
+title: Contact
+description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et demandes de tarifs. Disponible par téléphone, WhatsApp ou formulaire en ligne. Lundi–Vendredi 07h30–20h30."
+---
+
+<section class="contact-page">
+  <div class="container">
+
+    <div class="about-page-header">
+      <a href="/" class="back-link" style="color: var(--indigo); margin-bottom: 2rem;">
+        <svg class="icon" style="width:1rem;height:1rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_back"></use></svg>
+        Retour à l'accueil
+      </a>
+      <h1 class="section-title">Nous <span class="accent">contacter</span></h1>
+      <p class="about-page-lead">Une question, une demande de rendez-vous ou d'information sur nos services ? Nous vous recontactons rapidement.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      {# Coordonnées #}
+      <div class="contact-info">
+        <h2>Coordonnées</h2>
+
+        <ul class="contact-details-list">
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg class="icon" style="width:1.25rem;height:1.25rem;"><use href="/assets/img/icons/sprite.svg#icon-phone"></use></svg>
+            </span>
+            <div>
+              <strong>Téléphone &amp; WhatsApp</strong>
+              <a href="tel:+41765070360">076 507 03 60</a>
+            </div>
+          </li>
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg class="icon" style="width:1.25rem;height:1.25rem;"><use href="/assets/img/icons/sprite.svg#icon-mail"></use></svg>
+            </span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:hello@evo360.ch">hello@evo360.ch</a>
+            </div>
+          </li>
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg class="icon" style="width:1.25rem;height:1.25rem;"><use href="/assets/img/icons/sprite.svg#icon-location_on"></use></svg>
+            </span>
+            <div>
+              <strong>Adresse</strong>
+              <span>Av. Édouard-Dubois 20<br>2000 Neuchâtel</span>
+            </div>
+          </li>
+          <li class="contact-detail-item">
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg class="icon" style="width:1.25rem;height:1.25rem;"><use href="/assets/img/icons/sprite.svg#icon-schedule"></use></svg>
+            </span>
+            <div>
+              <strong>Horaires</strong>
+              <span>Lundi – Vendredi, 07h30 – 20h30</span>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top: 2rem;">
+          <a
+            href="https://maps.google.com/?q=Av.+%C3%89douard-Dubois+20,+2000+Neuch%C3%A2tel"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline btn-sm"
+          >
+            <svg class="icon" style="width:1rem;height:1rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-map"></use></svg>
+            Voir sur Google Maps
+          </a>
+        </div>
+      </div>
+
+      {# Formulaire de contact #}
+      <div class="contact-form-card">
+        <h2>Formulaire de contact</h2>
+        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">
+          Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais.
+        </p>
+        <button
+          class="btn btn-primary"
+          data-open-modal="contact"
+          style="width: 100%; justify-content: center;"
+        >
+          <svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg>
+          Envoyer un message
+        </button>
+
+        <p style="font-size: 0.875rem; color: var(--gray-400); margin-top: 1rem; text-align: center;">
+          Ou contactez-nous directement par
+          <a href="tel:+41765070360" style="color: var(--indigo);">téléphone</a>
+          ou
+          <a href="https://wa.me/41765070360" target="_blank" rel="noopener noreferrer" style="color: var(--indigo);">WhatsApp</a>.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contact-page { padding: 4rem 0 6rem; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+  .contact-info h2,
+  .contact-form-card h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .contact-details-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .contact-detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(70,34,204,.08);
+    color: var(--indigo);
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+  .contact-detail-item strong { display: block; font-size: 0.875rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: .04em; margin-bottom: .25rem; }
+  .contact-detail-item a,
+  .contact-detail-item span { color: var(--gray-900); font-size: 1rem; }
+  .contact-detail-item a:hover { color: var(--indigo); }
+  .contact-form-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+  }
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>

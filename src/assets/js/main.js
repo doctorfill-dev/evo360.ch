@@ -39,16 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function initGA() {
     const gaId = 'G-ZMF20R1Q0M';
     if (window.gaInitialized) return;
-    
+
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', gaId);
+    // Expose gtag globally so conversion events can be fired from anywhere
+    window.gtag = function(){dataLayer.push(arguments);};
+    window.gtag('js', new Date());
+    window.gtag('config', gaId);
     window.gaInitialized = true;
   }
 

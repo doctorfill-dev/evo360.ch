@@ -197,9 +197,9 @@
       {% for review in home.testimonials.items %}
       {
         "@type": "Review",
-        "author": { "@type": "Person", "name": "{{ review.name }}" },
+        "author": { "@type": "Person", "name": "{{ review.name | jsonEscape | safe }}" },
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "{{ review.text | replace('"', '\\"') }}"
+        "reviewBody": "{{ review.text | jsonEscape | safe }}"
       }{% if not loop.last %},{% endif %}
       {% endfor %}
     ]
@@ -213,8 +213,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "{{ title }}",
-    "description": "{{ metaDesc }}",
+    "name": "{{ title | jsonEscape | safe }}",
+    "description": "{{ metaDesc | jsonEscape | safe }}",
     "url": "{{ home.site.url }}{{ page.url }}",
     {% if cover_image %}"image": "{{ home.site.url }}{{ cover_image | toPublicPath }}",{% endif %}
     {% if price %}"offers": {
@@ -264,7 +264,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "{{ title }}",
+        "name": "{{ title | jsonEscape | safe }}",
         "item": "{{ home.site.url }}{{ page.url }}"
       }
     ]
@@ -387,6 +387,51 @@
         openModal(btn.dataset.motif || '');
       });
     });
+
+    // Contact form — AJAX submission + GA4 conversion tracking
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('form-submit-btn');
+        const errorMsg = document.getElementById('form-error');
+        const motifValue = document.getElementById('motif')?.value || '';
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours…';
+        if (errorMsg) errorMsg.hidden = true;
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            contactForm.hidden = true;
+            const successDiv = document.getElementById('form-success');
+            if (successDiv) successDiv.hidden = false;
+
+            // GA4 — événement de conversion
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'generate_lead', {
+                event_category: 'contact',
+                event_label: motifValue || 'Formulaire général'
+              });
+            }
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg> Envoyer';
+            if (errorMsg) errorMsg.hidden = false;
+          }
+        } catch {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg> Envoyer';
+          if (errorMsg) errorMsg.hidden = false;
+        }
+      });
+    }
 
     // Handle hash #contact — open modal on page load or nav
     function checkContactHash() {

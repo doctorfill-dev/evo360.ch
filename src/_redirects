@@ -18,3 +18,21 @@
 /notre-equipe/*                       /about/                   301
 /services/red-light-copy              /services/red-light-therapy/ 301
 /services/red-light-copy/*            /services/red-light-therapy/ 301
+
+# ── Redirects manquants (404 actives — rapport GSC 31/03/2026) ──────────────
+/nos-services                         /                            301
+/nos-services/*                       /                            301
+/services/bilans-tests-et-examens     /services/checkup-360/       301
+/services/bilans-tests-et-examens/*   /services/checkup-360/       301
+/services/red-light                   /services/red-light-therapy/ 301
+/services/red-light/*                 /services/red-light-therapy/ 301
+/services/physiotherapie              /                            301
+/services/physiotherapie/*            /                            301
+/privacy-policy                       /confidentialite/            301
+/privacy-policy/*                     /confidentialite/            301
+/politique-de-confidentialite-evo360-suisse /confidentialite/      301
+/politique-de-confidentialite-evo360-suisse/* /confidentialite/    301
+/services/profilage-et-analyse-comportementale-par-la-gestuelle /services/profilage/ 301
+/services/profilage-et-analyse-comportementale-par-la-gestuelle/* /services/profilage/ 301
+/services/preparation-physique-individualisee-sur-machine-intelligente /services/fitness/ 301
+/services/preparation-physique-individualisee-sur-machine-intelligente/* /services/fitness/ 301
