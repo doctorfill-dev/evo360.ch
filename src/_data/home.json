@@ -195,19 +195,19 @@
         "coming_soon": false
       },
       {
-        "id": "10",
-        "title": "Neurotracker",
-        "description": "Parce que la performance commence dans le cerveau.",
-        "image": "/assets/img/services/services/items/8/image.webp",
-        "url": "/services/neurotracker/",
-        "coming_soon": true
-      },
-      {
         "id": "09",
         "title": "Psychologie du sport ",
         "description": "Accompagnement mental pour optimiser performance, bien-être et potentiel.",
         "url": "/services/psychologie-du-sport/",
         "coming_soon": false
+      },
+      {
+        "id": "10",
+        "title": "Neurotracker",
+        "description": "Parce que la performance commence dans le cerveau.",
+        "image": "/assets/img/services/services/items/9/image.webp",
+        "url": "/services/neurotracker/",
+        "coming_soon": true
       }
     ]
   },
