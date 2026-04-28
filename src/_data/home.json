@@ -59,12 +59,12 @@
             "url": "/services/entreprises/"
           },
           {
-            "label": "Neurotracker",
-            "url": "/services/neurotracker/"
-          },
-          {
             "label": "Psychologue du sport ",
             "url": "/services/psychologie-du-sport/"
+          },
+          {
+            "label": "Neurotracker",
+            "url": "/services/neurotracker/"
           }
         ]
       },
