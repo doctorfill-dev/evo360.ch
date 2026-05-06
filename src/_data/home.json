@@ -3,8 +3,8 @@
     "enabled": false
   },
   "promo": {
-    "enabled": false,
-    "text": "Horaires spéciaux Pâques : Ouverture vendredi Saint (3 avril) et lundi de Pâques (6 avril) de 9h à 16h. ",
+    "enabled": true,
+    "text": "Offre SUMMER BODY : 3 mois d'abonnement au Fitness à seulement 350.- ",
     "link": "#contact"
   },
   "site": {
