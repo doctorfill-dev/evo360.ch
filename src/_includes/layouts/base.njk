@@ -47,9 +47,6 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
-  {# ── Promo bar : masquer avant le premier paint si déjà fermée ── #}
-  <script>if(localStorage.getItem('promo-dismissed')==='true')document.documentElement.classList.add('promo-dismissed')</script>
-
   {# ── Font preloads (eliminate CLS from font swap) ── #}
   <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -150,8 +147,6 @@
     }
     /* ANTI-FOUC — modal */
     .modal-overlay{opacity:0}
-    /* ANTI-CLS — promo bar : masquer avant le premier paint si déjà dismissée */
-    .promo-dismissed #promo-bar{display:none}
   </style>
 
   <link rel="stylesheet" href="/assets/css/style.css" media="print" onload="this.media='all'">
@@ -344,14 +339,76 @@
       }
     });
 
-    // Promo bar dismiss (with localStorage persistence)
+    // Each close hides only the current promo for this document. The whole
+    // bar disappears only after every currently configured promo is closed.
     const promoBar = document.getElementById('promo-bar');
     const promoClose = document.getElementById('promo-close');
     if (promoBar && promoClose) {
+      const promoSlides = Array.from(promoBar.querySelectorAll('.promo-slide'));
+      const dismissedPromoSlides = new Set();
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let promoIndex = 0;
+      let promoTimer;
+
+      const availablePromoIndexes = () => promoSlides
+        .map((_, index) => index)
+        .filter((index) => !dismissedPromoSlides.has(index));
+
+      const showPromoSlide = (nextIndex) => {
+        const availableIndexes = availablePromoIndexes();
+        if (!availableIndexes.length) {
+          window.clearInterval(promoTimer);
+          promoBar.remove();
+          return;
+        }
+
+        if (!availableIndexes.includes(nextIndex)) nextIndex = availableIndexes[0];
+        promoIndex = nextIndex;
+
+        promoSlides.forEach((slide, index) => {
+          const isDismissed = dismissedPromoSlides.has(index);
+          const isActive = !isDismissed && index === nextIndex;
+          slide.hidden = isDismissed;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', String(!isActive || isDismissed));
+          slide.querySelectorAll('a').forEach((link) => {
+            link.tabIndex = isActive ? 0 : -1;
+          });
+        });
+      };
+
+      const stopPromoRotation = () => window.clearInterval(promoTimer);
+      const startPromoRotation = () => {
+        if (availablePromoIndexes().length < 2 || reduceMotion) return;
+        stopPromoRotation();
+        promoTimer = window.setInterval(() => {
+          const availableIndexes = availablePromoIndexes();
+          const currentPosition = availableIndexes.indexOf(promoIndex);
+          const nextIndex = availableIndexes[(currentPosition + 1) % availableIndexes.length];
+          showPromoSlide(nextIndex);
+        }, 3000);
+      };
+
       promoClose.addEventListener('click', () => {
-        promoBar.remove();
-        localStorage.setItem('promo-dismissed', 'true');
+        dismissedPromoSlides.add(promoIndex);
+        const availableIndexes = availablePromoIndexes();
+        const nextIndex = availableIndexes.find((index) => index > promoIndex) ?? availableIndexes[0];
+        showPromoSlide(nextIndex);
+        startPromoRotation();
       });
+
+      showPromoSlide(0);
+      if (promoSlides.length > 1) {
+        startPromoRotation();
+        promoBar.addEventListener('mouseenter', stopPromoRotation);
+        promoBar.addEventListener('mouseleave', startPromoRotation);
+        promoBar.addEventListener('focusin', stopPromoRotation);
+        promoBar.addEventListener('focusout', () => {
+          window.setTimeout(() => {
+            if (!promoBar.contains(document.activeElement)) startPromoRotation();
+          }, 0);
+        });
+      }
     }
 
     // Modal contact form

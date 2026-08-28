@@ -2,9 +2,12 @@
 layout: layouts/base.njk
 ---
 <article class="service-detail">
+  {# `prices: []` is truthy in Nunjucks, so test its length explicitly. #}
+  {% set hasPriceGrid = prices and prices.length > 0 %}
+  {% set hasServiceTariff = price or hasPriceGrid or price_note or page.fileSlug == 'fitness' %}
   <header class="service-header-refined">
     {# Price badge — single price #}
-    {% if price and not prices %}
+    {% if price and not hasPriceGrid %}
       <div class="service-price-badge">
         <span class="service-price-badge-amount">{{ price }}</span>
         {% if price_note %}
@@ -14,7 +17,7 @@ layout: layouts/base.njk
     {% endif %}
 
     {# Price badge — multiple prices: link to tarifs section #}
-    {% if prices %}
+    {% if hasPriceGrid or page.fileSlug == 'fitness' %}
       <a href="#tarifs" class="service-price-badge service-price-badge--link">
         <span class="service-price-badge-amount">Tarifs</span>
         <span class="service-price-badge-note">Voir ci-dessous ↓</span>
@@ -52,20 +55,34 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
 
-    {# Price table at bottom (multiple prices) #}
-    {% if prices %}
+    {# Price table at bottom — supports a unique price, a grid, or a quote note. #}
+    {% if hasServiceTariff %}
       <section class="service-tarifs" id="tarifs">
         <h2 class="service-tarifs-title">
           <svg class="icon" style="width:1.5rem;height:1.5rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-payments"></use></svg>
           Nos tarifs
         </h2>
         <ul class="service-tarifs-list">
-          {% for item in prices %}
+          {% if page.fileSlug == 'fitness' %}
+            {% for plan in home.pricing.plans %}
+              <li class="service-tarifs-item">
+                <span class="service-tarifs-label">Abonnement {{ plan.name }}</span>
+                <span class="service-tarifs-amount">{{ plan.price_months }} {{ plan.period_months }} — ou {{ plan.price_onetime }} {{ plan.period_onetime }}</span>
+              </li>
+            {% endfor %}
+          {% elif hasPriceGrid %}
+            {% for item in prices %}
+              <li class="service-tarifs-item">
+                <span class="service-tarifs-label">{{ item.label }}</span>
+                <span class="service-tarifs-amount">{{ item.amount }}</span>
+              </li>
+            {% endfor %}
+          {% elif price %}
             <li class="service-tarifs-item">
-              <span class="service-tarifs-label">{{ item.label }}</span>
-              <span class="service-tarifs-amount">{{ item.amount }}</span>
+              <span class="service-tarifs-label">{{ price_label or 'Tarif' }}</span>
+              <span class="service-tarifs-amount">{{ price }}</span>
             </li>
-          {% endfor %}
+          {% endif %}
         </ul>
         {% if price_note %}
           <p class="service-tarifs-note">{{ price_note }}</p>
@@ -75,9 +92,12 @@ layout: layouts/base.njk
 
     <div class="detail-footer">
       <div class="detail-cta">
+        {% set defaultServiceCtaUrl = '/contact/?motif=' ~ (title | urlencode) %}
+        {% set serviceCtaUrl = cta_url or defaultServiceCtaUrl %}
+        {% set serviceCtaIsExternal = cta_url and '://' in cta_url %}
         <h3>Intéressé par ce service ?</h3>
         <p>Prenez rendez-vous pour un premier échange et découvrez comment nous pouvons vous accompagner.</p>
-        <a href="/contact/?motif={{ title | urlencode }}" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href="{{ serviceCtaUrl }}" class="btn btn-primary"{% if serviceCtaIsExternal %} target="_blank" rel="noopener"{% endif %}>{{ cta_label or 'Prendre rendez-vous' }}</a>
       </div>
 
       {# Navigation précédent / suivant #}

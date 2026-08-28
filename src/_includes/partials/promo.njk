@@ -1,12 +1,32 @@
-{% if home.promo.enabled %}
+{% set activePromoCount = 0 %}
+{% for item in home.promo.items %}
+  {% if item.enabled and item.text %}
+    {% set activePromoCount = activePromoCount + 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if home.promo.enabled and activePromoCount > 0 %}
 <div class="promo-bar" id="promo-bar" role="banner">
   <div class="promo-inner container">
     <span class="promo-badge" aria-hidden="true">
       <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-campaign"></use></svg>
     </span>
-    <p class="promo-text">
-      <span class="promo-message">{{ home.promo.text }}</span>
-    </p>
+    <div class="promo-carousel" aria-live="polite">
+      {% set visiblePromoIndex = 0 %}
+      {% for item in home.promo.items %}
+        {% if item.enabled and item.text %}
+          <div class="promo-slide{% if visiblePromoIndex == 0 %} is-active{% endif %}"{% if visiblePromoIndex != 0 %} aria-hidden="true"{% endif %}>
+            <p class="promo-text">
+              <span class="promo-message">{{ item.text }}</span>
+              {% if item.link %}
+                <a href="{{ item.link }}" class="promo-cta"{% if visiblePromoIndex != 0 %} tabindex="-1"{% endif %}>En savoir plus <span aria-hidden="true">→</span></a>
+              {% endif %}
+            </p>
+          </div>
+          {% set visiblePromoIndex = visiblePromoIndex + 1 %}
+        {% endif %}
+      {% endfor %}
+    </div>
     <button class="promo-close" id="promo-close" aria-label="Fermer la bannière">
       <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-close"></use></svg>
     </button>

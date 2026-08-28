@@ -1,12 +1,10 @@
 // blog.11tydata.js — Directory data for all blog files.
-// When home.blog.enabled is false, all blog pages get permalink: false (not generated).
-import { readFileSync } from 'fs';
-
-const home = JSON.parse(readFileSync('src/_data/home.json', 'utf8'));
-const blogEnabled = home.blog?.enabled === true;
+// Blog & Publications is deliberately parked for now. Keep the source files
+// and this directory data file so the feature can be resumed later, but do not
+// generate public blog article routes.
 
 export default {
   layout: "layouts/post.njk",
   tags: "posts",
-  permalink: blogEnabled ? undefined : false,
+  permalink: false,
 };

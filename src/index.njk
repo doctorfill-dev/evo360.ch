@@ -17,9 +17,11 @@ description: Evo360 — Centre de performance et bien-être à Neuchâtel. Coach
 {% include "partials/pricing.njk" %}
 {% include "partials/testimonials.njk" %}
 {% include "partials/team.njk" %}
-{% if home.blog.enabled %}
-{% include "partials/blog_preview.njk" %}
-{% endif %}
+{#
+  Blog & Publications est temporairement désactivé. Le partial et les données
+  sont conservés pour pouvoir reprendre ce chantier ultérieurement.
+  {% include "partials/blog_preview.njk" %}
+#}
 {% include "partials/instagram.njk" %}
 {% include "partials/cta.njk" %}
 {% include "partials/contact.njk" %}

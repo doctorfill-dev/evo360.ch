@@ -38,7 +38,9 @@ export default config({
     brand: { name: 'evo360 — Admin' },
     navigation: {
       'Page d\'accueil': ['home'],
-      'Contenu': ['services', 'posts'],
+      // La collection `posts` est conservée dans le schéma mais masquée tant
+      // que le chantier Blog & Publications n'est pas repris.
+      'Contenu': ['services'],
       'Médias': ['media'],
     },
   },
@@ -51,20 +53,26 @@ export default config({
 
       schema: {
 
-        // ── Section Blog (activation) ────────────────────────────────────
-        blog: fields.object(
-          {
-            enabled: fields.checkbox({ label: 'Activer la section Blog / Publications', defaultValue: false }),
-          },
-          { label: 'Blog & Publications' }
-        ),
+        // ── Blog & Publications (en attente) ─────────────────────────────
+        // L'ancien bloc d'activation est volontairement retiré de l'éditeur.
+        // La collection `posts` reste déclarée plus bas afin de pouvoir
+        // reprendre cette fonctionnalité ultérieurement sans repartir de zéro.
 
         // ── Barre promotionnelle ──────────────────────────────────────────
         promo: fields.object(
           {
             enabled: fields.checkbox({ label: 'Afficher la barre promotionnelle', defaultValue: false }),
-            text:    fields.text({ label: 'Texte de la promotion' }),
-            link:    fields.text({ label: 'Lien (optionnel)' }),
+            items: fields.array(
+              fields.object({
+                enabled: fields.checkbox({ label: 'Afficher ce bandeau', defaultValue: true }),
+                text: fields.text({ label: 'Texte du bandeau', multiline: true }),
+                link: fields.text({ label: 'Lien du bouton (optionnel)' }),
+              }),
+              {
+                label: 'Bandeaux promotionnels',
+                itemLabel: (props) => props.fields.text.value || 'Nouveau bandeau',
+              },
+            ),
           },
           { label: 'Barre promotionnelle' }
         ),
@@ -186,27 +194,6 @@ export default config({
           { label: 'Partenaire Médical (SportMed)' }
         ),
 
-        // ── Section Services ─────────────────────────────────────────────
-        services: fields.object(
-          {
-            items: fields.array(
-              fields.object({
-                id:          fields.text({ label: 'Numéro (ex: 01)' }),
-                title:       fields.text({ label: 'Titre du service' }),
-                description: fields.text({ label: 'Description courte', multiline: true }),
-                image:       fields.image({ label: 'Image', directory: 'src/assets/img/services', publicPath: '/assets/img/services/' }),
-                url:         fields.text({ label: 'Lien vers la page détaillée' }),
-                coming_soon: fields.checkbox({ label: 'À venir (pas encore disponible)', defaultValue: false }),
-              }),
-              {
-                label:     'Services affichés sur la homepage',
-                itemLabel: (props) => props.fields.title.value || 'Service',
-              }
-            ),
-          },
-          { label: 'Section Services' }
-        ),
-
         // ── Section Tarifs & Abonnements ─────────────────────────────────
         pricing: fields.object(
           {
@@ -307,17 +294,14 @@ export default config({
             url:    fields.text({ label: 'URL du profil Instagram' }),
             posts: fields.array(
               fields.object({
-                image: fields.image({
-                  label: 'Image du post',
-                  directory: 'src/assets/img/instagram',
-                  publicPath: '/assets/img/instagram/',
+                url: fields.text({
+                  label: 'URL du post Instagram',
+                  description: 'Collez le lien complet d’une publication ou d’un reel (ex. instagram.com/p/... ou instagram.com/reel/...).',
                 }),
-                url: fields.text({ label: 'URL du post Instagram' }),
-                alt: fields.text({ label: 'Texte alternatif (accessibilité)' }),
               }),
               {
                 label:     'Posts Instagram affichés',
-                itemLabel: (props) => props.fields.alt.value || 'Post',
+                itemLabel: (props) => props.fields.url.value || 'Post Instagram',
               }
             ),
           },
@@ -408,6 +392,7 @@ export default config({
         //   • price + price_note  → tarif unique (ex: Check-Up 360)
         //   • prices[]            → grille tarifaire (ex: Coaching, Fitness)
         price: fields.text({ label: 'Prix unique (ex: CHF 50.-)', description: 'Utilisez ce champ OU la grille ci-dessous, pas les deux.' }),
+        price_label: fields.text({ label: 'Libellé du prix unique (ex: Bilan complet)' }),
         price_note: fields.text({ label: 'Note tarifaire (ex: Offert avec un abonnement fitness)' }),
         prices: fields.array(
           fields.object({
@@ -419,6 +404,16 @@ export default config({
             itemLabel: (props) => props.fields.label.value || 'Tarif',
           }
         ),
+        // ── CTA de fin de page ────────────────────────────────────────────
+        // Laisser ces champs vides conserve le lien par défaut vers Contact.
+        cta_url: fields.text({
+          label: 'Lien CTA personnalisé (optionnel)',
+          description: 'Ex. URL OneDoc. Laissez vide pour rediriger vers la page Contact avec le service prérempli.',
+        }),
+        cta_label: fields.text({
+          label: 'Texte CTA personnalisé (optionnel)',
+          description: 'Laissez vide pour conserver « Prendre rendez-vous ».',
+        }),
         content:     fields.document({
           label: 'Contenu détaillé',
           formatting: true,

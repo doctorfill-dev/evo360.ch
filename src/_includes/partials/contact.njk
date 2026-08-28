@@ -18,7 +18,7 @@
       <div class="contact-map">
         <iframe
           src="https://maps.google.com/maps?q=evo360+Av.+Edouard-Dubois+20+Neuchatel&output=embed&z=16&hl=fr"
-          title="evo360 — Av. Édouard-Dubois 20, Neuchâtel"
+          title="{{ home.site.name }} — {{ home.site.address | replace('\n', ', ') }}"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen>
@@ -34,7 +34,7 @@
           </div>
           <div class="ci-text">
             <strong>Adresse</strong>
-            <p>Av. Édouard-Dubois 20<br>2000 Neuchâtel</p>
+            <p>{{ home.site.address | replace('\n', '<br>') | safe }}</p>
           </div>
         </div>
 
@@ -64,7 +64,7 @@
           </div>
           <div class="ci-text">
             <strong>Accès</strong>
-            <p>Parking gratuit — Bus 101, Vauseyon</p>
+            <p>{{ home.site.access }}</p>
           </div>
         </div>
 

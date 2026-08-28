@@ -85,19 +85,23 @@ export default function (eleventyConfig) {
     });
   });
 
-  // Filtre filterHiddenHomeServices : retire de la liste homepage les services
-  // dont le .mdoc a hide: true, en croisant par slug (le nom du fichier .mdoc)
-  // Usage : {% for s in home.services.items | filterHiddenHomeServices(collections.services) %}
-  eleventyConfig.addFilter("filterHiddenHomeServices", (homeServices, collectionServices) => {
-    if (!homeServices || !collectionServices) return homeServices || [];
+  // Trie les services selon le champ `order` du CMS.
+  // Usage : {% set services = collections.services | removeHidden | sortByOrder %}
+  eleventyConfig.addFilter("sortByOrder", (services) => {
+    if (!services) return [];
+    return [...services].sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+  });
+
+  // Retire du sous-menu Services les liens vers des fiches masquées dans le CMS.
+  eleventyConfig.addFilter("filterHiddenServiceLinks", (links, services) => {
+    if (!links || !services) return links || [];
     const hiddenSlugs = new Set(
-      collectionServices
-        .filter(s => s.data.hide === true || s.data.hide === "true")
-        .map(s => s.fileSlug)
+      services
+        .filter(service => service.data.hide === true || service.data.hide === "true")
+        .map(service => service.fileSlug)
     );
-    return homeServices.filter(item => {
-      // Extraire le slug depuis l'URL : "/services/neurotracker/" → "neurotracker"
-      const slug = (item.url || '').replace(/^\/services\//, '').replace(/\/$/, '');
+    return links.filter(link => {
+      const slug = (link.url || '').replace(/^\/services\//, '').replace(/\/$/, '');
       return !hiddenSlugs.has(slug);
     });
   });

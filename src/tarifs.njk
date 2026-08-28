@@ -62,119 +62,51 @@ description: Tous les tarifs evo360 à Neuchâtel. Fitness, coaching, VO₂max, 
         </div>
       </div>
 
+      {% set services = collections.services | removeHidden | sortByOrder %}
       <div class="tarif-services-grid">
+        {% for service in services %}
+          {% if service.fileSlug != 'fitness' and (service.data.price or (service.data.prices and service.data.prices.length) or service.data.price_note or service.data.cta_url) %}
+            <div class="tarif-service-card">
+              <div class="tarif-service-head">
+                {% if service.data.icon %}
+                  <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-{{ service.data.icon }}"></use></svg>
+                {% endif %}
+                <h3>{{ service.data.title }}</h3>
+                {% if service.data.coming_soon %}
+                  <span class="coming-soon-badge" style="font-size:.7rem;padding:.15rem .5rem;">Bientôt</span>
+                {% endif %}
+              </div>
 
-        {# Check-Up 360 #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-monitor_heart"></use></svg>
-            <h3>Check-Up 360</h3>
-          </div>
-          <ul class="tarif-list">
-            <li><span>Bilan complet</span><strong>CHF 50.-</strong></li>
-          </ul>
-          <p class="tarif-note">Offert avec un abonnement fitness</p>
-        </div>
+              {% if service.data.price %}
+                <ul class="tarif-list">
+                  <li><span>{{ service.data.price_label or 'Tarif' }}</span><strong>{{ service.data.price }}</strong></li>
+                </ul>
+              {% endif %}
 
-        {# VO₂max #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-directions_run"></use></svg>
-            <h3>Test de VO₂max</h3>
-          </div>
-          <ul class="tarif-list">
-            <li><span>Test complet</span><strong>CHF 250.-</strong></li>
-          </ul>
-        </div>
+              {% if service.data.prices and service.data.prices.length %}
+                <ul class="tarif-list">
+                  {% for item in service.data.prices %}
+                    <li><span>{{ item.label }}</span><strong>{{ item.amount }}</strong></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
 
-        {# Coaching #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-sports_score"></use></svg>
-            <h3>Coaching & préparation physique</h3>
-          </div>
-          <ul class="tarif-list">
-            <li><span>1 séance</span><strong>CHF 90.-</strong></li>
-            <li><span>5 séances</span><strong>CHF 425.-</strong></li>
-            <li><span>10 séances</span><strong>CHF 800.-</strong></li>
-          </ul>
-          <div class="tarif-separator"></div>
-          <p class="tarif-sublabel">Coach Swiss Olympic</p>
-          <ul class="tarif-list">
-            <li><span>1 séance</span><strong>CHF 100.-</strong></li>
-            <li><span>5 séances</span><strong>CHF 475.-</strong></li>
-            <li><span>10 séances</span><strong>CHF 900.-</strong></li>
-          </ul>
-          <div class="tarif-separator"></div>
-<!--          <ul class="tarif-list">-->
-<!--            <li><span>Planification mensuelle</span><strong>CHF 120.- / mois</strong></li>-->
-<!--          </ul>-->
-        </div>
+              {% if service.data.price_note %}
+                <p class="tarif-note">{{ service.data.price_note }}</p>
+              {% endif %}
 
-        {# Profilage #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-psychology_alt"></use></svg>
-            <h3>Profilage</h3>
-          </div>
-          <ul class="tarif-list">
-            <li><span>Séance complète</span><strong>CHF 240.-</strong></li>
-          </ul>
-        </div>
-
-        {# Red Light Therapy #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-light_mode"></use></svg>
-            <h3>Red Light Therapy</h3>
-          </div>
-          <ul class="tarif-list">
-            <li><span>1 séance</span><strong>CHF 30.-</strong></li>
-            <li><span>5 séances</span><strong>CHF 140.-</strong></li>
-            <li><span>10 séances</span><strong>CHF 270.-</strong></li>
-            <li><span>15 séances</span><strong>CHF 380.-</strong></li>
-            <li><span>20 séances</span><strong>CHF 480.-</strong></li>
-          </ul>
-        </div>
-
-        {# Nutrition #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-restaurant"></use></svg>
-            <h3>Nutrition</h3>
-          </div>
-          <ul class="tarif-list">
-            <li><span>Première consultation</span><strong>CHF 180.-</strong></li>
-            <li><span>Consultation de suivi</span><strong>CHF 120.-</strong></li>
-          </ul>
-        </div>
-
-        {# Neurotracker #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-psychology"></use></svg>
-            <h3>Neurotracker</h3>
-            <span class="coming-soon-badge" style="font-size:.7rem;padding:.15rem .5rem;">Bientôt</span>
-          </div>
-          <ul class="tarif-list">
-            <li><span>1 séance</span><strong>CHF 95.-</strong></li>
-            <li><span>5 séances</span><strong>CHF 427.50</strong></li>
-            <li><span>10 séances</span><strong>CHF 760.-</strong></li>
-          </ul>
-        </div>
-
-        {# Entreprises #}
-        <div class="tarif-service-card">
-          <div class="tarif-service-head">
-            <svg class="icon" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-corporate_fare"></use></svg>
-            <h3>Entreprises & institutions</h3>
-          </div>
-          <p class="tarif-note">Programmes sur mesure. Contactez-nous pour un devis personnalisé.</p>
-          <div class="plan-cta" style="margin-top:.75rem;">
-            <a href="/contact/?motif=Entreprises%20%26%20institutions" class="btn btn-outline btn-sm">Demander un devis</a>
-          </div>
-        </div>
-
+              {% if service.data.cta_url %}
+                <div class="plan-cta" style="margin-top:.75rem;">
+                  <a href="{{ service.data.cta_url }}" class="btn btn-outline btn-sm"{% if '://' in service.data.cta_url %} target="_blank" rel="noopener"{% endif %}>{{ service.data.cta_label or 'Prendre rendez-vous' }}</a>
+                </div>
+              {% elif not service.data.price and not (service.data.prices and service.data.prices.length) and service.data.price_note %}
+                <div class="plan-cta" style="margin-top:.75rem;">
+                  <a href="/contact/?motif={{ service.data.title | urlencode }}" class="btn btn-outline btn-sm">Demander un devis</a>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 

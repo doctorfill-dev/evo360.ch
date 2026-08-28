@@ -1,11 +1,13 @@
 {
-  "blog": {
-    "enabled": false
-  },
   "promo": {
     "enabled": true,
-    "text": "Offre SUMMER BODY : 3 mois d'abonnement au Fitness à seulement 350.- ",
-    "link": "#contact"
+    "items": [
+      {
+        "enabled": true,
+        "text": "Offre SUMMER BODY : 3 mois d'abonnement au Fitness à seulement 350.-",
+        "link": "#contact"
+      }
+    ]
   },
   "site": {
     "name": "evo360",
@@ -96,11 +98,12 @@
       "label": "Prendre rendez-vous",
       "url": "/contact/"
     },
+    "img1": "/assets/img/services/hero/img1.webp",
     "img2": "/assets/img/services/hero/img2.jpg",
     "img3": "/assets/img/services/hero/img3.webp",
     "stats": [
       {
-        "value": "5+",
+        "value": "10+",
         "label": "Experts"
       },
       {
@@ -114,7 +117,7 @@
     ]
   },
   "about": {
-    "title": "Un lieu pour se dépasser, <span class=\"accent\">vraiment</span>.",
+    "title": "Un lieu pour se dépasser, <span class=\"accent\">vraiment</span>",
     "lead": "Nous combinons coaching sportif, technologies de pointe et expertise en physiologie pour construire un programme qui s'adapte à chaque personne.",
     "body_text": "Notre équipe ne vous impose rien. Ensemble, nous construisons un chemin qui a du sens pour vous, à votre rythme et selon vos priorités.",
     "quote": "Talent wins games, but teamwork and intelligence win championships",
@@ -127,89 +130,6 @@
     "link_text": "Site web de SportMed360",
     "link_url": "https://sportmed360.ch",
     "logo": "/assets/img/sportmed/logo.svg"
-  },
-  "services": {
-    "items": [
-      {
-        "id": "01",
-        "title": "Check-Up 360",
-        "description": "Bilan complet pour comprendre votre corps et définir un plan d'action personnalisé.",
-        "image": "/assets/img/services/services/items/0/image.webp",
-        "url": "/services/checkup-360/",
-        "coming_soon": false
-      },
-      {
-        "id": "02",
-        "title": "Test de VO₂max",
-        "description": "Évaluez votre endurance et définissez vos zones d'entraînement.",
-        "image": "/assets/img/services/services/items/1/image.webp",
-        "url": "/services/vo2max/",
-        "coming_soon": false
-      },
-      {
-        "id": "03",
-        "title": "Coaching & préparation physique",
-        "description": "Accompagnement sur mesure en mouvement et préparation physique.",
-        "image": "/assets/img/services/services/items/2/image.webp",
-        "url": "/services/coaching/",
-        "coming_soon": false
-      },
-      {
-        "id": "04",
-        "title": "Profilage",
-        "description": "Mieux se comprendre pour mieux performer grâce à l'analyse comportementale.",
-        "image": "/assets/img/services/services/items/3/image.webp",
-        "url": "/services/profilage/",
-        "coming_soon": false
-      },
-      {
-        "id": "05",
-        "title": "Fitness & Sauna",
-        "description": "Abonnements flexibles pour un entraînement guidé dans un espace dédié.",
-        "image": "/assets/img/services/services/items/4/image.webp",
-        "url": "/services/fitness/",
-        "coming_soon": false
-      },
-      {
-        "id": "06",
-        "title": "Red Light Therapy",
-        "description": "Thérapie par lumière rouge : ~15 minutes pour la récupération et le bien-être.",
-        "image": "/assets/img/services/services/items/5/image.webp",
-        "url": "/services/red-light-therapy/",
-        "coming_soon": false
-      },
-      {
-        "id": "07",
-        "title": "Nutrition",
-        "description": "Optimisez votre énergie et votre récupération grâce à une stratégie nutritionnelle personnalisée.",
-        "image": "/assets/img/services/services/items/6/image.webp",
-        "url": "/services/nutrition/",
-        "coming_soon": false
-      },
-      {
-        "id": "08",
-        "title": "Entreprises & Institutions",
-        "description": "Programmes bien-être et performance adaptés à votre organisation.",
-        "image": "/assets/img/services/services/items/7/image.webp",
-        "url": "/services/entreprises/",
-        "coming_soon": false
-      },
-      {
-        "id": "09",
-        "title": "Psychologie du sport ",
-        "description": "Accompagnement mental pour optimiser performance, bien-être et potentiel.",
-        "url": "/services/psychologie-du-sport/",
-        "coming_soon": false
-      },
-      {
-        "id": "10",
-        "title": "Neurotracker",
-        "description": "Parce que la performance commence dans le cerveau. ",
-        "image": "/assets/img/services/services/items/9/image.webp",
-        "url": "/services/neurotracker/",
-        "coming_soon": true
-      }
-    ]
   },
   "pricing": {
     "title": "Nos <span class='accent'>abonnements</span>",
@@ -280,7 +200,7 @@
         "initial": "L",
         "color": "#D7F14E",
         "text": "Super expérience avec Evo360 ! Accueil au top, accompagnement clair et résultats au rendez-vous. On sent le professionnalisme et l’envie de bien faire. Merci l’équipe, je recommande sans hésiter.",
-        "rotate": 0,
+        "rotate": -1,
         "source": "Google Reviews"
       },
       {
@@ -298,22 +218,6 @@
         "color": "#D7F14E",
         "text": "On sent une vraie expertise du sport de performance, tout en intégrant la préparation du corps et le bien-être sur le long terme. Je recommande vivement Evo360 à toute personne cherchant un suivi sérieux.",
         "rotate": 1,
-        "source": "Google Reviews"
-      },
-      {
-        "name": "M. Biver",
-        "initial": "M",
-        "color": "#9494a3",
-        "text": "Top fitness 👍🏻💪",
-        "rotate": 0,
-        "source": "Google Reviews"
-      },
-      {
-        "name": "S. Kresovic",
-        "initial": "L",
-        "color": "#4622CC",
-        "text": "Le personnel est extrêmement agréable, accueillant et professionnel.",
-        "rotate": 0,
         "source": "Google Reviews"
       }
     ]
@@ -340,8 +244,9 @@
       },
       {
         "name": "Karen Joray ",
-        "role": "Responsable organisation et développement & Coach Sportive",
-        "image": "/assets/img/team/team/members/2/image.jpg"
+        "role": "Coach Sportive",
+        "image": "/assets/img/team/team/members/2/image.jpg",
+        "tagline": "Responsable organisation et développement"
       },
       {
         "name": "Sylésia Wälle",
@@ -359,7 +264,7 @@
         "bio": "Nutritionniste spécialisée en santé globale, je vous accompagne avec une approche personnalisée prenant en compte l’ensemble des systèmes du corps.\n\nMon objectif est de vous aider à retrouver un équilibre durable, en adaptant votre alimentation à vos besoins, votre mode de vie et votre physiologie."
       }
     ],
-    "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes) est celle de notre partenaire SportMed360.",
+    "sportmed_note": "L'équipe médicale (médecins du sport, physiothérapeutes)",
     "sportmed_link": "https://sportmed360.ch"
   },
   "cta": {
@@ -374,34 +279,13 @@
     "url": "https://www.instagram.com/evo360_swiss",
     "posts": [
       {
-        "image": "/assets/img/instagram/instagram/posts/0/image.webp",
-        "url": "https://www.instagram.com/evo360_swiss",
-        "alt": "Entraînement au centre evo360 Neuchâtel"
+        "url": "https://www.instagram.com/p/Db-lL9xAqAb/"
       },
       {
-        "image": "/assets/img/instagram/instagram/posts/1/image.webp",
-        "url": "https://www.instagram.com/evo360_swiss",
-        "alt": "Coaching personnalisé chez evo360"
+        "url": "https://www.instagram.com/p/DbJHOm2ABnE/?img_index=1"
       },
       {
-        "image": "/assets/img/instagram/instagram/posts/2/image.webp",
-        "url": "https://www.instagram.com/evo360_swiss",
-        "alt": "Machines Technogym chez evo360 Neuchâtel"
-      },
-      {
-        "image": "/assets/img/instagram/instagram/posts/3/image.webp",
-        "url": "https://www.instagram.com/evo360_swiss",
-        "alt": "Séance Red Light Therapy evo360"
-      },
-      {
-        "image": "/assets/img/instagram/instagram/posts/4/image.webp",
-        "url": "https://www.instagram.com/evo360_swiss",
-        "alt": "Équipe evo360 en action"
-      },
-      {
-        "image": "/assets/img/instagram/instagram/posts/5/image.webp",
-        "url": "https://www.instagram.com/evo360_swiss",
-        "alt": "Test VO2max au centre evo360"
+        "url": "https://www.instagram.com/p/DbFihw0gq_4/"
       }
     ]
   },

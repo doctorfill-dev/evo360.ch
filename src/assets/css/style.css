@@ -717,6 +717,18 @@ section {
   transition: var(--transition);
   filter: grayscale(20%) brightness(.8);
 }
+.card-image--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--indigo), #1f1742);
+}
+.card-image-placeholder-icon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--citron);
+  opacity: .85;
+}
 .card-id {
   position: absolute;
   top: 1.5rem; right: 1.5rem;
@@ -1688,7 +1700,6 @@ section {
   height: 15px;
 }
 .promo-text {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1699,6 +1710,25 @@ section {
   letter-spacing: .01em;
   text-align: center;
   margin: 0;
+}
+.promo-carousel {
+  flex: 1;
+  display: grid;
+  min-width: 0;
+}
+.promo-slide {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.promo-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 .promo-cta {
   display: inline-flex;
