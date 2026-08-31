@@ -36,12 +36,15 @@ function HomeSectionNavigation() {
 
   useEffect(() => {
     const sync = () => {
+      // Keystatic scopes the editor URL to the selected branch in GitHub
+      // storage mode (e.g. /keystatic/branch/main/singleton/home).  Match
+      // the stable end of the route so the shortcuts also work in local mode.
       const homeLink = document.querySelector<HTMLAnchorElement>(
-        'a[href="/keystatic/singleton/home"]',
+        'nav a[href$="/singleton/home"]',
       )
       const sidebarList = homeLink?.closest('li')?.parentElement
 
-      setTarget((current) => current === sidebarList ? current : sidebarList)
+      setTarget((current) => current === sidebarList ? current : sidebarList ?? null)
       setIsHomeEditor(window.location.pathname.endsWith('/singleton/home'))
     }
 
