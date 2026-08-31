@@ -1,13 +1,7 @@
 {
   "promo": {
-    "enabled": true,
-    "items": [
-      {
-        "enabled": true,
-        "text": "Offre SUMMER BODY : 3 mois d'abonnement au Fitness à seulement 350.-",
-        "link": "#contact"
-      }
-    ]
+    "enabled": false,
+    "items": []
   },
   "site": {
     "name": "evo360",
