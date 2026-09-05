@@ -41,7 +41,11 @@
           {% endif %}
         {% endfor %}
       </div>
-      <script async src="https://www.instagram.com/embed.js"></script>
+      <div data-third-party-placeholder class="third-party-placeholder">
+        <p>Les publications Instagram sont désactivées jusqu’à votre accord sur les contenus externes.</p>
+        <button type="button" class="btn btn-outline btn-sm" data-load-third-party>Afficher Instagram</button>
+      </div>
+      <div data-third-party-src="https://www.instagram.com/embed.js" data-embed-type="instagram"></div>
     {% endif %}
 
   </div>

@@ -87,10 +87,9 @@ export default {
           // @ts-ignore
           return new Response(ksRes.body ?? null, { status: ksRes.status, headers })
         } catch (err: unknown) {
-          const message = err instanceof Error
-            ? `${err.name}: ${err.message}\n${err.stack ?? ''}`
-            : String(err)
-          return new Response(JSON.stringify({ error: message }, null, 2), {
+          const errorId = crypto.randomUUID()
+          console.error(`Keystatic API error (${errorId})`, err)
+          return new Response(JSON.stringify({ error: 'Une erreur interne est survenue.', errorId }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' },
           })

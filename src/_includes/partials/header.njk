@@ -9,8 +9,9 @@
     <nav class="nav" aria-label="Navigation principale">
       <ul class="nav-list">
         {% for link in home.nav.links %}
-          {% if '/blog' in link.url %}
-          {% elif link.children and link.children.length > 0 %}
+          {% set isServicesLink = link.url == '/#services' %}
+          {% set childLinks = (collections.services | removeHidden | sortByOrder) if isServicesLink else link.children %}
+          {% if childLinks and childLinks.length > 0 %}
             <li class="nav-dropdown-parent">
               <a href="{{ link.url }}" class="nav-link">
                 {{ link.label }}
@@ -18,8 +19,8 @@
               </a>
               <div class="nav-dropdown">
                 <ul class="dropdown-list">
-                  {% for child in link.children | filterHiddenServiceLinks(collections.services) %}
-                    <li><a href="{{ child.url }}" class="dropdown-link">{{ child.label }}</a></li>
+                  {% for child in childLinks %}
+                    <li><a href="{{ child.url }}" class="dropdown-link">{{ child.data.title if isServicesLink else child.label }}</a></li>
                   {% endfor %}
                 </ul>
               </div>
@@ -47,19 +48,18 @@
     <div class="container">
       <ul class="mobile-nav-list">
         {% for link in home.nav.links %}
-          {% if '/blog' in link.url %}
-          {% else %}
+          {% set isServicesLink = link.url == '/#services' %}
+          {% set childLinks = (collections.services | removeHidden | sortByOrder) if isServicesLink else link.children %}
           <li>
             <a href="{{ link.url }}" class="mobile-nav-link">{{ link.label }}</a>
-            {% if link.children and link.children.length > 0 %}
+            {% if childLinks and childLinks.length > 0 %}
               <ul class="mobile-sub-list">
-                {% for child in link.children | filterHiddenServiceLinks(collections.services) %}
-                  <li><a href="{{ child.url }}" class="mobile-sub-link">{{ child.label }}</a></li>
+                {% for child in childLinks %}
+                  <li><a href="{{ child.url }}" class="mobile-sub-link">{{ child.data.title if isServicesLink else child.label }}</a></li>
                 {% endfor %}
               </ul>
             {% endif %}
           </li>
-          {% endif %}
         {% endfor %}
         <li style="padding-top:.5rem;">
           <a href="{{ home.nav.cta.url }}" class="btn btn-primary" style="width:100%;justify-content:center;">

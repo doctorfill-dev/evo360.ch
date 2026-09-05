@@ -35,7 +35,8 @@
           </ul>
 
           <div class="plan-cta">
-            <a href="/contact/?motif=Abonnement+{{ plan.name | urlencode }}" class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline{% endif %}">
+            {% set planCtaUrl = plan.cta_url or ('/contact/?motif=Abonnement+' ~ (plan.name | urlencode)) %}
+            <a href="{{ planCtaUrl }}" class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline{% endif %}">
               {{ plan.cta_label }}
             </a>
           </div>

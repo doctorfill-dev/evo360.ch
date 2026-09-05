@@ -8,16 +8,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NW4WVTML');</script>
-  <!-- End Google Tag Manager -->
   {%- set metaDesc = summary or description or home.hero.description -%}
-  {%- set metaTitle = title + " | evo360 Neuchâtel" if page.url != "/" else "evo360 | Centre de Performance et Bien-être à Neuchâtel" -%}
-  {%- set metaDescription = metaDesc if page.url != "/" else "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération." -%}
+  {%- set metaTitle = title + " | " + home.site.name + " Neuchâtel" if page.url != "/" else home.site.meta_title -%}
+  {%- set metaDescription = metaDesc if page.url != "/" else home.site.meta_description -%}
   <title>{{ metaTitle }}</title>
   <meta name="description" content="{{ metaDescription }}">
 
@@ -151,7 +144,7 @@
 
   <link rel="stylesheet" href="/assets/css/style.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js" defer data-ga-measurement-id="{{ home.site.ga_measurement_id }}"></script>
 
   {# Structured Data — LocalBusiness (JSON-LD) #}
   {% if page.url == "/" %}
@@ -159,35 +152,35 @@
   {
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
-    "name": "evo360",
-    "description": "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération.",
-    "url": "https://evo360.ch",
-    "telephone": "+41765070360",
-    "email": "hello@evo360.ch",
+    "name": "{{ home.site.name | jsonEscape | safe }}",
+    "description": "{{ home.site.business_description | jsonEscape | safe }}",
+    "url": "{{ home.site.url }}",
+    "telephone": "{{ home.site.phone | replace(' ', '') }}",
+    "email": "{{ home.site.email }}",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Av. Édouard-Dubois 20",
-      "addressLocality": "Neuchâtel",
-      "postalCode": "2000",
-      "addressCountry": "CH"
+      "streetAddress": "{{ home.site.street_address | jsonEscape | safe }}",
+      "addressLocality": "{{ home.site.locality | jsonEscape | safe }}",
+      "postalCode": "{{ home.site.postal_code | jsonEscape | safe }}",
+      "addressCountry": "{{ home.site.country_code | jsonEscape | safe }}"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 46.9958,
-      "longitude": 6.9293
+      "latitude": {{ home.site.latitude }},
+      "longitude": {{ home.site.longitude }}
     },
-    "image": "https://evo360.ch/assets/img/lieu/hero.webp",
-    "priceRange": "CHF 89 - 1320",
+    "image": "{{ home.site.url }}{{ home.site.business_image | toPublicPath }}",
+    "priceRange": "{{ home.site.price_range | jsonEscape | safe }}",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "07:30",
-        "closes": "20:30"
+        "opens": "{{ home.site.opening_time }}",
+        "closes": "{{ home.site.closing_time }}"
       }
     ],
     "sameAs": [
-      "https://www.instagram.com/evo360.ch"
+      "{{ home.instagram.url }}"
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -227,20 +220,20 @@
     },{% endif %}
     "provider": {
       "@type": "HealthAndBeautyBusiness",
-      "name": "evo360",
-      "url": "https://evo360.ch",
-      "telephone": "+41765070360",
+      "name": "{{ home.site.name | jsonEscape | safe }}",
+      "url": "{{ home.site.url }}",
+      "telephone": "{{ home.site.phone | replace(' ', '') }}",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Av. Édouard-Dubois 20",
-        "addressLocality": "Neuchâtel",
-        "postalCode": "2000",
-        "addressCountry": "CH"
+        "streetAddress": "{{ home.site.street_address | jsonEscape | safe }}",
+        "addressLocality": "{{ home.site.locality | jsonEscape | safe }}",
+        "postalCode": "{{ home.site.postal_code | jsonEscape | safe }}",
+        "addressCountry": "{{ home.site.country_code | jsonEscape | safe }}"
       }
     },
     "areaServed": {
       "@type": "City",
-      "name": "Neuchâtel"
+      "name": "{{ home.site.locality | jsonEscape | safe }}"
     }
   }
   </script>
@@ -275,10 +268,6 @@
   {% endif %}
 </head>
 <body{% if page.url != "/" %} class="inner-page"{% endif %}>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4WVTML"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 

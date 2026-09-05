@@ -3,6 +3,10 @@
   Le formulaire est dans le modal (modal-form.njk).
 #}
 <section class="contact section-dark" id="contact">
+  <style>
+    .third-party-placeholder { padding: 1.5rem; text-align: center; background: var(--dark-surface); color: var(--white); }
+    .third-party-placeholder p { margin-bottom: 1rem; }
+  </style>
   <div class="container">
 
     {# En-tête #}
@@ -17,12 +21,16 @@
       {# Carte Google Maps #}
       <div class="contact-map">
         <iframe
-          src="https://maps.google.com/maps?q=evo360+Av.+Edouard-Dubois+20+Neuchatel&output=embed&z=16&hl=fr"
+          data-third-party-src="{{ home.site.maps_embed_url }}"
           title="{{ home.site.name }} — {{ home.site.address | replace('\n', ', ') }}"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen>
         </iframe>
+        <div data-third-party-placeholder class="third-party-placeholder">
+          <p>La carte est désactivée jusqu’à votre accord sur les contenus externes.</p>
+          <button type="button" class="btn btn-outline btn-sm" data-load-third-party>Charger la carte</button>
+        </div>
       </div>
 
       {# Infos de contact empilées #}
