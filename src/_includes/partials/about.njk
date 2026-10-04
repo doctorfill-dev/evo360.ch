@@ -29,14 +29,14 @@
       <div class="about-body">
         <p>{{ home.about.body_text }}</p>
       </div>
-      {#
+      {% if home.about.quote %}
       <div class="quote-card">
         <p>« {{ home.about.quote }} »</p>
         {% if home.about.quote_author %}
           <cite class="quote-author">{{ home.about.quote_author }}</cite>
         {% endif %}
       </div>
-      #}
+      {% endif %}
 
       <div class="features-grid">
         <div class="feature">

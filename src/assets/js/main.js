@@ -19,25 +19,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('cookie-accept');
   const declineBtn = document.getElementById('cookie-decline');
+  const preferencesBtn = document.getElementById('cookie-preferences');
 
   if (banner && !localStorage.getItem('cookie-consent')) {
     banner.hidden = false;
   }
 
   const handleConsent = (status) => {
+    const previousStatus = localStorage.getItem('cookie-consent');
     localStorage.setItem('cookie-consent', status);
     banner.hidden = true;
-    if (status === 'accepted') {
-      initGA();
-    }
+    if (status === 'accepted') initOptionalServices();
+    if (status === 'declined' && previousStatus === 'accepted') window.location.reload();
   };
 
   if (acceptBtn) acceptBtn.addEventListener('click', () => handleConsent('accepted'));
   if (declineBtn) declineBtn.addEventListener('click', () => handleConsent('declined'));
+  if (preferencesBtn) preferencesBtn.addEventListener('click', () => {
+    banner.hidden = false;
+    acceptBtn?.focus();
+  });
 
   // --- Google Analytics ---
   function initGA() {
-    const gaId = 'G-ZMF20R1Q0M';
+    const gaId = document.currentScript?.dataset.gaMeasurementId || document.querySelector('script[data-ga-measurement-id]')?.dataset.gaMeasurementId;
+    if (!gaId) return;
     if (window.gaInitialized) return;
 
     const script = document.createElement('script');
@@ -53,7 +59,37 @@ document.addEventListener('DOMContentLoaded', () => {
     window.gaInitialized = true;
   }
 
-  if (localStorage.getItem('cookie-consent') === 'accepted') {
-    initGA();
+  function loadThirdPartyEmbeds() {
+    document.querySelectorAll('[data-third-party-src]').forEach((element) => {
+      if (element.dataset.loaded) return;
+      const src = element.dataset.thirdPartySrc;
+      if (!src) return;
+      if (element.tagName === 'IFRAME') element.src = src;
+      else if (element.dataset.embedType === 'instagram') {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = src;
+        document.head.appendChild(script);
+      }
+      element.dataset.loaded = 'true';
+    });
+    document.querySelectorAll('[data-third-party-placeholder]').forEach(placeholder => {
+      placeholder.hidden = true;
+    });
+    document.querySelectorAll('[data-third-party-content]').forEach(content => {
+      content.hidden = false;
+    });
   }
+
+  function initOptionalServices() { initGA(); loadThirdPartyEmbeds(); }
+
+  document.querySelectorAll('[data-load-third-party]').forEach(button => {
+    button.addEventListener('click', () => {
+      handleConsent('accepted');
+      const placeholder = button.closest('[data-third-party-placeholder]');
+      if (placeholder) placeholder.hidden = true;
+    });
+  });
+
+  if (localStorage.getItem('cookie-consent') === 'accepted') initOptionalServices();
 });

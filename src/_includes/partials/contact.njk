@@ -17,12 +17,23 @@
       {# Carte Google Maps #}
       <div class="contact-map">
         <iframe
-          src="https://maps.google.com/maps?q=evo360+Av.+Edouard-Dubois+20+Neuchatel&output=embed&z=16&hl=fr"
+          data-third-party-content
+          data-third-party-src="{{ home.site.maps_embed_url }}"
           title="{{ home.site.name }} — {{ home.site.address | replace('\n', ', ') }}"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
+          allowfullscreen
+          hidden>
         </iframe>
+        <div data-third-party-placeholder class="third-party-placeholder third-party-map-placeholder">
+          <div class="third-party-placeholder-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <p class="third-party-placeholder-eyebrow">Google Maps</p>
+          <h3>Localisez evo360 en un clin d’œil</h3>
+          <p class="third-party-placeholder-copy">La carte est désactivée pour protéger votre confidentialité.</p>
+          <button type="button" class="third-party-consent-button" data-load-third-party>Accepter les cookies pour voir Google Maps</button>
+        </div>
       </div>
 
       {# Infos de contact empilées #}

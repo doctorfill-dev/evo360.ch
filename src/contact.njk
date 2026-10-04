@@ -12,8 +12,8 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
         <svg class="icon" style="width:1rem;height:1rem;vertical-align:middle;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-arrow_back"></use></svg>
         Retour à l'accueil
       </a>
-      <h1 class="section-title">Nous <span class="accent">contacter</span></h1>
-      <p class="about-page-lead">Une question, une demande de rendez-vous ou d'information sur nos services ? Nous vous recontactons rapidement.</p>
+      <h1 class="section-title">{{ home.contact.page_title | safe }}</h1>
+      <p class="about-page-lead">{{ home.contact.page_description }}</p>
     </div>
 
     <div class="contact-grid">
@@ -28,7 +28,7 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
             </span>
             <div>
               <strong>Téléphone &amp; WhatsApp</strong>
-              <a href="tel:+41765070360">076 507 03 60</a>
+              <a href="tel:{{ home.site.phone | replace(' ', '') }}">{{ home.site.phone }}</a>
             </div>
           </li>
           <li class="contact-detail-item">
@@ -37,7 +37,7 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
             </span>
             <div>
               <strong>Email</strong>
-              <a href="mailto:hello@evo360.ch">hello@evo360.ch</a>
+              <a href="mailto:{{ home.site.email }}">{{ home.site.email }}</a>
             </div>
           </li>
           <li class="contact-detail-item">
@@ -46,7 +46,7 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
             </span>
             <div>
               <strong>Adresse</strong>
-              <span>Av. Édouard-Dubois 20<br>2000 Neuchâtel</span>
+              <span>{{ home.site.address | replace('\n', '<br>') | safe }}</span>
             </div>
           </li>
           <li class="contact-detail-item">
@@ -55,14 +55,14 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
             </span>
             <div>
               <strong>Horaires</strong>
-              <span>Lundi – Vendredi, 07h30 – 20h30</span>
+              <span>{{ home.site.opening_hours }}</span>
             </div>
           </li>
         </ul>
 
         <div style="margin-top: 2rem;">
           <a
-            href="https://maps.google.com/?q=Av.+%C3%89douard-Dubois+20,+2000+Neuch%C3%A2tel"
+            href="{{ home.site.maps_url }}"
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-outline btn-sm"
@@ -77,7 +77,7 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
       <div class="contact-form-card">
         <h2>Formulaire de contact</h2>
 
-        <form action="https://formspree.io/f/mgonoqwn" method="POST" class="modal-form" id="contact-page-form">
+        <form action="{{ home.contact.form_endpoint }}" method="POST" class="modal-form" id="contact-page-form">
           <div class="form-row">
             <div class="form-group">
               <label for="cp-prenom">Prénom</label>
@@ -97,15 +97,9 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
             <select id="cp-motif" name="motif">
               <option value="">Sélectionnez un motif</option>
               <option value="Renseignement général">Renseignement général</option>
-              <option value="Check-Up 360">Check-Up 360</option>
-              <option value="Test de VO₂max">Test de VO₂max</option>
-              <option value="Coaching &amp; préparation physique">Coaching &amp; préparation physique</option>
-              <option value="Profilage">Profilage</option>
-              <option value="Fitness &amp; Sauna">Fitness &amp; Sauna</option>
-              <option value="Red Light Therapy">Red Light Therapy</option>
-              <option value="Nutrition">Nutrition</option>
-              <option value="Neurotracker">Neurotracker</option>
-              <option value="Entreprises &amp; institutions">Entreprises &amp; institutions</option>
+              {% for service in collections.services | removeHidden | sortByOrder %}
+              <option value="{{ service.data.title }}">{{ service.data.title }}</option>
+              {% endfor %}
               <option value="Abonnement 3 mois">Abonnement 3 mois</option>
               <option value="Abonnement 6 mois">Abonnement 6 mois</option>
               <option value="Abonnement 12 mois">Abonnement 12 mois</option>
@@ -114,10 +108,11 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
           </div>
           <div class="form-group">
             <label for="cp-message">Message</label>
-            <textarea id="cp-message" name="message" rows="4" placeholder="Votre message (facultatif)"></textarea>
+            <textarea id="cp-message" name="message" rows="4" placeholder="Votre message (facultatif — sans information médicale)"></textarea>
           </div>
+          <p class="form-privacy-notice">Vos données sont utilisées uniquement pour répondre à votre demande et sont transmises à notre prestataire de formulaire, Formspree. N’indiquez pas d’information médicale ou sensible dans ce formulaire. <a href="/confidentialite/">En savoir plus</a>.</p>
           <p id="contact-page-error" hidden style="color:#c0392b;font-size:.875rem;margin-bottom:.5rem;">
-            Une erreur est survenue. Veuillez réessayer ou nous appeler au 076 507 03 60.
+            {{ home.contact.form_error }}
           </p>
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="contact-page-submit-btn">
             <svg class="icon" style="width:1.125rem;height:1.125rem;" aria-hidden="true"><use href="/assets/img/icons/sprite.svg#icon-send"></use></svg>
@@ -128,7 +123,7 @@ description: "Contactez evo360 à Neuchâtel — rendez-vous, renseignements et 
         <div id="contact-page-success" hidden style="text-align:center;padding:2rem 0;">
           <svg style="width:3rem;height:3rem;color:var(--indigo);margin-bottom:1rem;display:block;margin-left:auto;margin-right:auto;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <h3 style="margin-bottom:.5rem;">Message envoyé !</h3>
-          <p style="color:var(--gray-600);">Merci, nous vous recontacterons dans les plus brefs délais.</p>
+          <p style="color:var(--gray-600);">{{ home.contact.form_success }}</p>
         </div>
       </div>
 

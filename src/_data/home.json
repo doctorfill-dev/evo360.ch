@@ -9,7 +9,25 @@
     "phone": "076 507 03 60",
     "email": "hello@evo360.ch",
     "address": "Av. Édouard-Dubois 20\n2000 Neuchâtel",
-    "access": "Parking gratuit\nBus 101, Vauseyon"
+    "access": "Parking gratuit\nBus 101, Vauseyon",
+    "opening_hours": "Lundi – Vendredi, 07h30 – 20h30",
+    "maps_url": "https://maps.google.com/?q=Av.+%C3%89douard-Dubois+20,+2000+Neuch%C3%A2tel",
+    "maps_embed_url": "https://maps.google.com/maps?q=evo360+Av.+Edouard-Dubois+20+Neuchatel&output=embed&z=16&hl=fr",
+    "meta_title": "evo360 | Centre de Performance et Bien-être à Neuchâtel",
+    "meta_description": "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération.",
+    "og_image": "/assets/img/services/site/og_image.webp",
+    "ga_measurement_id": "G-ZMF20R1Q0M",
+    "business_description": "Découvrez evo360 à Neuchâtel. Une approche globale sur mesure : préparation physique, bilan physiologique, coaching personnalisé et récupération.",
+    "street_address": "Av. Édouard-Dubois 20",
+    "postal_code": "2000",
+    "locality": "Neuchâtel",
+    "country_code": "CH",
+    "latitude": "46.9958",
+    "longitude": "6.9293",
+    "business_image": "/assets/img/lieu/hero.webp",
+    "price_range": "CHF 89 - 1320",
+    "opening_time": "07:30",
+    "closing_time": "20:30"
   },
   "nav": {
     "links": [
@@ -21,48 +39,7 @@
       {
         "label": "Services",
         "url": "/#services",
-        "children": [
-          {
-            "label": "Check-Up 360",
-            "url": "/services/checkup-360/"
-          },
-          {
-            "label": "Test de VO₂max",
-            "url": "/services/vo2max/"
-          },
-          {
-            "label": "Coaching & préparation physique",
-            "url": "/services/coaching/"
-          },
-          {
-            "label": "Profilage",
-            "url": "/services/profilage/"
-          },
-          {
-            "label": "Fitness & Sauna",
-            "url": "/services/fitness/"
-          },
-          {
-            "label": "Red Light Therapy",
-            "url": "/services/red-light-therapy/"
-          },
-          {
-            "label": "Nutrition",
-            "url": "/services/nutrition/"
-          },
-          {
-            "label": "Entreprises & institutions",
-            "url": "/services/entreprises/"
-          },
-          {
-            "label": "Psychologue du sport ",
-            "url": "/services/psychologie-du-sport/"
-          },
-          {
-            "label": "Neurotracker",
-            "url": "/services/neurotracker/"
-          }
-        ]
+        "children": []
       },
       {
         "label": "Tarifs",
@@ -287,7 +264,13 @@
   },
   "contact": {
     "title": "Venez nous <span class=\"accent\">rencontrer</span>",
-    "description": "Situé au cœur de Neuchâtel, notre centre vous accueille dans un espace moderne et chaleureux."
+    "description": "Situé au cœur de Neuchâtel, notre centre vous accueille dans un espace moderne et chaleureux.",
+    "page_title": "Nous <span class=\"accent\">contacter</span>",
+    "page_description": "Une question, une demande de rendez-vous ou d'information sur nos services ? Nous vous recontactons rapidement.",
+    "form_endpoint": "https://formspree.io/f/mgonoqwn",
+    "form_notice": "Nous migrons actuellement de système de réservation. En attendant, utilisez ce formulaire.",
+    "form_error": "Une erreur est survenue. Veuillez réessayer ou nous appeler au 076 507 03 60.",
+    "form_success": "Merci, nous vous recontacterons dans les plus brefs délais."
   },
   "footer": {
     "description": "Un accompagnement personnalisé avec des expert·e·s en mouvement, préparation physique et bien-être à Neuchâtel.",
