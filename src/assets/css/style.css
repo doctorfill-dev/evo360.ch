@@ -1052,6 +1052,7 @@ section {
 
 /* Carte Google Maps — coins arrondis + ombre profonde */
 .contact-map {
+  display: grid;
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: 0 30px 60px -15px rgba(0,0,0,.6);
@@ -1060,10 +1061,131 @@ section {
   flex-shrink: 0;
 }
 .contact-map iframe {
+  grid-area: 1 / 1;
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
+}
+
+/* Contenus externes — état de confidentialité avant consentement */
+[data-third-party-content][hidden],
+[data-third-party-placeholder][hidden] {
+  display: none !important;
+}
+.third-party-placeholder {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 14rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2.5rem;
+  overflow: hidden;
+  text-align: center;
+}
+.third-party-placeholder::before,
+.third-party-placeholder::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+.third-party-placeholder::before {
+  width: 19rem;
+  height: 19rem;
+  top: -12rem;
+  left: -6rem;
+  background: rgba(92, 64, 224, .24);
+}
+.third-party-placeholder::after {
+  width: 15rem;
+  height: 15rem;
+  right: -6rem;
+  bottom: -11rem;
+  background: rgba(211, 246, 66, .12);
+}
+.third-party-map-placeholder {
+  grid-area: 1 / 1;
+  min-height: 100%;
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 2rem 2rem,
+    linear-gradient(45deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 2rem 2rem,
+    #11101c;
+}
+.third-party-instagram-placeholder {
+  min-height: 20rem;
+  margin-top: 1.5rem;
+  color: var(--dark);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #fff 0%, #f7f4ff 100%);
+}
+.third-party-placeholder-icon {
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1rem;
+  place-items: center;
+  border-radius: 1rem;
+  color: var(--white);
+  background: var(--indigo);
+  box-shadow: 0 .75rem 1.5rem rgba(70, 34, 204, .22);
+}
+.third-party-instagram-placeholder .third-party-placeholder-icon {
+  color: var(--indigo);
+  background: rgba(70, 34, 204, .09);
+  box-shadow: none;
+}
+.third-party-placeholder-icon svg { width: 1.55rem; height: 1.55rem; }
+.third-party-placeholder-eyebrow {
+  margin: 0 0 .45rem;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--indigo-light);
+}
+.third-party-instagram-placeholder .third-party-placeholder-eyebrow { color: var(--indigo); }
+.third-party-placeholder h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  color: inherit;
+}
+.third-party-placeholder-copy {
+  max-width: 29rem;
+  margin: .6rem 0 1.35rem;
+  color: var(--gray-400);
+  line-height: 1.55;
+}
+.third-party-instagram-placeholder .third-party-placeholder-copy { color: var(--gray-600); }
+.third-party-consent-button {
+  padding: .7rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--white);
+  background: transparent;
+  font: inherit;
+  font-size: .8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.third-party-consent-button:hover {
+  color: var(--dark);
+  background: var(--white);
+  transform: translateY(-1px);
+}
+.third-party-instagram-placeholder .third-party-consent-button {
+  color: var(--indigo);
+  border-color: rgba(70, 34, 204, .28);
+}
+.third-party-instagram-placeholder .third-party-consent-button:hover {
+  color: var(--white);
+  background: var(--indigo);
 }
 
 /* Colonne infos : pile verticale */
@@ -1186,6 +1308,15 @@ section {
 }
 .legal { display: flex; gap: 2rem; }
 .legal a:hover { color: var(--gray-900); }
+.legal-link-button {
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.legal-link-button:hover { color: var(--gray-900); }
 
 
 /* -------------------------------------------------------
@@ -3049,6 +3180,17 @@ section {
 .modal-form textarea {
   resize: vertical;
   min-height: 80px;
+}
+.form-privacy-notice {
+  margin: -.25rem 0 1rem;
+  color: var(--gray-600);
+  font-size: .75rem;
+  line-height: 1.5;
+}
+.form-privacy-notice a {
+  color: var(--indigo);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 @media (max-width: 768px) {
   .modal-container {

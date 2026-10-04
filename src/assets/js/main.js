@@ -19,19 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('cookie-accept');
   const declineBtn = document.getElementById('cookie-decline');
+  const preferencesBtn = document.getElementById('cookie-preferences');
 
   if (banner && !localStorage.getItem('cookie-consent')) {
     banner.hidden = false;
   }
 
   const handleConsent = (status) => {
+    const previousStatus = localStorage.getItem('cookie-consent');
     localStorage.setItem('cookie-consent', status);
     banner.hidden = true;
     if (status === 'accepted') initOptionalServices();
+    if (status === 'declined' && previousStatus === 'accepted') window.location.reload();
   };
 
   if (acceptBtn) acceptBtn.addEventListener('click', () => handleConsent('accepted'));
   if (declineBtn) declineBtn.addEventListener('click', () => handleConsent('declined'));
+  if (preferencesBtn) preferencesBtn.addEventListener('click', () => {
+    banner.hidden = false;
+    acceptBtn?.focus();
+  });
 
   // --- Google Analytics ---
   function initGA() {
@@ -69,14 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-third-party-placeholder]').forEach(placeholder => {
       placeholder.hidden = true;
     });
+    document.querySelectorAll('[data-third-party-content]').forEach(content => {
+      content.hidden = false;
+    });
   }
 
   function initOptionalServices() { initGA(); loadThirdPartyEmbeds(); }
 
   document.querySelectorAll('[data-load-third-party]').forEach(button => {
     button.addEventListener('click', () => {
-      localStorage.setItem('cookie-consent', 'accepted');
-      initOptionalServices();
+      handleConsent('accepted');
       const placeholder = button.closest('[data-third-party-placeholder]');
       if (placeholder) placeholder.hidden = true;
     });
